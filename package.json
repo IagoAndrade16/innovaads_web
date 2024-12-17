@@ -43,6 +43,7 @@
 	},
 	"dependencies": {
 		"@tailwindcss/typography": "^0.5.15",
-		"flowbite-svelte-blocks": "^1.1.4"
+		"flowbite-svelte-blocks": "^1.1.4",
+		"yup": "^1.6.0"
 	}
 }

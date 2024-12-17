@@ -1,0 +1,1 @@
+export type HtmlInputTypes = "number" | "text" | "hidden" | "color" | "date" | "datetime-local" | "email" | "file" | "image" | "month" | "password" | "reset" | "search" | "submit" | "tel" | "time" | "url" | "week";
