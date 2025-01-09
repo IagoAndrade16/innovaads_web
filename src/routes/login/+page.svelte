@@ -1,11 +1,20 @@
 <script lang="ts">
 	import BaseInput from "$lib/components/BaseInput.component.svelte";
+	import ErrorText from "$lib/components/ErrorText.component.svelte";
+	import PrimaryButton from "$lib/components/PrimaryButton.svelte";
+	import Engine from "$lib/core/Engine";
+	import { DialogService } from "$lib/services/DialogService";
+	import { UsersService } from "$lib/services/UsersService";
+	import { userAuthStore } from "$lib/stores/userAuthStore";
+	import { userStore } from "$lib/stores/userStore";
 	import type { JsObject } from "$lib/types/JsObject";
 	import YupValidation from "$lib/validation/yup";
-	import { Button, DarkMode } from "flowbite-svelte";
+	import { onMount } from "svelte";
 	import * as yup from 'yup';
 
   let errors: JsObject | null = null;
+  let usersService: UsersService;
+  let isLoading: boolean = false;
 
   const values = {
     email: "",
@@ -20,21 +29,55 @@
   const handleFormSubmit = async () => {
     errors = await YupValidation.validateSchema(formSchema, values);
 
-    console.log(errors);
-
     if(errors) {
       return;
     }
+
+    isLoading = true;
+
+    const res = await usersService.auth({
+      email: values.email,
+      password: values.password,
+    });
+
+    isLoading = false;
+
+    switch(res.status) {
+      case 'SUCCESS':
+        $userAuthStore = {
+          ...$userAuthStore,
+          token: res.data?.auth.token!,
+        };
+        $userStore = {
+          ...$userStore,
+          name: res.data?.name!,
+        }
+        Engine.navigateTo('/dashboard');
+        break;
+      case 'UNAUTHORIZED':
+        DialogService.error({
+          message: 'Email ou senha incorretos.',
+          title: 'Ooops!',
+        })
+        break;
+      default:
+        DialogService.error({
+          message: 'Algo deu errado ao entrar na sua conta. Por favor, tente novamente.',
+          title: 'Ooops!',
+        })
+        break;
+    }
+
   };
+
+  onMount(() => {
+    usersService = new UsersService();
+  })
 </script>
-  
-<DarkMode />
+
 <div class="p-6 space-y-4 md:space-y-6 sm:p-8 shadow-lg w-2/3 lg:w-1/3 mx-auto rounded-md mt-48 bg-[#1F2937]">
   <form class="flex flex-col space-y-6" on:submit={handleFormSubmit}>
     <h1 class="text-2xl font-medium text-white dark:text-white p-0">Entre na sua conta</h1>
-    <!-- <FloatingLabelInput id="email-input" name="email" type="email" class="text-white" color="base" bind:value={values.email}>
-      Seu email
-    </FloatingLabelInput> -->
 
     <BaseInput 
       label="Email" 
@@ -45,10 +88,6 @@
       bind:value={values.email} 
       error={errors?.email}
     />
-
-    <!-- <FloatingLabelInput id="password-input" name="password" type="password" class="text-white" color="base" bind:value={values.password}>
-      Sua senha
-    </FloatingLabelInput> -->
 
     <BaseInput 
       label="Senha" 
@@ -64,10 +103,16 @@
       <a href="/" class="ml-auto text-sm text-primary-500 hover:underline dark:text-primary-500">Esqueceu sua senha?</a>
     </div>
     
-    <Button type="submit" class="w-full1">Entrar na sua conta</Button>
+    <PrimaryButton 
+      classes="w-full"
+      text="Entrar"
+      loadingText="Entrando..."
+      type="submit"
+      bind:isLoading={isLoading}
+    />
 
     <p class="text-sm font-light text-gray-500 dark:text-gray-400">
-      Não tem uma conta ainda? <a href="/" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Criar uma</a>
+      Não tem uma conta ainda? <a href="/create-account" class="font-medium text-primary-600 hover:underline dark:text-primary-500">Criar uma</a>
     </p>
   </form>
 </div>
