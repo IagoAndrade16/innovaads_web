@@ -19,7 +19,9 @@ export default {
           700: '#EB4F27',
           800: '#CC4522',
           900: '#A5371B'
-        }
+        },
+        'deep-blue': '#101727',
+        'light-gray': '#F6F6F6',
       }
     }
   },

@@ -1,6 +1,8 @@
 import { browser } from "$app/environment";
 import { goto } from "$app/navigation";
 import { tick } from "svelte";
+import { userAuthStore } from "$lib/stores/userAuthStore";
+import { userStore } from "$lib/stores/userStore";
 
 export type PageType = 'CD' | 'SAMSUNG';
 
@@ -40,6 +42,8 @@ export default class Engine {
 	}
 
 	static logout(redirect: string | null = '/') {
+		userAuthStore.set(null)
+		userStore.set(null);
 		if (redirect != null) Engine.navigateTo(redirect);
 	}
 
