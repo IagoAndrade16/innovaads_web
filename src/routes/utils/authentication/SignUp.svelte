@@ -11,7 +11,7 @@ import { A, Checkbox, Button, Card, Spinner } from 'flowbite-svelte';
 	export let acceptTerms: boolean = true;
 	export let haveAccount: boolean = true;
 	export let btnTitle = 'Criar conta';
-	export let termsLink = '/';
+	export let termsLink = '/privacy-policy';
 	export let loginLink = '/';
 	export let mainClass = 'bg-gray-50 dark:bg-gray-900 w-full';
 	export let mainDivClass =

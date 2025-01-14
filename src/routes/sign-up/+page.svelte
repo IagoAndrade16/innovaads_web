@@ -86,7 +86,7 @@
 	const acceptTerms = true;
 	const haveAccount = true;
 	const btnTitle = 'Criar conta';
-	const termsLink = '/';
+	const termsLink = '/privacy-policy';
 	const loginLink = 'sign-in';
 
 	const path: string = '/sign-up';
