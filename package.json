@@ -1,7 +1,6 @@
 {
 	"name": "innova-ads-web",
 	"version": "1.0.0",
-	"private": false,
 	"scripts": {
 		"dev": "vite dev --open",
 		"build": "vite build",
