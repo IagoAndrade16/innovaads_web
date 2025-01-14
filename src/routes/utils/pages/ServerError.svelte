@@ -2,14 +2,13 @@
 	import { imagesPath } from '../../utils/variables';
 	import { Button, P } from 'flowbite-svelte';
 	export let title = 'Something has gone seriously wrong';
-	export let description =
-		"It's always time for a coffee break. We should be back by the time you finish your coffee.";
+	export let description = "Sempre é hora de fazer uma pausa para o café. Devemos estar de volta quando você terminar seu café.";
 	export let image = {
 		src: imagesPath('illustrations/500.svg'),
 		alt: 'astronaut'
 	};
 	export let btnHref = '/';
-	export let btnTitle = 'Go back home';
+	export let btnTitle = 'Voltar para página inicial';
 	export let mainClass = 'bg-gray-50 dark:bg-gray-900';
 	export let mainDivClass =
 		'flex flex-col justify-center items-center px-6 mx-auto h-screen xl:px-0 dark:bg-gray-900';

@@ -22,8 +22,8 @@
 	import MetaTag from './utils/MetaTag.svelte';
 
 	const path: string = `/errors/${index}`;
-	const description: string = `${index} - Flowbite Svelte Admin Dashboard`;
-	const title: string = `Flowbite Svelte Admin Dashboard - ${index} page`;
+	const description: string = `${index} - InnovaADS`;
+	const title: string = `InnovaADS - ${index} page`;
 	const subtitle: string = `${index} page`;
 </script>
 
