@@ -13,6 +13,7 @@ export interface AuthUserResponseData {
     token: string;
   };
   name: string;
+  email: string;
 }
 
 export type AuthUserResponseStatus = 'SUCCESS' | 'UNKNOWN' | 'UNAUTHORIZED';

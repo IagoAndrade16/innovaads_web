@@ -1,12 +1,7 @@
-<script lang="ts">
-	import '../app.css';
+<script>
+	import modeobserver from './utils/modeobserver';
+	import { onMount } from 'svelte';
 
-	let { children } = $props();
+	onMount(modeobserver);
 </script>
-
-<div class="app">
-	<main>
-		{@render children()}
-	</main>
-</div>
-
+<slot />
