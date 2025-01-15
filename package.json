@@ -1,5 +1,5 @@
 {
-	"name": "innova-ads-web",
+	"name": "innovaads",
 	"version": "1.0.0",
 	"scripts": {
 		"dev": "vite dev --open",
