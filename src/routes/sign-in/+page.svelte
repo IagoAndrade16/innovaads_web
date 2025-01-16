@@ -12,11 +12,12 @@
 	import { DialogService } from '$lib/services/DialogService';
 	import { onMount } from 'svelte';
 	import BaseInput from '$lib/components/BaseInput.svelte';
+	import Navbar from '$lib/components/landing/Navbar.svelte';
 
 	let title = 'Entrar na plataforma';
 	let site = {
 		name: 'Innova ADS',
-		img: '/images/flowbite-svelte-icon-logo.svg',
+		img: '/images/logo-only-rocket.png',
 		link: '/',
 		imgAlt: 'InnovaADS Logo'
 	};

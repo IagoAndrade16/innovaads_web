@@ -9,6 +9,9 @@ export default {
   darkMode: 'selector',
   theme: {
     extend: {
+      fontFamily: {
+        'days': ['Days one', 'sans-serif'],
+      },
       colors: {
         // flowbite-svelte
         primary: {

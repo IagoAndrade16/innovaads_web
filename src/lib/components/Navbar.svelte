@@ -20,18 +20,18 @@
 	/>
 	<NavBrand href="/" class={list ? 'w-40' : 'lg:w-60'}>
 		<img
-			src="/images/flowbite-svelte-icon-logo.svg"
-			class="me-2.5 h-6 sm:h-8"
+			src="/images/logo-only-rocket.png"
+			class="me-2.5 h-8 sm:h-10"
 			alt="Flowbite Logo"
 		/>
 		<span
-			class="ml-px self-center whitespace-nowrap text-xl font-semibold dark:text-white sm:text-2xl"
+			class="ml-px self-center font-days whitespace-nowrap text-[#ef552f] text-lg font-semibold dark:text-white sm:text-xl"
 		>
 			Innova ADS
 		</span>
 	</NavBrand>
 	
-	<div class="ms-auto flex items-center text-gray-500 dark:text-gray-400 sm:order-2">
+	<div class="ms-auto me-3 flex items-center text-gray-500 dark:text-gray-400 sm:order-2">
 		<!-- <Notifications />
 		<AppsMenu /> -->
 		<DarkMode />

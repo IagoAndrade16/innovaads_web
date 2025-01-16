@@ -6,12 +6,11 @@
 
 	let name: string = $userStore?.name!;
 	let email: string = $userStore?.email!;
-	export let avatar: string = '';
 	
 </script>
 
 <button class="ms-3 rounded-full ring-gray-400 focus:ring-4 dark:ring-gray-600">
-	<Avatar size="sm" src={imagesPath(avatar, 'users')} tabindex={0} />
+	<Avatar size="sm" src="/images/user-logo.png" class="h-10 w-10" tabindex={0} />
 </button>
 <Dropdown placement="bottom-end">
 	<DropdownHeader>

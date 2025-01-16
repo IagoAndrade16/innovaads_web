@@ -7,7 +7,7 @@ function __memo(fn) {
 return {
 	appDir: "_app",
 	appPath: "_app",
-	assets: new Set(["favicon.png","images/flowbite-svelte-icon-logo.svg"]),
+	assets: new Set(["favicon.svg","images/flowbite-svelte-icon-logo.svg"]),
 	mimeTypes: {".png":"image/png",".svg":"image/svg+xml"},
 	_: {
 		client: {"start":"_app/immutable/entry/start.CZnln0-l.js","app":"_app/immutable/entry/app.UCTDNA5S.js","imports":["_app/immutable/entry/start.CZnln0-l.js","_app/immutable/chunks/entry.DTUNGeNF.js","_app/immutable/chunks/scheduler.CCAU0UuP.js","_app/immutable/chunks/control.CYgJF_JY.js","_app/immutable/entry/app.UCTDNA5S.js","_app/immutable/chunks/scheduler.CCAU0UuP.js","_app/immutable/chunks/index.DYbHWKFe.js"],"stylesheets":[],"fonts":[],"uses_env_dynamic_public":false},

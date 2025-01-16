@@ -5,8 +5,8 @@
 
 <Navbar>
   <NavBrand href="/">
-    <img src="/images/flowbite-svelte-icon-logo.svg" class="me-3 h-6 sm:h-9" alt="InnovaADS Logo" />
-    <span class="self-center whitespace-nowrap text-xl font-semibold dark:text-white">InnovaADS</span>
+    <img src="/images/logo-only-rocket.png" class="me-3 h-10 sm:h-12" alt="InnovaADS Logo" />
+    <span class="self-center whitespace-nowrap text-xl font-normal dark:text-white font-days">Innova ADS</span>
   </NavBrand>
   <div class="flex md:order-2">
     <Button on:click={() => Engine.navigateTo('/sign-up')} size="sm">Começar agora</Button>

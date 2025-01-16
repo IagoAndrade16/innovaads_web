@@ -79,7 +79,7 @@
 	const title = 'Criar conta';
 	const site = {
 		name: 'InnovaADS',
-		img: '/images/flowbite-svelte-icon-logo.svg',
+		img: '/images/logo-only-rocket.png',
 		link: '/',
 		imgAlt: 'InnovaADS Logo'
 	};
