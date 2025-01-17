@@ -117,7 +117,7 @@ const SignUp = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let { title: title2 = "Criar conta grátis" } = $$props;
   let { site = {
     name: "InnovaADS",
-    img: "/images/flowbite-svelte-icon-logo.svg",
+    img: "/images/main-logo.png",
     link: "/",
     imgAlt: "InnovaADS Logo"
   } } = $$props;
@@ -129,7 +129,7 @@ const SignUp = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let { mainClass = "bg-gray-50 dark:bg-gray-900 w-full" } = $$props;
   let { mainDivClass = "flex flex-col items-center justify-center px-6 pt-8 mx-auto md:h-screen pt:mt-0 dark:bg-gray-900" } = $$props;
   let { siteLinkClass = "flex items-center justify-center mb-8 text-2xl font-semibold lg:mb-10 dark:text-white" } = $$props;
-  let { siteImgClass = "mr-4 h-11" } = $$props;
+  let { siteImgClass = "mr-4 h-20" } = $$props;
   let { cardH1Class = "text-2xl font-bold text-gray-900 dark:text-white" } = $$props;
   let { haveAccountDivClass = "text-sm font-medium text-gray-500 dark:text-gray-400" } = $$props;
   let { handleFormSubmit } = $$props;
@@ -159,7 +159,7 @@ const SignUp = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   do {
     $$settled = true;
     $$result.head = previous_head;
-    $$rendered = `<main${add_attribute("class", mainClass, 0)}><div${add_attribute("class", mainDivClass, 0)}><a${add_attribute("href", site.link, 0)}${add_attribute("class", siteLinkClass, 0)}><img${add_attribute("src", site.img, 0)}${add_attribute("class", siteImgClass, 0)}${add_attribute("alt", site.imgAlt, 0)}> <span>${escape(site.name)}</span></a>  ${validate_component(Card, "Card").$$render(
+    $$rendered = `<main${add_attribute("class", mainClass, 0)}><div${add_attribute("class", mainDivClass, 0)}><a${add_attribute("href", site.link, 0)}${add_attribute("class", siteLinkClass, 0)}><img${add_attribute("src", site.img, 0)}${add_attribute("class", siteImgClass, 0)}${add_attribute("alt", site.imgAlt, 0)}> </a>  ${validate_component(Card, "Card").$$render(
       $$result,
       {
         class: "w-full",
@@ -364,7 +364,7 @@ const Page = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   } } = $$props;
   const site = {
     name: "InnovaADS",
-    img: "/images/flowbite-svelte-icon-logo.svg",
+    img: "/images/logo-only-rocket.png",
     link: "/",
     imgAlt: "InnovaADS Logo"
   };

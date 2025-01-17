@@ -1,8 +1,10 @@
 import { c as create_ssr_component, a as compute_rest_props, b as spread, e as escape_object, d as escape_attribute_value, f as add_attribute, g as escape, v as validate_component, h as subscribe, m as missing_component } from "../../chunks/ssr.js";
 import { M as MetaTag } from "../../chunks/MetaTag.js";
-import { i as imagesPath, p as page } from "../../chunks/variables.js";
+import { p as page } from "../../chunks/stores.js";
 import { B as Button } from "../../chunks/Button.js";
 import { twMerge } from "tailwind-merge";
+const imgDir = "https://flowbite-admin-dashboard.vercel.app/images";
+const imagesPath = (src, ...subdirs) => [imgDir, ...subdirs, src].filter(Boolean).join("/");
 const P = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let colorAndopacity;
   let classP;

@@ -34,7 +34,7 @@
       "_ssr.js"
     ],
     "css": [
-      "_app/immutable/assets/MetaTag.CHufAryY.css"
+      "_app/immutable/assets/MetaTag.DunrjOEU.css"
     ]
   },
   "_NavHamburger.js": {
@@ -105,6 +105,14 @@
     "file": "chunks/ssr2.js",
     "name": "ssr"
   },
+  "_stores.js": {
+    "file": "chunks/stores.js",
+    "name": "stores",
+    "imports": [
+      "_ssr.js",
+      "_client.js"
+    ]
+  },
   "_userStore.js": {
     "file": "chunks/userStore.js",
     "name": "userStore",
@@ -112,14 +120,6 @@
       "_ssr.js",
       "_client.js",
       "_index2.js"
-    ]
-  },
-  "_variables.js": {
-    "file": "chunks/variables.js",
-    "name": "variables",
-    "imports": [
-      "_ssr.js",
-      "_client.js"
     ]
   },
   "node_modules/@sveltejs/kit/src/runtime/server/index.js": {
@@ -142,7 +142,7 @@
     "imports": [
       "_ssr.js",
       "_MetaTag.js",
-      "_variables.js",
+      "_stores.js",
       "_Button.js"
     ]
   },
@@ -178,7 +178,7 @@
       "_userStore.js",
       "_index2.js",
       "_Wrapper.js",
-      "_variables.js"
+      "_stores.js"
     ]
   },
   "src/routes/errors/[code]/+page.ts": {

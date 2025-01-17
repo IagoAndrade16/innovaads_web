@@ -1,4 +1,4 @@
-import { c as create_ssr_component, f as add_attribute, g as escape, v as validate_component, h as subscribe, n as set_store_value } from "../../../chunks/ssr.js";
+import { c as create_ssr_component, f as add_attribute, v as validate_component, g as escape, h as subscribe, n as set_store_value } from "../../../chunks/ssr.js";
 import { B as Button } from "../../../chunks/Button.js";
 import { C as Card, A, S as Spinner, Y as YupValidation, D as DialogService, E as Engine, B as BaseInput } from "../../../chunks/BaseInput.js";
 import { M as MetaTag } from "../../../chunks/MetaTag.js";
@@ -7,8 +7,8 @@ import { u as userStore, a as userAuthStore } from "../../../chunks/userStore.js
 const SignIn = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let { title: title2 = "Faça login na plataforma" } = $$props;
   let { site = {
-    name: "Innova ADS",
-    img: "/images/flowbite-svelte-icon-logo.svg",
+    name: "InnovaADS",
+    img: "/static/images/logo-only-rocket.png",
     link: "/",
     imgAlt: "InnovaADS Logo"
   } } = $$props;
@@ -23,7 +23,7 @@ const SignIn = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let { mainClass = "bg-gray-50 dark:bg-gray-900 w-full" } = $$props;
   let { mainDivClass = "flex flex-col items-center justify-center px-6 pt-8 mx-auto md:h-screen pt:mt-0 dark:bg-gray-900" } = $$props;
   let { siteLinkClass = "flex items-center justify-center mb-8 text-2xl font-semibold lg:mb-10 dark:text-white" } = $$props;
-  let { siteImgClass = "mr-4 h-11" } = $$props;
+  let { siteImgClass = "mr-4 h-20" } = $$props;
   let { cardH1Class = "text-2xl font-bold text-gray-900 dark:text-white" } = $$props;
   if ($$props.title === void 0 && $$bindings.title && title2 !== void 0) $$bindings.title(title2);
   if ($$props.site === void 0 && $$bindings.site && site !== void 0) $$bindings.site(site);
@@ -40,7 +40,7 @@ const SignIn = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   if ($$props.siteLinkClass === void 0 && $$bindings.siteLinkClass && siteLinkClass !== void 0) $$bindings.siteLinkClass(siteLinkClass);
   if ($$props.siteImgClass === void 0 && $$bindings.siteImgClass && siteImgClass !== void 0) $$bindings.siteImgClass(siteImgClass);
   if ($$props.cardH1Class === void 0 && $$bindings.cardH1Class && cardH1Class !== void 0) $$bindings.cardH1Class(cardH1Class);
-  return `<main${add_attribute("class", mainClass, 0)}><div${add_attribute("class", mainDivClass, 0)}><a${add_attribute("href", site.link, 0)}${add_attribute("class", siteLinkClass, 0)}><img${add_attribute("src", site.img, 0)}${add_attribute("class", siteImgClass, 0)}${add_attribute("alt", site.imgAlt, 0)}> <span>${escape(site.name)}</span></a>  ${validate_component(Card, "Card").$$render(
+  return `<main${add_attribute("class", mainClass, 0)}><div${add_attribute("class", mainDivClass, 0)}><a${add_attribute("href", site.link, 0)}${add_attribute("class", siteLinkClass, 0)}><img${add_attribute("src", site.img, 0)}${add_attribute("class", siteImgClass, 0)}${add_attribute("alt", site.imgAlt, 0)}> </a>  ${validate_component(Card, "Card").$$render(
     $$result,
     {
       class: "w-full",
@@ -102,7 +102,7 @@ const Page = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   $$unsubscribe_userAuthStore = subscribe(userAuthStore, (value) => $userAuthStore = value);
   let site = {
     name: "Innova ADS",
-    img: "/images/flowbite-svelte-icon-logo.svg",
+    img: "/images/logo-only-rocket.png",
     link: "/",
     imgAlt: "InnovaADS Logo"
   };

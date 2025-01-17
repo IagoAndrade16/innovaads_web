@@ -143,7 +143,7 @@ const options = {
   root: Root,
   service_worker: false,
   templates: {
-    app: ({ head, body, assets: assets2, nonce, env }) => '<!doctype html>\n<html lang="en">\n\n<head>\n	<meta charset="utf-8" />\n	<link rel="icon" href="' + assets2 + '/favicon.png" />\n	<meta name="viewport" content="width=device-width, initial-scale=1" />\n	<meta name="keywords" content="Svelte, Admin, Dashboard, UI" />\n	<meta name="google-site-verification" content="xk2BE5zNAEcrSSixEb4jGDPgXr_qCPqS9ipNK-_NKCQ" />\n	<link rel="preconnect" href="https://fonts.googleapis.com" />\n	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />\n	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap"\n		rel="stylesheet" />\n	' + head + '\n</head>\n\n<body data-sveltekit-preload-data="hover" class="bg-gray-50 dark:bg-gray-900 antialiased">\n	<div style="display: contents">\n		' + body + "\n	</div>\n</body>\n\n</html>",
+    app: ({ head, body, assets: assets2, nonce, env }) => '<!doctype html>\n<html lang="en">\n\n<head>\n	<meta charset="utf-8" />\n	<link rel="icon" href="' + assets2 + '/images/logo-only-rocket.png" />\n	<meta name="viewport" content="width=device-width, initial-scale=1" />\n	<meta name="keywords" content="Svelte, Admin, Dashboard, UI" />\n	<meta name="google-site-verification" content="xk2BE5zNAEcrSSixEb4jGDPgXr_qCPqS9ipNK-_NKCQ" />\n	<link rel="preconnect" href="https://fonts.googleapis.com" />\n	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />\n	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap"\n		rel="stylesheet" />\n	' + head + '\n\n	<link rel="preconnect" href="https://fonts.googleapis.com">\n	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>\n	<link href="https://fonts.googleapis.com/css2?family=Days+One&family=Noto+Sans+Hatran&display=swap" rel="stylesheet">\n</head>\n\n<body data-sveltekit-preload-data="hover" class="bg-gray-50 dark:bg-gray-900 antialiased">\n	<div style="display: contents">\n		' + body + "\n	</div>\n</body>\n\n</html>",
     error: ({ status, message }) => '<!doctype html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<title>' + message + `</title>
 
 		<style>
@@ -215,7 +215,7 @@ const options = {
 		<div class="error">
 			<span class="status">` + status + '</span>\n			<div class="message">\n				<h1>' + message + "</h1>\n			</div>\n		</div>\n	</body>\n</html>\n"
   },
-  version_hash: "t4vi1e"
+  version_hash: "1zt6mq"
 };
 async function get_hooks() {
   let handle;

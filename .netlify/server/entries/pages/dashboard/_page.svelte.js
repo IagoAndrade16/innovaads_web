@@ -7,7 +7,7 @@ import { F as Frame, u as userStore } from "../../../chunks/userStore.js";
 import * as dom from "@floating-ui/dom";
 import { w as writable } from "../../../chunks/index2.js";
 import { W as Wrapper } from "../../../chunks/Wrapper.js";
-import { i as imagesPath, p as page } from "../../../chunks/variables.js";
+import { p as page } from "../../../chunks/stores.js";
 const Indicator = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let $$restProps = compute_rest_props($$props, ["color", "rounded", "size", "border", "placement", "offset"]);
   let $$slots = compute_slots(slots);
@@ -555,14 +555,13 @@ const UserMenu = create_ssr_component(($$result, $$props, $$bindings, slots) => 
   $$unsubscribe_userStore = subscribe(userStore, (value) => $userStore = value);
   let name = $userStore?.name;
   let email = $userStore?.email;
-  let { avatar = "" } = $$props;
-  if ($$props.avatar === void 0 && $$bindings.avatar && avatar !== void 0) $$bindings.avatar(avatar);
   $$unsubscribe_userStore();
   return `<button class="ms-3 rounded-full ring-gray-400 focus:ring-4 dark:ring-gray-600">${validate_component(Avatar, "Avatar").$$render(
     $$result,
     {
       size: "sm",
-      src: imagesPath(avatar, "users"),
+      src: "/images/user-logo.png",
+      class: "h-10 w-10",
       tabindex: 0
     },
     {},
@@ -615,10 +614,10 @@ const Navbar_1 = create_ssr_component(($$result, $$props, $$bindings, slots) => 
           {},
           {
             default: () => {
-              return `<img src="/images/flowbite-svelte-icon-logo.svg" class="me-2.5 h-6 sm:h-8" alt="Flowbite Logo"> <span class="ml-px self-center whitespace-nowrap text-xl font-semibold dark:text-white sm:text-2xl" data-svelte-h="svelte-18izzhr">Innova ADS</span>`;
+              return `<img src="/images/logo-only-rocket.png" class="me-2.5 h-8 sm:h-10" alt="Flowbite Logo"> <span class="ml-px self-center font-days whitespace-nowrap text-[#ef552f] text-lg font-semibold dark:text-white sm:text-xl" data-svelte-h="svelte-16b7sz5">Innova ADS</span>`;
             }
           }
-        )} <div class="ms-auto flex items-center text-gray-500 dark:text-gray-400 sm:order-2"> ${validate_component(DarkMode, "DarkMode").$$render($$result, {}, {}, {})} ${validate_component(UserMenu, "UserMenu").$$render($$result, {}, {}, {})}</div>`;
+        )} <div class="ms-auto me-3 flex items-center text-gray-500 dark:text-gray-400 sm:order-2"> ${validate_component(DarkMode, "DarkMode").$$render($$result, {}, {}, {})} ${validate_component(UserMenu, "UserMenu").$$render($$result, {}, {}, {})}</div>`;
       }
     }
   )}`;

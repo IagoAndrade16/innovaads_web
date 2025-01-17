@@ -133,7 +133,7 @@ const Navbar_1 = create_ssr_component(($$result, $$props, $$bindings, slots) => 
     default: () => {
       return `${validate_component(NavBrand, "NavBrand").$$render($$result, { href: "/" }, {}, {
         default: () => {
-          return `<img src="/images/flowbite-svelte-icon-logo.svg" class="me-3 h-6 sm:h-9" alt="InnovaADS Logo"> <span class="self-center whitespace-nowrap text-xl font-semibold dark:text-white" data-svelte-h="svelte-14a7fnj">InnovaADS</span>`;
+          return `<img src="/images/logo-only-rocket.png" class="me-3 h-10 sm:h-12" alt="InnovaADS Logo"> <span class="self-center whitespace-nowrap text-xl font-normal dark:text-white font-days" data-svelte-h="svelte-3o8v4u">Innova ADS</span>`;
         }
       })} <div class="flex md:order-2">${validate_component(Button, "Button").$$render($$result, { size: "sm" }, {}, {
         default: () => {
