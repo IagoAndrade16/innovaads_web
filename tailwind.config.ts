@@ -9,6 +9,9 @@ export default {
   darkMode: 'selector',
   theme: {
     extend: {
+      screens: {
+        xs: '480px',
+      },
       fontFamily: {
         'days': ['Days one', 'sans-serif'],
       },
