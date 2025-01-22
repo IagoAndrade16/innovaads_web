@@ -1,8 +1,7 @@
 <script lang="ts">
 	import Engine from '$lib/core/Engine';
-	import { Avatar, Dropdown, DropdownHeader, DropdownItem } from 'flowbite-svelte';
-	import { imagesPath } from '../../utils/variables';
 	import { userStore } from '$lib/stores/userStore';
+	import { Avatar, Dropdown, DropdownHeader, DropdownItem } from 'flowbite-svelte';
 
 	let name: string = $userStore?.name!;
 	let email: string = $userStore?.email!;

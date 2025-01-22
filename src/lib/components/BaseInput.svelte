@@ -3,7 +3,6 @@
 
 
 	import { Input, Label } from "flowbite-svelte";
-	import Error from "../../routes/+error.svelte";
 	import ErrorText from "./ErrorText.svelte";
 
   export let label: string;
@@ -13,12 +12,13 @@
   export let placeholder: string;
   export let required: boolean = true;
   export let error: unknown = '';
+  export let additionalLabelClasses: string = '';
   
 	const labelClass = 'space-y-2 dark:text-white';
 
 </script>
-<div>
-  <Label class={labelClass}>
+
+  <Label class="{labelClass} {additionalLabelClasses}">
     <span>{label}</span>
     <Input
       bind:value
@@ -30,4 +30,3 @@
     />
   </Label>
   <ErrorText error={String(error ?? '')}/>
-</div>

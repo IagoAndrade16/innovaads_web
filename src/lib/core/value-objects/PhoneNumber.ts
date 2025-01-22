@@ -3,7 +3,11 @@ import Utils from "../Utils";
 export class PhoneNumber {
   private value: string;
 
-  constructor(value: string) {
+  constructor(value: string | undefined) {
+    if(!value) {
+      throw new Error('Phone number is required');
+    }
+
     const valueCleaned = Utils.clean(value);
 
     if(valueCleaned.length !== 11) {
@@ -13,7 +17,7 @@ export class PhoneNumber {
     this.value = valueCleaned;
   }
 
-  static parse(phoneNumber: string): PhoneNumber {
+  static parse(phoneNumber: string | undefined): PhoneNumber {
     return new PhoneNumber(phoneNumber);
   }
 

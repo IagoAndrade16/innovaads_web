@@ -14,6 +14,7 @@ export interface AuthUserResponseData {
   };
   name: string;
   email: string;
+  phone: string;
 }
 
 export type AuthUserResponseStatus = 'SUCCESS' | 'UNKNOWN' | 'UNAUTHORIZED';
