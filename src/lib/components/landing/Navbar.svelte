@@ -11,7 +11,7 @@
   </NavBrand>
   <div class="flex md:order-2">
     {#if $userStore === null}
-      <Button on:click={() => Engine.navigateTo('/sign-up')} size="sm">Começar agora</Button>
+      <Button on:click={() => Engine.navigateTo('/create-account')} size="sm">Começar agora</Button>
     {:else}
       <Button on:click={() => Engine.navigateTo('/home/dashboard')} size="sm">Dashboard</Button>
     {/if}

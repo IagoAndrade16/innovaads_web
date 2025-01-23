@@ -21,7 +21,16 @@ export class PhoneNumber {
     return new PhoneNumber(phoneNumber);
   }
 
-  toString(): string {
+  static isValid(phoneNumber: string | undefined): boolean {
+    try {
+      new PhoneNumber(phoneNumber);
+      return true;
+    } catch {
+      return false;
+    }
+  }
+
+  cleaned(): string {
     return this.value;
   }
 

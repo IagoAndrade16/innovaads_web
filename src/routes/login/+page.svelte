@@ -24,10 +24,10 @@
 	let createAccount = true;
 	let lostPasswordLink = 'forgot-password';
 	let loginTitle = 'Entrar na sua conta';
-	let registerLink = '/sign-up';
+	let registerLink = '/create-account';
 	let createAccountTitle = 'Criar conta';
 
-	const path: string = '/sign-in';
+	const path: string = '/login';
 	const metaTitle: string = 'InnovaADS - Entrar na conta';
   const subtitle: string = 'Entrar';
 

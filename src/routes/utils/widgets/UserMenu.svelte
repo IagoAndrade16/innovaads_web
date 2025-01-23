@@ -17,7 +17,7 @@
 		<span class="block truncate text-sm font-medium">{email}</span>
 	</DropdownHeader>
 
-	<DropdownItem on:click={() => Engine.logout('/sign-in')}>Sair</DropdownItem>
+	<DropdownItem on:click={() => Engine.logout('/login')}>Sair</DropdownItem>
 </Dropdown>
 
 <!--

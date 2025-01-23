@@ -10,6 +10,7 @@
 	import Card from '../widgets/Card.svelte';
 	import { userAuthStore } from '$lib/stores/userAuthStore';
 	import { ToastService } from '$lib/services/ToastService';
+	import { PhoneNumber } from '$lib/core/value-objects/PhoneNumber';
 
 	const values = {
 		name: $userStore?.name ?? '',
@@ -23,8 +24,10 @@
 
 	const updateFormSchema = yup.object().shape({
 		name: yup.string().required('Preencha o nome para salvar as alterações'),
-		email: yup.string().email('Email inválido').required('Preencha o email para salvar as alterações'),
-		phone: yup.string().required('Preencha o telefone para salvar as alterações'),
+		email: yup.string().email('Formato de email inválido').required('Preencha o email para salvar as alterações'),
+		phone: yup.string().required('Preencha o telefone para salvar alterações.').test('phone', 'Formato inválido do telefone. (00) 00000-0000.', (value) => {
+			return PhoneNumber.isValid(value);
+		}),
 	});
 
 	const handleUpdateUser =  async () => {
@@ -36,10 +39,11 @@
 
 		isUpdatingUser = true;
 
+		const phoneNumber = PhoneNumber.parse(values.phone);
 		const response = await usersService.update({
 			email: values.email,
 			name: values.name,
-			phone: values.phone,
+			phone: phoneNumber.cleaned(),
 			bearerToken: $userAuthStore!.token,
 		})
 
@@ -100,6 +104,7 @@
 			inputType="text" 
 			name="phone" 
 			placeholder="(00) 12345-6789"
+			mask="(00) 00000-0000"
 			required
 			error={errors?.phone}
 		/>
