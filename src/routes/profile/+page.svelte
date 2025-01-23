@@ -30,6 +30,7 @@
           Configurações da sua conta
         </Heading>
       </div>
+      
 
       <div class="col-span-3 lg:flex space-y-4 lg:space-y-0 lg:space-x-4">
         <GeneralInfo />
