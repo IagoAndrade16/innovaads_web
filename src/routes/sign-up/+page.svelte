@@ -12,10 +12,14 @@
 	import { PhoneNumber } from '$lib/core/value-objects/PhoneNumber';
 	import Engine from '$lib/core/Engine';
 	import type { JsObject } from '$lib/types/JsObject';
+	import { userStore } from '$lib/stores/userStore';
+	
 
   let errors: JsObject | null = null;
   let submittingForm: boolean = false;
   let usersService: UsersService;
+
+	Engine.assert([$userStore === null], '/home/dashboard');
 
   const values = {
     email: "",

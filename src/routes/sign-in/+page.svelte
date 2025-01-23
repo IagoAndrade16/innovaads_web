@@ -72,8 +72,11 @@
           name: res.data?.name!,
 					email: res.data?.email!,
 					phone: res.data?.phone!,
+					isOnTrial: res.data?.isOnTrial!,
+					daysRemainingForTrial: res.data?.daysRemainingForTrial!,
+					packageId: res.data?.packageId!,
         }
-        Engine.navigateTo('/dashboard');
+        Engine.navigateTo('/home/dashboard');
         break;
       case 'UNAUTHORIZED':
         DialogService.error({

@@ -107,7 +107,7 @@
 	
 	<div class="flex">
 		<Button 
-			class="sm:col-full mt-8  col-span-6 lg:w-fit w-full"
+			class="sm:col-full mt-6  col-span-6 lg:w-fit w-full"
 			on:click={handleUpdatePassword}
 			disabled={isUpdatingPassword}
 			>

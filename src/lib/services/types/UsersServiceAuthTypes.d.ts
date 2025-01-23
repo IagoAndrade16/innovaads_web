@@ -15,6 +15,9 @@ export interface AuthUserResponseData {
   name: string;
   email: string;
   phone: string;
+  isOnTrial: boolean;
+  daysRemainingForTrial: number;
+  packageId: string | null;
 }
 
 export type AuthUserResponseStatus = 'SUCCESS' | 'UNKNOWN' | 'UNAUTHORIZED';

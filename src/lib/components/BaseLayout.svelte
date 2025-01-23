@@ -1,8 +1,18 @@
-<script>
+<script lang="ts">
 	import '../../app.pcss';
   import Navbar from '$lib/components/Navbar.svelte';
   import Sidebar from '$lib/components/Sidebar.svelte';
+	import { userStore } from '$lib/stores/userStore';
+	import { Alert } from 'flowbite-svelte';
+	import { InfoCircleSolid } from 'flowbite-svelte-icons';
+	import Footer from './Footer.svelte';
+	import BreadcrumbsComponent from './BreadcrumbsComponent.svelte';
+	import type { BreadcrumbItemType } from './types/breadcrumb';
+	import TrialPeriodWarning from './TrialPeriodWarning.svelte';
+
 	let drawerHidden = false;
+
+	export let breadcrums: BreadcrumbItemType[] = [];
 </script>
 
 <header
@@ -13,7 +23,17 @@
 <div class="overflow-hidden lg:flex">
 	<Sidebar bind:drawerHidden />
 	<div class="relative h-full w-full overflow-y-auto lg:ml-64 pt-[70px]">
-		<slot />
+		
+		<TrialPeriodWarning />
+
+		<main class="p-4">
+			<BreadcrumbsComponent 
+				items={breadcrums}
+			/>
+			<slot />
+		</main>
+		
+		<Footer />
 		
 	</div>
 </div>

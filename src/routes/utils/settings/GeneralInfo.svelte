@@ -51,6 +51,9 @@
 					email: values.email,
 					name: values.name,
 					phone: values.phone,
+					isOnTrial: $userStore!.isOnTrial,
+					packageId: $userStore!.packageId,
+					daysRemainingForTrial: $userStore!.daysRemainingForTrial,
 				};
 				ToastService.success('Perfil atualizado com sucesso.');
 				break;

@@ -39,8 +39,8 @@
 	});
 
 	let menus = [
-		{ name: 'Dashboard', icon: ChartPieOutline, href: '/dashboard' },
-		{ name: 'Perfil', icon: UserSettingsSolid, href: '/profile' },
+		{ name: 'Dashboard', icon: ChartPieOutline, href: '/home/dashboard' },
+		{ name: 'Perfil', icon: UserSettingsSolid, href: '/home/profile' },
 	];
 </script>
 
