@@ -12,10 +12,14 @@
 	import { PhoneNumber } from '$lib/core/value-objects/PhoneNumber';
 	import Engine from '$lib/core/Engine';
 	import type { JsObject } from '$lib/types/JsObject';
+	import { userStore } from '$lib/stores/userStore';
+	
 
   let errors: JsObject | null = null;
   let submittingForm: boolean = false;
   let usersService: UsersService;
+
+	Engine.assert([$userStore === null], '/home/dashboard');
 
   const values = {
     email: "",
@@ -29,7 +33,9 @@
     name: yup.string().required('Por favor, digite seu nome.'),
     email: yup.string().required('Por favor, digite seu email.').email('Por favor, digite um email válido.'),
     password: yup.string().required('Por favor, digite sua senha.').min(6, 'Sua senha deve ter no mínimo 6 caracteres.'),
-    phone: yup.string().required('Por favor, digite seu telefone.'),
+    phone: yup.string().required('Por favor, digite seu telefone.').test('phone', 'Formato inválido do telefone. (00) 00000-0000.', (value) => {
+			return PhoneNumber.isValid(value);
+		}),
     termsAccepted: yup.boolean().oneOf([true], 'Você deve aceitar os termos e condições.'),
   });
 
@@ -45,14 +51,14 @@
       email: values.email,
       name: values.name,
       password: values.password,
-      phone: phoneNumber.toString(),
+      phone: phoneNumber.cleaned(),
     })
 
     submittingForm = false;
 
     switch(createUserRes.status) {
       case 'SUCCESS':
-        Engine.navigateTo('/sign-in');
+        Engine.navigateTo('/login');
         break;
 
       case 'USER_ALREADY_EXISTS':
@@ -89,7 +95,7 @@
 	const termsLink = '/privacy-policy';
 	const loginLink = 'sign-in';
 
-	const path: string = '/sign-up';
+	const path: string = '/create-account';
   const description: string = 'Crie sua conta';
 	const metaTitle: string = 'InnovaADS - Criar conta';
   const subtitle: string = 'Criar conta';
@@ -145,6 +151,7 @@
 		label="Telefone"
 		name="phone"
 		placeholder="(99) 99999-9999"
+		mask="(00) 00000-0000"
 		required
 		bind:value={values.phone}
 		error={errors?.phone}

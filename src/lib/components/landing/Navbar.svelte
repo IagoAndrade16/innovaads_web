@@ -1,5 +1,6 @@
 <script>
 	import Engine from '$lib/core/Engine';
+	import { userStore } from '$lib/stores/userStore';
   import { Navbar, NavBrand, NavLi, NavUl, NavHamburger, Button, Input } from 'flowbite-svelte';
 </script>
 
@@ -9,7 +10,11 @@
     <span class="self-center whitespace-nowrap text-xl font-normal dark:text-white font-days">Innova ADS</span>
   </NavBrand>
   <div class="flex md:order-2">
-    <Button on:click={() => Engine.navigateTo('/sign-up')} size="sm">Começar agora</Button>
+    {#if $userStore === null}
+      <Button on:click={() => Engine.navigateTo('/create-account')} size="sm">Começar agora</Button>
+    {:else}
+      <Button on:click={() => Engine.navigateTo('/home/dashboard')} size="sm">Dashboard</Button>
+    {/if}
     <NavHamburger />
   </div>
   <NavUl class="order-1">

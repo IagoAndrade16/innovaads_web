@@ -9,7 +9,10 @@
 		SidebarWrapper
 	} from 'flowbite-svelte';
 	import {
-		ChartPieOutline
+		ChartPieOutline,
+
+		UserSettingsSolid
+
 	} from 'flowbite-svelte-icons';
 
 	export let drawerHidden: boolean = false;
@@ -36,7 +39,8 @@
 	});
 
 	let menus = [
-		{ name: 'Dashboard', icon: ChartPieOutline, href: '/dashboard' },
+		{ name: 'Dashboard', icon: ChartPieOutline, href: '/home/dashboard' },
+		{ name: 'Perfil', icon: UserSettingsSolid, href: '/home/profile' },
 	];
 </script>
 
@@ -63,19 +67,6 @@
 					</SidebarItem>
 				{/each}
 			</SidebarGroup>
-			<!-- <SidebarGroup ulClass={groupClass}>
-				{#each links as { label, href, icon } (label)}
-					<SidebarItem
-						{label}
-						{href}
-						spanClass="ml-3"
-						class={itemClass}
-						target="_blank"
-					>
-						<svelte:component this={icon} slot="icon" class={iconClass} />
-					</SidebarItem>
-				{/each}
-			</SidebarGroup> -->
 		</nav>
 	</SidebarWrapper>
 </Sidebar>

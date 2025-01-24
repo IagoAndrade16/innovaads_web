@@ -23,7 +23,7 @@
     floatClass?: string;
     classLeft?: string;
     classRight?: string;
-    inputEl?: HTMLInputElement;
+    inputEl: HTMLInputElement;
   }
   
   export let type: $$Props['type'] = 'text';
@@ -35,7 +35,7 @@
   export let floatClass: $$Props['floatClass'] = 'flex absolute inset-y-0 items-center text-gray-500 dark:text-gray-400';
   export let classLeft: $$Props['classLeft'] = '';
   export let classRight: $$Props['classRight'] = '';
-  export let inputEl: HTMLInputElement | undefined = undefined;
+  export let inputEl: HTMLInputElement;
 
 
   const dispatcher = createEventDispatcher();

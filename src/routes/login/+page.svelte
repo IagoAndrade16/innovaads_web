@@ -1,18 +1,16 @@
 <script lang="ts">
-	import { Label, Input } from 'flowbite-svelte';
-	import SignIn from '../utils/authentication/SignIn.svelte';
-  import MetaTag from '../utils/MetaTag.svelte';
-	import type { JsObject } from '$lib/types/JsObject';
-	import { UsersService } from '$lib/services/UsersService';
-  import * as yup from 'yup';
-	import YupValidation from '$lib/validation/yup';
-	import { userAuthStore } from '$lib/stores/userAuthStore';
-	import { userStore } from '$lib/stores/userStore';
+	import BaseInput from '$lib/components/BaseInput.svelte';
 	import Engine from '$lib/core/Engine';
 	import { DialogService } from '$lib/services/DialogService';
+	import { UsersService } from '$lib/services/UsersService';
+	import { userAuthStore } from '$lib/stores/userAuthStore';
+	import { userStore } from '$lib/stores/userStore';
+	import type { JsObject } from '$lib/types/JsObject';
+	import YupValidation from '$lib/validation/yup';
 	import { onMount } from 'svelte';
-	import BaseInput from '$lib/components/BaseInput.svelte';
-	import Navbar from '$lib/components/landing/Navbar.svelte';
+	import * as yup from 'yup';
+	import SignIn from '../utils/authentication/SignIn.svelte';
+	import MetaTag from '../utils/MetaTag.svelte';
 
 	let title = 'Entrar na plataforma';
 	let site = {
@@ -26,10 +24,10 @@
 	let createAccount = true;
 	let lostPasswordLink = 'forgot-password';
 	let loginTitle = 'Entrar na sua conta';
-	let registerLink = '/sign-up';
+	let registerLink = '/create-account';
 	let createAccountTitle = 'Criar conta';
 
-	const path: string = '/sign-in';
+	const path: string = '/login';
 	const metaTitle: string = 'InnovaADS - Entrar na conta';
   const subtitle: string = 'Entrar';
 
@@ -73,8 +71,12 @@
           ...$userStore,
           name: res.data?.name!,
 					email: res.data?.email!,
+					phone: res.data?.phone!,
+					isOnTrial: res.data?.isOnTrial!,
+					daysRemainingForTrial: res.data?.daysRemainingForTrial!,
+					packageId: res.data?.packageId!,
         }
-        Engine.navigateTo('/dashboard');
+        Engine.navigateTo('/home/dashboard');
         break;
       case 'UNAUTHORIZED':
         DialogService.error({

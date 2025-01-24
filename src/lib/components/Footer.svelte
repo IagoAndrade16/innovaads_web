@@ -1,28 +1,19 @@
 <script lang="ts">
-	import { Card, Frame, type LinkType } from 'flowbite-svelte';
+	import { Frame, type LinkType } from 'flowbite-svelte';
 	import {
-		DiscordSolid,
-		DribbbleSolid,
 		FacebookSolid,
-		GithubSolid,
-		TwitterSolid
+		InstagramSolid
 	} from 'flowbite-svelte-icons';
 	import type { ComponentType } from 'svelte';
 
 	const links: LinkType[] = [
-		{ name: 'Terms and conditions', href: '#' },
-		{ name: 'Privacy Policy', href: '#' },
-		{ name: 'Licensing', href: '#' },
-		{ name: 'Cookie Policy', href: '#' },
-		{ name: 'Contact', href: '#' }
+		{ name: 'Termos e condições', href: '/privacy-policy' },
+		{ name: 'Política de privacidade', href: '/privacy-policy' },
 	];
 
 	const brands: [ComponentType, string][] = [
 		[FacebookSolid, ''],
-		[DiscordSolid, ''],
-		[TwitterSolid, ''],
-		[GithubSolid, ''],
-		[DribbbleSolid, '']
+		[InstagramSolid, 'https://www.instagram.com/innovaads.oficial/']
 	];
 </script>
 
@@ -54,7 +45,7 @@
 </Frame>
 
 <p class="my-10 text-center text-sm text-gray-500">
-	© 2019-2023 <a href="https://flowbite.com/" class="hover:underline" target="_blank">
-		Flowbite.com
-	</a>. All rights reserved.
+	© {new Date().getFullYear()} <a href="https://innovaads.com/" class="hover:underline" target="_blank">
+		InnovaADS.com
+	</a>. Todos os direitos reservados.
 </p>
