@@ -93,7 +93,7 @@
 	const haveAccount = true;
 	const btnTitle = 'Criar conta';
 	const termsLink = '/privacy-policy';
-	const loginLink = 'sign-in';
+	const loginLink = 'login';
 
 	const path: string = '/create-account';
   const description: string = 'Crie sua conta';

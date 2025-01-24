@@ -24,6 +24,8 @@
 	<Sidebar bind:drawerHidden />
 	<div class="ml-3 mr-3 sm:mx-6 lg:ml-72 pt-[85px]">
 		<slot />
+	</div>
+
 	<div class="relative h-full w-full overflow-y-auto lg:ml-64 pt-[70px]">
 		
 		<TrialPeriodWarning />
