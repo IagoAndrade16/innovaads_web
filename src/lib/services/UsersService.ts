@@ -44,13 +44,13 @@ export class UsersService extends ApiService {
       phone: params.phone
     });
 
-    if(response.statusCode === 201) {
+    if (response.statusCode === 201) {
       return {
         status: 'SUCCESS',
       }
     }
 
-    if(response.statusCode === 400) {
+    if (response.statusCode === 400) {
       return {
         status: response.data.reason,
       }

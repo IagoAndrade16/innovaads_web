@@ -88,7 +88,17 @@ class Utils {
 	public static buildQueryParams<T extends JsObject>(params: T): string {
 		if (!params || Object.keys(params).length === 0) return '';
 
-		return Object.keys(params).map((key) => `${key}=${params[key]}`).join('&');
+		const objectFiltered = Object.keys(params).reduce((acc, key) => {
+			if (!params[key]) return acc;
+			return { ...acc, [key]: params[key] }; 
+		}, {} as T);
+		
+
+		return Object.keys(objectFiltered).map((key) => `${key}=${params[key]}`).join('&');
+	}
+
+	public static sleep(ms?: number) {
+		return new Promise((resolve) => setTimeout(resolve, ms ?? 1000));
 	}
 }
 

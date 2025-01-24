@@ -35,7 +35,7 @@
 
   export let handleFormSubmit = async () => {
     errors = await YupValidation.validateSchema(formSchema, values);
-    if(errors) return;
+    if (errors) return;
 
     submittingForm = true;
 
@@ -129,8 +129,6 @@
 		bind:value={values.email}
 		error={errors?.email}
 	/>
-
-
 
 	<BaseInput 
 		inputType="password"

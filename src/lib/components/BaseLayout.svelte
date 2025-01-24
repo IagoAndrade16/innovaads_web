@@ -10,7 +10,7 @@
 >
 	<Navbar bind:drawerHidden />
 </header>
-<div class="overflow-hidden lg:flex">
+<div class="overflow-hidden">
 	<Sidebar bind:drawerHidden />
 	<div class="ml-3 mr-3 sm:mx-6 lg:ml-72 pt-[85px]">
 		<slot />
