@@ -1167,6 +1167,11 @@ flat-cache@^4.0.0:
     flatted "^3.2.9"
     keyv "^4.5.4"
 
+flatpickr@^4.5.2, flatpickr@^4.6.13:
+  version "4.6.13"
+  resolved "https://registry.yarnpkg.com/flatpickr/-/flatpickr-4.6.13.tgz#8a029548187fd6e0d670908471e43abe9ad18d94"
+  integrity sha512-97PMG/aywoYpB4IvbvUJi0RQi8vearvU0oov1WW3k0WZPBMrTQVqekSX5CjSG/M4Q3i6A/0FKXC7RyAoAUUSPw==
+
 flatted@^3.2.9:
   version "3.3.2"
   resolved "https://registry.npmjs.org/flatted/-/flatted-3.3.2.tgz"
@@ -2102,6 +2107,13 @@ svelte-eslint-parser@^0.43.0:
     espree "^9.6.1"
     postcss "^8.4.39"
     postcss-scss "^4.0.9"
+
+svelte-flatpickr@^3.3.5:
+  version "3.3.5"
+  resolved "https://registry.yarnpkg.com/svelte-flatpickr/-/svelte-flatpickr-3.3.5.tgz#433ffc1acd9a8f855c587eed7b0b9bbc1325c9c4"
+  integrity sha512-D2uVdQi5jn/mMS3AK4gI/30Ho80fBYM0ZfZ44pHg8L4bMZq4c0mjajExZU4WF1EoOf7Qt8njQ9DBtkjJwfl3Cg==
+  dependencies:
+    flatpickr "^4.5.2"
 
 svelte-hmr@^0.16.0:
   version "0.16.0"

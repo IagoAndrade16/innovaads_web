@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import type { JsObject } from '$lib/types/JsObject';
 import { v4 as uuidV4 } from 'uuid'; 
 
 class Utils {
@@ -82,6 +83,22 @@ class Utils {
   public static genUuid(short = false): string {
 		const uuid = uuidV4();
 		return short ? uuid.substring(0, 12) : uuid;
+	}
+
+	public static buildQueryParams<T extends JsObject>(params: T): string {
+		if (!params || Object.keys(params).length === 0) return '';
+
+		const objectFiltered = Object.keys(params).reduce((acc, key) => {
+			if (!params[key]) return acc;
+			return { ...acc, [key]: params[key] }; 
+		}, {} as T);
+		
+
+		return Object.keys(objectFiltered).map((key) => `${key}=${params[key]}`).join('&');
+	}
+
+	public static sleep(ms?: number) {
+		return new Promise((resolve) => setTimeout(resolve, ms ?? 1000));
 	}
 }
 
