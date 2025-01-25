@@ -147,7 +147,7 @@
 <BaseLayout
   breadcrums={pageBreadcrumbs}
   >
-  <!-- <Card title="Busque por Tendências" class="max-w-full">
+  <Card title="Busque por Tendências" class="max-w-full">
     <div class="mt-5 flex lg:flex-row flex-col gap-3">
       <BaseInput
         inputType="text"
@@ -182,6 +182,6 @@
     title={'Análise de Tendências'}
     class={'mt-8'}
     bind:options={optionsTendenciesGraph}
-  /> -->
+  />
 </BaseLayout>
 
