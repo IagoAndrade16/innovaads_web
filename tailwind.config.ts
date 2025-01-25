@@ -16,7 +16,7 @@ export default {
         'days': ['Days one', 'sans-serif'],
       },
       colors: {
-        // flowbite-svelte
+        'light-gray': '#1e2a37',
         primary: {
           50: '#FFF5F2',
           100: '#FFF1EE',

@@ -17,7 +17,7 @@
 	export let createAccountTitle = 'Criar conta';
 	export let handleFormSubmit: () => void;
 
-	export let mainClass = 'bg-gray-50 dark:bg-gray-900 w-full';
+	export let mainClass = 'bg-gray-50 dark:bg-gray-900 w-full mt-40 md:mt-0';
 	export let mainDivClass =
 		'flex flex-col items-center justify-center px-6 pt-8 mx-auto md:h-screen pt:mt-0 dark:bg-gray-900';
 	export let siteLinkClass =

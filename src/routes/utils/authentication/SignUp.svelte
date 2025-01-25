@@ -13,7 +13,7 @@ import { A, Checkbox, Button, Card, Spinner } from 'flowbite-svelte';
 	export let btnTitle = 'Criar conta';
 	export let termsLink = '/privacy-policy';
 	export let loginLink = '/';
-	export let mainClass = 'bg-gray-50 dark:bg-gray-900 w-full';
+	export let mainClass = 'bg-gray-50 dark:bg-gray-900 w-full mt-40 md:mt-24 lg:mt-16 xl:mt-0';
 	export let mainDivClass =
 		'flex flex-col items-center justify-center px-6 pt-8 mx-auto md:h-screen pt:mt-0 dark:bg-gray-900';
 	export let siteLinkClass =

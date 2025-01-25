@@ -49,6 +49,7 @@
 		"@types/yup": "^0.32.0",
 		"axios": "^1.7.9",
 		"flatpickr": "^4.6.13",
+		"flowbite-svelte-blocks": "^1.1.4",
 		"flowbite-svelte-icons": "^1.6.1",
 		"node-localstorage": "^3.0.5",
 		"svelte-flatpickr": "^3.3.5",
