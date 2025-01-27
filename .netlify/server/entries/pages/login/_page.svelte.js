@@ -1,9 +1,12 @@
-import { c as create_ssr_component, f as add_attribute, v as validate_component, g as escape, h as subscribe, n as set_store_value } from "../../../chunks/ssr.js";
-import { B as Button } from "../../../chunks/Button.js";
-import { C as Card, A, S as Spinner, Y as YupValidation, D as DialogService, E as Engine, B as BaseInput } from "../../../chunks/BaseInput.js";
-import { M as MetaTag } from "../../../chunks/MetaTag.js";
-import * as yup from "yup";
+import { c as create_ssr_component, a as add_attribute, v as validate_component, e as escape, b as subscribe, o as set_store_value } from "../../../chunks/ssr.js";
+import { D as DialogService, B as BaseInput } from "../../../chunks/DialogService.js";
+import { E as Engine } from "../../../chunks/Engine.js";
 import { u as userStore, a as userAuthStore } from "../../../chunks/userStore.js";
+import { A, S as Spinner, Y as YupValidation } from "../../../chunks/yup.js";
+import * as yup from "yup";
+import { B as Button } from "../../../chunks/Button.js";
+import { C as Card } from "../../../chunks/Label.js";
+import { M as MetaTag } from "../../../chunks/MetaTag.js";
 const SignIn = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let { title: title2 = "Faça login na plataforma" } = $$props;
   let { site = {
@@ -20,7 +23,7 @@ const SignIn = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let { registerLink: registerLink2 = "" } = $$props;
   let { createAccountTitle: createAccountTitle2 = "Criar conta" } = $$props;
   let { handleFormSubmit } = $$props;
-  let { mainClass = "bg-gray-50 dark:bg-gray-900 w-full" } = $$props;
+  let { mainClass = "bg-gray-50 dark:bg-gray-900 w-full mt-40 md:mt-0" } = $$props;
   let { mainDivClass = "flex flex-col items-center justify-center px-6 pt-8 mx-auto md:h-screen pt:mt-0 dark:bg-gray-900" } = $$props;
   let { siteLinkClass = "flex items-center justify-center mb-8 text-2xl font-semibold lg:mb-10 dark:text-white" } = $$props;
   let { siteImgClass = "mr-4 h-20" } = $$props;
@@ -90,9 +93,9 @@ let lostPassword = true;
 let createAccount = true;
 let lostPasswordLink = "forgot-password";
 let loginTitle = "Entrar na sua conta";
-let registerLink = "/sign-up";
+let registerLink = "/create-account";
 let createAccountTitle = "Criar conta";
-const path = "/sign-in";
+const path = "/login";
 const metaTitle = "InnovaADS - Entrar na conta";
 const subtitle = "Entrar";
 const Page = create_ssr_component(($$result, $$props, $$bindings, slots) => {
@@ -140,11 +143,15 @@ const Page = create_ssr_component(($$result, $$props, $$bindings, slots) => {
           $userStore = {
             ...$userStore,
             name: res.data?.name,
-            email: res.data?.email
+            email: res.data?.email,
+            phone: res.data?.phone,
+            isOnTrial: res.data?.isOnTrial,
+            daysRemainingForTrial: res.data?.daysRemainingForTrial,
+            packageId: res.data?.packageId
           },
           $userStore
         );
-        Engine.navigateTo("/dashboard");
+        Engine.navigateTo("/home/dashboard");
         break;
       case "UNAUTHORIZED":
         DialogService.error({

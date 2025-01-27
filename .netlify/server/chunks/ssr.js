@@ -1,5 +1,6 @@
 function noop() {
 }
+const identity = (x) => x;
 function run(fn) {
   return fn();
 }
@@ -258,22 +259,23 @@ function style_object_to_string(style_object) {
   return Object.keys(style_object).filter((key) => style_object[key] != null && style_object[key] !== "").map((key) => `${key}: ${escape_attribute_value(style_object[key])};`).join(" ");
 }
 export {
-  compute_rest_props as a,
-  spread as b,
+  add_attribute as a,
+  subscribe as b,
   create_ssr_component as c,
-  escape_attribute_value as d,
-  escape_object as e,
-  add_attribute as f,
-  escape as g,
-  subscribe as h,
-  getContext as i,
-  compute_slots as j,
-  createEventDispatcher as k,
+  compute_rest_props as d,
+  escape as e,
+  spread as f,
+  getContext as g,
+  escape_attribute_value as h,
+  escape_object as i,
+  createEventDispatcher as j,
+  compute_slots as k,
   each as l,
   missing_component as m,
-  set_store_value as n,
-  noop as o,
-  safe_not_equal as p,
+  identity as n,
+  set_store_value as o,
+  noop as p,
+  safe_not_equal as q,
   setContext as s,
   validate_component as v
 };

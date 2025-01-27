@@ -1,6 +1,9 @@
-import { c as create_ssr_component, a as compute_rest_props, i as getContext, b as spread, d as escape_attribute_value, e as escape_object } from "./ssr.js";
-import { i as is_void } from "./client.js";
+import { c as create_ssr_component, d as compute_rest_props, g as getContext, f as spread, h as escape_attribute_value, i as escape_object } from "./ssr.js";
 import { twMerge } from "tailwind-merge";
+const void_element_names = /^(?:area|base|br|col|command|embed|hr|img|input|keygen|link|meta|param|source|track|wbr)$/;
+function is_void(name) {
+  return void_element_names.test(name) || name.toLowerCase() === "!doctype";
+}
 const Button = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let $$restProps = compute_rest_props($$props, [
     "pill",
@@ -158,5 +161,6 @@ const Button = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   })(tag)}`}`} `;
 });
 export {
-  Button as B
+  Button as B,
+  is_void as i
 };

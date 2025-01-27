@@ -1,6 +1,6 @@
 import { c as create_ssr_component } from "../../../chunks/ssr.js";
 const Page = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-  return `<div class="container mx-auto my-5 w-3/5" data-svelte-h="svelte-1ezco"><h1 class="place-self-center text-2xl font-bold">Termos de Uso</h1> <p><strong>Útima atualização:</strong> 15 de janeiro de 2025</p> <br> <h2 class="text-xl font-bold">1. Aceitação dos Termos</h2> <p>Ao acessar ou usar a InnovaADS, você declara que leu, compreendeu e concorda em cumprir
+  return `<div class="container mx-auto my-5 w-3/5 text-black dark:text-white" data-svelte-h="svelte-1yanjlq"><h1 class="place-self-center text-2xl font-bold">Termos de Uso</h1> <p><strong>Útima atualização:</strong> 15 de janeiro de 2025</p> <br> <h2 class="text-xl font-bold">1. Aceitação dos Termos</h2> <p>Ao acessar ou usar a InnovaADS, você declara que leu, compreendeu e concorda em cumprir
 		estes Termos de Uso, bem como nossa Política de Privacidade.</p> <br> <h2 class="text-xl font-bold">2. Serviços Oferecidos</h2> <p>A InnovaADS fornece serviços de monitoramento e pesquisa para gestores de tráfego pago e/ou pessoas interessadas na área de marketing digital que desejam
         obter melhorar/otimizar suas operações nas principais plataformas de tráfego pago disponíveis no mercado. Reservamo-nos o direito de
 		modificar, suspender ou descontinuar qualquer parte de nossos serviços a qualquer momento, sem

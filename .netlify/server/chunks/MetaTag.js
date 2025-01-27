@@ -1,4 +1,4 @@
-import { c as create_ssr_component, g as escape, f as add_attribute, l as each, b as spread, e as escape_object, v as validate_component } from "./ssr.js";
+import { c as create_ssr_component, e as escape, a as add_attribute, l as each, f as spread, i as escape_object, v as validate_component } from "./ssr.js";
 const MetaTags = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let updatedTitle;
   let { title = "" } = $$props;

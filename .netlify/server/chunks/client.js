@@ -1,9 +1,5 @@
 import "./exports.js";
 import { o as onMount } from "./ssr2.js";
-const void_element_names = /^(?:area|base|br|col|command|embed|hr|img|input|keygen|link|meta|param|source|track|wbr)$/;
-function is_void(name) {
-  return void_element_names.test(name) || name.toLowerCase() === "!doctype";
-}
 function get(key, parse = JSON.parse) {
   try {
     return parse(sessionStorage[key]);
@@ -27,6 +23,3 @@ if (is_legacy) {
 }
 get(SCROLL_KEY) ?? {};
 get(SNAPSHOT_KEY) ?? {};
-export {
-  is_void as i
-};

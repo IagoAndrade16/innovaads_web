@@ -1,6 +1,8 @@
-import { c as create_ssr_component } from "../../chunks/ssr.js";
+import { c as create_ssr_component, v as validate_component } from "../../chunks/ssr.js";
+import { N as Navbar_1 } from "../../chunks/Navbar.js";
+import "node-localstorage";
 const Layout = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-  return `${slots.default ? slots.default({}) : ``}`;
+  return `${validate_component(Navbar_1, "Navbar").$$render($$result, {}, {}, {})} ${slots.default ? slots.default({}) : ``}`;
 });
 export {
   Layout as default

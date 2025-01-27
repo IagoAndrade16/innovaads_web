@@ -1,118 +1,14 @@
-import { c as create_ssr_component, a as compute_rest_props, i as getContext, l as each, v as validate_component, b as spread, d as escape_attribute_value, e as escape_object, f as add_attribute, j as compute_slots, g as escape } from "../../../chunks/ssr.js";
-import { L as Label, C as Card, A, a as ErrorText, S as Spinner, Y as YupValidation, D as DialogService, E as Engine, B as BaseInput } from "../../../chunks/BaseInput.js";
+import { c as create_ssr_component, a as add_attribute, v as validate_component, e as escape, b as subscribe } from "../../../chunks/ssr.js";
+import { E as ErrorText, D as DialogService, B as BaseInput } from "../../../chunks/DialogService.js";
 import { B as Button } from "../../../chunks/Button.js";
-import { twMerge } from "tailwind-merge";
+import { C as Card } from "../../../chunks/Label.js";
+import { C as Checkbox } from "../../../chunks/Checkbox.js";
+import { A, S as Spinner, Y as YupValidation } from "../../../chunks/yup.js";
 import { M as MetaTag } from "../../../chunks/MetaTag.js";
 import * as yup from "yup";
-import { v4 } from "uuid";
-const colorClasses = {
-  primary: "text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600",
-  secondary: "text-secondary-600 focus:ring-secondary-500 dark:focus:ring-secondary-600",
-  red: "text-red-600 focus:ring-red-500 dark:focus:ring-red-600",
-  green: "text-green-600 focus:ring-green-500 dark:focus:ring-green-600",
-  purple: "text-purple-600 focus:ring-purple-500 dark:focus:ring-purple-600",
-  teal: "text-teal-600 focus:ring-teal-500 dark:focus:ring-teal-600",
-  yellow: "text-yellow-400 focus:ring-yellow-500 dark:focus:ring-yellow-600",
-  orange: "text-orange-500 focus:ring-orange-500 dark:focus:ring-orange-600",
-  blue: "text-blue-600 focus:ring-blue-500 dark:focus:ring-blue-600"
-};
-const labelClass = (inline, extraClass) => twMerge(inline ? "inline-flex" : "flex", "items-center", extraClass);
-const inputClass = (custom, color, rounded, tinted, spacing, extraClass) => twMerge(
-  "w-4 h-4 bg-gray-100 border-gray-300 dark:ring-offset-gray-800 focus:ring-2",
-  spacing,
-  tinted ? "dark:bg-gray-600 dark:border-gray-500" : "dark:bg-gray-700 dark:border-gray-600",
-  custom && "sr-only peer",
-  "rounded",
-  colorClasses[color],
-  extraClass
-);
-const Checkbox = create_ssr_component(($$result, $$props, $$bindings, slots) => {
-  let $$restProps = compute_rest_props($$props, [
-    "color",
-    "custom",
-    "inline",
-    "group",
-    "choices",
-    "value",
-    "checked",
-    "spacing",
-    "groupLabelClass",
-    "groupInputClass"
-  ]);
-  let $$slots = compute_slots(slots);
-  let { color = "primary" } = $$props;
-  let { custom = false } = $$props;
-  let { inline = false } = $$props;
-  let { group = [] } = $$props;
-  let { choices = [] } = $$props;
-  let { value = "on" } = $$props;
-  let { checked = void 0 } = $$props;
-  let { spacing = $$slots.default ? "me-2" : "" } = $$props;
-  let { groupLabelClass = "" } = $$props;
-  let { groupInputClass = "" } = $$props;
-  let background = getContext("background");
-  if ($$props.color === void 0 && $$bindings.color && color !== void 0) $$bindings.color(color);
-  if ($$props.custom === void 0 && $$bindings.custom && custom !== void 0) $$bindings.custom(custom);
-  if ($$props.inline === void 0 && $$bindings.inline && inline !== void 0) $$bindings.inline(inline);
-  if ($$props.group === void 0 && $$bindings.group && group !== void 0) $$bindings.group(group);
-  if ($$props.choices === void 0 && $$bindings.choices && choices !== void 0) $$bindings.choices(choices);
-  if ($$props.value === void 0 && $$bindings.value && value !== void 0) $$bindings.value(value);
-  if ($$props.checked === void 0 && $$bindings.checked && checked !== void 0) $$bindings.checked(checked);
-  if ($$props.spacing === void 0 && $$bindings.spacing && spacing !== void 0) $$bindings.spacing(spacing);
-  if ($$props.groupLabelClass === void 0 && $$bindings.groupLabelClass && groupLabelClass !== void 0) $$bindings.groupLabelClass(groupLabelClass);
-  if ($$props.groupInputClass === void 0 && $$bindings.groupInputClass && groupInputClass !== void 0) $$bindings.groupInputClass(groupInputClass);
-  return `${choices.length > 0 ? `${each(choices, ({ value: value2, label }, i) => {
-    return `${validate_component(Label, "Label").$$render(
-      $$result,
-      {
-        class: labelClass(inline, groupLabelClass),
-        show: $$slots.default,
-        for: `checkbox-${i}`
-      },
-      {},
-      {
-        default: () => {
-          return `${escape(label)} <input${spread(
-            [
-              {
-                id: escape_attribute_value(`checkbox-${i}`)
-              },
-              { type: "checkbox" },
-              { value: escape_attribute_value(value2) },
-              escape_object($$restProps),
-              {
-                class: escape_attribute_value(inputClass(custom, color, true, background, spacing, groupInputClass))
-              }
-            ],
-            {}
-          )}${~group.indexOf(value2) ? add_attribute("checked", true, 1) : ""}> ${slots.default ? slots.default({}) : ``} `;
-        }
-      }
-    )}`;
-  })}` : `${validate_component(Label, "Label").$$render(
-    $$result,
-    {
-      class: labelClass(inline, $$props.class),
-      show: $$slots.default
-    },
-    {},
-    {
-      default: () => {
-        return `<input${spread(
-          [
-            { type: "checkbox" },
-            { value: escape_attribute_value(value) },
-            escape_object($$restProps),
-            {
-              class: escape_attribute_value(inputClass(custom, color, true, background, spacing, $$slots.default || $$props.class))
-            }
-          ],
-          {}
-        )}${add_attribute("checked", checked, 1)}> ${slots.default ? slots.default({}) : ``}`;
-      }
-    }
-  )}`} `;
-});
+import { P as PhoneNumber } from "../../../chunks/PhoneNumber.js";
+import { E as Engine } from "../../../chunks/Engine.js";
+import { u as userStore } from "../../../chunks/userStore.js";
 const SignUp = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let { title: title2 = "Criar conta grátis" } = $$props;
   let { site = {
@@ -126,7 +22,7 @@ const SignUp = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let { btnTitle: btnTitle2 = "Criar conta" } = $$props;
   let { termsLink: termsLink2 = "/privacy-policy" } = $$props;
   let { loginLink: loginLink2 = "/" } = $$props;
-  let { mainClass = "bg-gray-50 dark:bg-gray-900 w-full" } = $$props;
+  let { mainClass = "bg-gray-50 dark:bg-gray-900 w-full mt-40 md:mt-24 lg:mt-16 xl:mt-0" } = $$props;
   let { mainDivClass = "flex flex-col items-center justify-center px-6 pt-8 mx-auto md:h-screen pt:mt-0 dark:bg-gray-900" } = $$props;
   let { siteLinkClass = "flex items-center justify-center mb-8 text-2xl font-semibold lg:mb-10 dark:text-white" } = $$props;
   let { siteImgClass = "mr-4 h-20" } = $$props;
@@ -216,108 +112,23 @@ const SignUp = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   } while (!$$settled);
   return $$rendered;
 });
-class Utils {
-  static clean(value) {
-    if (typeof value !== "string") return value;
-    return value.replaceAll(" ", "").replaceAll("-", "").replaceAll(".", "").replaceAll("/", "").replaceAll("\\", "").replaceAll("(", "").replaceAll(")", "");
-  }
-  static applyMask(mask, value, maxLength) {
-    const maxLengthOfValue = maxLength ?? mask.length;
-    let valueIfOverflowMaskLength = null;
-    if (value.length > maxLengthOfValue) {
-      valueIfOverflowMaskLength = value.slice(0, -1);
-    }
-    const cleanedValue = Utils.clean(valueIfOverflowMaskLength ?? value);
-    const numChar = "0";
-    const alphaChar = "a";
-    const alphaNumChars = ["[a0]", "[0a]"];
-    const allChar = "*";
-    let res = "";
-    let charCounter = 0;
-    for (let i = 0; i < mask.length; i++) {
-      if (charCounter >= cleanedValue.length) break;
-      if (mask[i] === numChar) {
-        if (Utils.isNumeric(cleanedValue[charCounter])) res += cleanedValue[charCounter];
-        charCounter++;
-      } else if (mask[i] === alphaChar) {
-        if (Utils.isAlphabetic(cleanedValue[charCounter])) res += cleanedValue[charCounter];
-        charCounter++;
-      } else if (mask[i] === "[") {
-        const endingIndex = mask.indexOf("]", i);
-        const multiChar = mask.substring(i, endingIndex + 1);
-        if (alphaNumChars.includes(multiChar)) {
-          if (Utils.isAlphaNumeric(cleanedValue[charCounter])) res += cleanedValue[charCounter];
-          charCounter++;
-          i += multiChar.length - 1;
-        }
-      } else if (mask[i] === allChar) {
-        res += cleanedValue[charCounter];
-        charCounter++;
-      } else {
-        res += mask[i];
-      }
-    }
-    return res;
-  }
-  static isNumeric(str) {
-    return /^\d+$/.test(str);
-  }
-  static isInt(value) {
-    return !Number.isNaN(value) && function(x) {
-      return (x | 0) === x;
-    }(parseFloat(value));
-  }
-  static isAlphabetic(str) {
-    return str.match("^[a-zA-Z]+$");
-  }
-  static isAlphaNumeric(str) {
-    const alphanumeric = /^[\p{L}\p{N}]*$/u;
-    return str.match(alphanumeric);
-  }
-  static genUuid(short = false) {
-    const uuid = v4();
-    return short ? uuid.substring(0, 12) : uuid;
-  }
-}
-class PhoneNumber {
-  value;
-  constructor(value) {
-    const valueCleaned = Utils.clean(value);
-    if (valueCleaned.length !== 11) {
-      throw new Error("Invalid phone number");
-    }
-    this.value = valueCleaned;
-  }
-  static parse(phoneNumber) {
-    return new PhoneNumber(phoneNumber);
-  }
-  toString() {
-    return this.value;
-  }
-  fullNumber() {
-    return this.value;
-  }
-  formatted() {
-    return Utils.applyMask("(00) 00000-0000", this.value);
-  }
-  withoutDDD() {
-    return this.value.slice(2);
-  }
-}
 const title = "Criar conta";
 const acceptTerms = true;
 const haveAccount = true;
 const btnTitle = "Criar conta";
 const termsLink = "/privacy-policy";
-const loginLink = "sign-in";
-const path = "/sign-up";
+const loginLink = "login";
+const path = "/create-account";
 const description = "Crie sua conta";
 const metaTitle = "InnovaADS - Criar conta";
 const subtitle = "Criar conta";
 const Page = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+  let $userStore, $$unsubscribe_userStore;
+  $$unsubscribe_userStore = subscribe(userStore, (value) => $userStore = value);
   let errors = null;
   let submittingForm = false;
   let usersService;
+  Engine.assert([$userStore === null], "/home/dashboard");
   const values = {
     email: "",
     name: "",
@@ -329,7 +140,9 @@ const Page = create_ssr_component(($$result, $$props, $$bindings, slots) => {
     name: yup.string().required("Por favor, digite seu nome."),
     email: yup.string().required("Por favor, digite seu email.").email("Por favor, digite um email válido."),
     password: yup.string().required("Por favor, digite sua senha.").min(6, "Sua senha deve ter no mínimo 6 caracteres."),
-    phone: yup.string().required("Por favor, digite seu telefone."),
+    phone: yup.string().required("Por favor, digite seu telefone.").test("phone", "Formato inválido do telefone. (00) 00000-0000.", (value) => {
+      return PhoneNumber.isValid(value);
+    }),
     termsAccepted: yup.boolean().oneOf([true], "Você deve aceitar os termos e condições.")
   });
   let { handleFormSubmit = async () => {
@@ -341,12 +154,12 @@ const Page = create_ssr_component(($$result, $$props, $$bindings, slots) => {
       email: values.email,
       name: values.name,
       password: values.password,
-      phone: phoneNumber.toString()
+      phone: phoneNumber.cleaned()
     });
     submittingForm = false;
     switch (createUserRes.status) {
       case "SUCCESS":
-        Engine.navigateTo("/sign-in");
+        Engine.navigateTo("/login");
         break;
       case "USER_ALREADY_EXISTS":
         DialogService.info({
@@ -468,6 +281,7 @@ const Page = create_ssr_component(($$result, $$props, $$bindings, slots) => {
               label: "Telefone",
               name: "phone",
               placeholder: "(99) 99999-9999",
+              mask: "(00) 00000-0000",
               required: true,
               error: errors?.phone,
               value: values.phone
@@ -484,6 +298,7 @@ const Page = create_ssr_component(($$result, $$props, $$bindings, slots) => {
       }
     )}`;
   } while (!$$settled);
+  $$unsubscribe_userStore();
   return $$rendered;
 });
 export {

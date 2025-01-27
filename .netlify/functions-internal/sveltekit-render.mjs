@@ -9,10 +9,10 @@ function __memo(fn) {
 return {
 	appDir: "_app",
 	appPath: "_app",
-	assets: new Set(["favicon.png","images/logo-only-rocket.png","images/main-logo.png","images/user-logo.png"]),
-	mimeTypes: {".png":"image/png"},
+	assets: new Set(["favicon.png","images/logo-only-rocket.png","images/main-logo.png","images/user-logo.png","svg/online-ad.svg","svg/online-posts.svg","svg/segment-analysis.svg"]),
+	mimeTypes: {".png":"image/png",".svg":"image/svg+xml"},
 	_: {
-		client: {"start":"_app/immutable/entry/start.gtHMmdOt.js","app":"_app/immutable/entry/app.C1ECE9Ck.js","imports":["_app/immutable/entry/start.gtHMmdOt.js","_app/immutable/chunks/entry.BWOTTdbZ.js","_app/immutable/chunks/scheduler.DtnymTb1.js","_app/immutable/chunks/control.CYgJF_JY.js","_app/immutable/entry/app.C1ECE9Ck.js","_app/immutable/chunks/scheduler.DtnymTb1.js","_app/immutable/chunks/index.C5Rlcou5.js"],"stylesheets":[],"fonts":[],"uses_env_dynamic_public":false},
+		client: {"start":"_app/immutable/entry/start.QTusHeE0.js","app":"_app/immutable/entry/app.D3Goqs-a.js","imports":["_app/immutable/entry/start.QTusHeE0.js","_app/immutable/chunks/entry.BvLrIJP4.js","_app/immutable/chunks/scheduler.CGVC39A1.js","_app/immutable/chunks/index.Byz7f60Q.js","_app/immutable/chunks/control.CYgJF_JY.js","_app/immutable/entry/app.D3Goqs-a.js","_app/immutable/chunks/preload-helper.C1FmrZbK.js","_app/immutable/chunks/scheduler.CGVC39A1.js","_app/immutable/chunks/index.DsmF_11R.js"],"stylesheets":[],"fonts":[],"uses_env_dynamic_public":false},
 		nodes: [
 			__memo(() => import('../server/nodes/0.js')),
 			__memo(() => import('../server/nodes/1.js')),
@@ -22,49 +22,66 @@ return {
 			__memo(() => import('../server/nodes/5.js')),
 			__memo(() => import('../server/nodes/6.js')),
 			__memo(() => import('../server/nodes/7.js')),
-			__memo(() => import('../server/nodes/8.js'))
+			__memo(() => import('../server/nodes/8.js')),
+			__memo(() => import('../server/nodes/9.js')),
+			__memo(() => import('../server/nodes/10.js')),
+			__memo(() => import('../server/nodes/11.js'))
 		],
 		routes: [
 			{
 				id: "/",
 				pattern: /^\/$/,
 				params: [],
-				page: { layouts: [0,], errors: [1,], leaf: 3 },
+				page: { layouts: [0,], errors: [1,], leaf: 4 },
 				endpoint: null
 			},
 			{
-				id: "/dashboard",
-				pattern: /^\/dashboard\/?$/,
+				id: "/create-account",
+				pattern: /^\/create-account\/?$/,
 				params: [],
-				page: { layouts: [0,], errors: [1,], leaf: 4 },
+				page: { layouts: [0,], errors: [1,], leaf: 5 },
 				endpoint: null
 			},
 			{
 				id: "/errors/[code]",
 				pattern: /^\/errors\/([^/]+?)\/?$/,
 				params: [{"name":"code","optional":false,"rest":false,"chained":false}],
-				page: { layouts: [0,], errors: [1,], leaf: 5 },
+				page: { layouts: [0,], errors: [1,], leaf: 6 },
+				endpoint: null
+			},
+			{
+				id: "/home/dashboard",
+				pattern: /^\/home\/dashboard\/?$/,
+				params: [],
+				page: { layouts: [0,2,], errors: [1,,], leaf: 7 },
+				endpoint: null
+			},
+			{
+				id: "/home/pricing",
+				pattern: /^\/home\/pricing\/?$/,
+				params: [],
+				page: { layouts: [0,2,], errors: [1,,], leaf: 8 },
+				endpoint: null
+			},
+			{
+				id: "/home/profile",
+				pattern: /^\/home\/profile\/?$/,
+				params: [],
+				page: { layouts: [0,2,], errors: [1,,], leaf: 9 },
+				endpoint: null
+			},
+			{
+				id: "/login",
+				pattern: /^\/login\/?$/,
+				params: [],
+				page: { layouts: [0,], errors: [1,], leaf: 10 },
 				endpoint: null
 			},
 			{
 				id: "/privacy-policy",
 				pattern: /^\/privacy-policy\/?$/,
 				params: [],
-				page: { layouts: [0,2,], errors: [1,,], leaf: 6 },
-				endpoint: null
-			},
-			{
-				id: "/sign-in",
-				pattern: /^\/sign-in\/?$/,
-				params: [],
-				page: { layouts: [0,], errors: [1,], leaf: 7 },
-				endpoint: null
-			},
-			{
-				id: "/sign-up",
-				pattern: /^\/sign-up\/?$/,
-				params: [],
-				page: { layouts: [0,], errors: [1,], leaf: 8 },
+				page: { layouts: [0,3,], errors: [1,,], leaf: 11 },
 				endpoint: null
 			},
 			{
