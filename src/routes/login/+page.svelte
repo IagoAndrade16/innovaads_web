@@ -11,6 +11,7 @@
 	import * as yup from 'yup';
 	import SignIn from '../utils/authentication/SignIn.svelte';
 	import MetaTag from '../utils/MetaTag.svelte';
+	import Navbar from '$lib/components/landing/Navbar.svelte';
 
 	let title = 'Entrar na plataforma';
 	let site = {
@@ -100,6 +101,8 @@
 </script>
 
 <MetaTag {path} title={metaTitle} {subtitle} />
+
+<Navbar />
 
 <SignIn
 	{handleFormSubmit}

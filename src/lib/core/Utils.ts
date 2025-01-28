@@ -62,6 +62,10 @@ class Utils {
 		return res;
 	}
 
+	public static formatToBRL(value: number): string {
+		return value.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+	}
+
 	public static isNumeric(str: string) {
 		return /^\d+$/.test(str);
 	}

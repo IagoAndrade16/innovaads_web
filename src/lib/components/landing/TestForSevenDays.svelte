@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { Heading, P } from "flowbite-svelte";
-import { Section, Cta } from "flowbite-svelte-blocks";
 	import CtaButton from "./CtaButton.svelte";
 </script>
 

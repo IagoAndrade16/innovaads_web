@@ -13,6 +13,7 @@
 	import Engine from '$lib/core/Engine';
 	import type { JsObject } from '$lib/types/JsObject';
 	import { userStore } from '$lib/stores/userStore';
+	import Navbar from '$lib/components/landing/Navbar.svelte';
 	
 
   let errors: JsObject | null = null;
@@ -103,6 +104,7 @@
 
 <MetaTag {path} {description} title={metaTitle} {subtitle} />
 
+<Navbar />
 
 <SignUp
 	bind:termsAccepted={values.termsAccepted}
