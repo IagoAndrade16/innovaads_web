@@ -101,6 +101,14 @@ class Utils {
 		return Object.keys(objectFiltered).map((key) => `${key}=${params[key]}`).join('&');
 	}
 
+	public static cleanObject<T extends { [key: string]: string }>(obj: T): T {
+		return Object.keys(obj).reduce((acc, key) => {
+			const currentValueCleaned = obj[key].replace(/[./-]/g, '');
+
+			return { ...acc, [key]: currentValueCleaned };
+		}, {} as T);
+	}
+
 	public static sleep(ms?: number) {
 		return new Promise((resolve) => setTimeout(resolve, ms ?? 1000));
 	}

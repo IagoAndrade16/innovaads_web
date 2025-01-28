@@ -18,9 +18,11 @@
   export let additionalLabelClasses: string = '';
   export let mask: string | null = null;
   export let maxLength: number | null = null;
+  export let maxLengthInput: number | null = null;
   export let pattern: PatternType | null = null;
   export let onInput: ((el: HTMLInputElement) => void) | null = null;
   export let resetErrorOnInput: boolean = true;
+  export let addiotionalInputClasses: string = '';
   
 	const labelClass = 'space-y-2 dark:text-white';
   let inputEl: HTMLInputElement;
@@ -56,7 +58,8 @@
       bind:inputEl={inputEl}
       on:input={onInputHandle}
       bind:required
-      class="border outline-none dark:border-gray-600 dark:bg-gray-700"
+      class="border outline-none dark:border-gray-600 dark:bg-gray-700 {addiotionalInputClasses}"
+      maxlength={maxLengthInput}
     />
   </Label>
   <ErrorText error={String(error ?? '')}/>
