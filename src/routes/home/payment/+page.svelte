@@ -11,6 +11,12 @@
   import * as yup from 'yup';
 	import YupValidation from "$lib/validation/yup";
 	import Utils from "$lib/core/Utils";
+	import MetaTag from "../../utils/MetaTag.svelte";
+
+  const path: string = '';
+  const description: string = 'Pagamento';
+  const title: string = 'Pagamento - Home';
+  const subtitle: string = 'Pagamento';
 
   let stepForm = 0;
   let errorsBillingAddress: JsObject | null = null;
@@ -78,13 +84,15 @@
   }
 </script>
 
+<MetaTag {path} {description} {title} {subtitle} />
+
 <Navbar />
 
 <BaseFormLayout 
   divMainClass=""
   siteLinkClass="hidden"
   >
-  <div class="flex items-center justify-center h-full lg:h-full mt-10 lg:mt-20 bg-gray-50 dark:bg-gray-900">
+  <div class="flex items-center justify-center h-full lg:h-full mt-36 lg:mt-40 bg-gray-50 dark:bg-gray-900">
     <div class="flex lg:flex-row flex-col px-4 lg:px-0 lg:mx-0 justify-center lg:gap-16 gap-10 w-full">
       <div class="space-y-7">
         <StepByStepCheckout

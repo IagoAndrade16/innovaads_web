@@ -18,7 +18,7 @@
 
 <div>
   <Card title="">
-    <h1 class="font-bold text-3xl text-black mb-8 lg:mb-2">Dados de Pagamento</h1>
+    <h1 class="font-bold text-3xl text-gray-900 dark:text-white text-black mb-8 lg:mb-2">Dados de Pagamento</h1>
     <div class="flex flex-col lg:flex-row lg:gap-7 gap-2"> 
       <div>
         <BaseInput 

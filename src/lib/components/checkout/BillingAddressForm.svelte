@@ -21,7 +21,7 @@
 
 <div>
   <Card title="" class="lg:space-y-4">
-    <h1 class="font-bold text-3xl text-black mb-8 lg:mb-2">Endereço de Cobrança</h1>
+    <h1 class="font-bold text-3xl text-gray-900 dark:text-white mb-8 lg:mb-2">Endereço de Cobrança</h1>
     <div class="flex flex-col lg:flex-row lg:gap-14 gap-2"> 
       <div>
         <BaseInput 
@@ -99,7 +99,7 @@
         bind:value={customerAddressValues.complement}
       />  
     </div>
-    <div class="mt-10 text-center">
+    <div class="mt-10 text-center ">
       <p class="text-gray-500 text-sm">* Seus dados são criptografados e nunca serão compartilhados.</p>
     </div>
   </Card>

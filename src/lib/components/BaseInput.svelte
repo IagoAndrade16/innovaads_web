@@ -33,7 +33,7 @@
 
   maskInput();
   function onInputHandle() {
-    if(maxLength) {
+    if (maxLength) {
       if (onInput) onInput(inputEl);
       maskInput();
     } else {

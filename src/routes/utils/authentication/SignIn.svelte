@@ -11,7 +11,7 @@
 	export let isSubmitting = false;
 	export let lostPassword = true;
 	export let createAccount = true;
-	export let lostPasswordLink = '';
+	export let lostPasswordLink = '/forgot-password';
 	export let loginTitle = 'Entrar na sua conta';
 	export let registerLink = '';
 	export let createAccountTitle = 'Criar conta';

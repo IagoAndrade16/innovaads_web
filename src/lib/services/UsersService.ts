@@ -1,4 +1,5 @@
 import { ApiService } from "./ApiService";
+import type { BaseForgotUserPasswordOutput, ResetPasswordInput, VerifyPasswordRecoveryCodeInput, VerifyPasswordRecoveryCodeOutput } from "./types/ForgotUserPassword";
 import type { AuthUserRequest, AuthUserResponse } from "./types/UsersServiceAuthTypes";
 import type { RegisterUserRequest, RegisterUserResponse } from "./types/UsersServiceRegisterTypes";
 import type { UpdateUserPasswordRequest, UpdateUserPasswordResponse } from "./types/UsersServiceUpdatePasswordTypes";
@@ -107,6 +108,74 @@ export class UsersService extends ApiService {
 
     return {
       status: 'UNKNOWN',
+    }
+  }
+
+  public async sendPasswordRecoveryEmail(email: string): Promise<BaseForgotUserPasswordOutput> {
+    const response = await this.post('/users/2fa/forgot-password', {
+      email,
+    });    
+
+    if (response.statusCode === 204) {
+      return {
+        status: 'SUCCESS',
+      }
+    }
+
+    if (response.statusCode === 400) {
+      return {
+        status: response.data.reason,
+      }
+    }
+
+    return {
+      status: 'BAD_REQUEST',
+    }
+  }
+
+  public async verifyPasswordRecoveryCode(input: VerifyPasswordRecoveryCodeInput): Promise<VerifyPasswordRecoveryCodeOutput> {
+    const response = await this.post('/users/2fa/forgot-password/verify', {
+      code: input.code,
+      email: input.email,
+    });    
+
+    if (response.statusCode === 204) {
+      return {
+        status: 'SUCCESS',
+      }
+    }
+
+    if (response.statusCode === 400) {
+      return {
+        status: response.data.reason,
+      }
+    }
+
+    return {
+      status: 'BAD_REQUEST',
+    }
+  }
+
+  public async resetPassword(input: ResetPasswordInput): Promise<BaseForgotUserPasswordOutput> {
+    const response = await this.post('/users/2fa/forgot-password/reset', {
+      email: input.email,
+      newPassword: input.newPassword,
+    });    
+
+    if (response.statusCode === 204) {
+      return {
+        status: 'SUCCESS',
+      }
+    }
+
+    if (response.statusCode === 400) {
+      return {
+        status: response.data.reason,
+      }
+    }
+
+    return {
+      status: 'BAD_REQUEST',
     }
   }
 }
