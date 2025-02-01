@@ -4,6 +4,7 @@ import type { AuthUserRequest, AuthUserResponse } from "./types/UsersServiceAuth
 import type { RegisterUserRequest, RegisterUserResponse } from "./types/UsersServiceRegisterTypes";
 import type { UpdateUserPasswordRequest, UpdateUserPasswordResponse } from "./types/UsersServiceUpdatePasswordTypes";
 import type { UpdateUserRequest, UpdateUserResponse } from "./types/UsersServiceUpdateTypes";
+import type { BaseResponseVerificationUserByEmail, VerifyCodeToValidateUserInput, VerifyCodeToValidateUserOutput } from "./types/VerificationUserByEmail";
 
 
 export class UsersService extends ApiService {
@@ -129,7 +130,7 @@ export class UsersService extends ApiService {
     }
 
     return {
-      status: 'BAD_REQUEST',
+      status: 'UNKNOWN',
     }
   }
 
@@ -152,7 +153,7 @@ export class UsersService extends ApiService {
     }
 
     return {
-      status: 'BAD_REQUEST',
+      status: 'UNKNOWN',
     }
   }
 
@@ -175,7 +176,57 @@ export class UsersService extends ApiService {
     }
 
     return {
-      status: 'BAD_REQUEST',
+      status: 'UNKNOWN',
+    }
+  }
+
+  public async sendVerificationEmailToUser(token: string): Promise<BaseResponseVerificationUserByEmail> {
+    const response = await this.get('/users/2fa', { token });
+
+    if (response.statusCode === 204) {
+      return {
+        status: 'SUCCESS',
+      }
+    }
+
+    if (response.statusCode === 401) {
+      return {
+        status: 'UNAUTHORIZED',
+      }
+    }
+
+    return {
+      status: 'UNKNOWN',
+    }
+  }
+
+  public async verifyCodeToValidateUser(input: VerifyCodeToValidateUserInput): Promise<VerifyCodeToValidateUserOutput> {
+    const response = await this.post('/users/2fa/verify', {
+      code: input.code,
+    }, {
+      token: input.token,
+    });
+
+    if (response.statusCode === 204) {
+      return {
+        status: 'SUCCESS',
+      }
+    }
+
+    if (response.statusCode === 400) {
+      return {
+        status: response.data.reason,
+      }
+    }
+
+    if (response.statusCode === 401) {
+      return {
+        status: 'UNAUTHORIZED',
+      }
+    }
+
+    return {
+      status: 'UNKNOWN',
     }
   }
 }

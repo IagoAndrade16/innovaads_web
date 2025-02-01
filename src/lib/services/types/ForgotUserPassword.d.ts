@@ -8,7 +8,7 @@ export type ResetPasswordInput = {
   newPassword: string;
 }
 
-type BaseApiResponseForgotPassword =  'SUCCESS' | 'BAD_REQUEST' | 'USER_NOT_FOUND'
+type BaseApiResponseForgotPassword =  'SUCCESS' | 'UNKNOWN' | 'USER_NOT_FOUND'
 
 export type BaseForgotUserPasswordOutput = {
   status: BaseApiResponseForgotPassword;

@@ -5,4 +5,5 @@ export interface IUser {
   isOnTrial: boolean
   daysRemainingForTrial: number
   packageId: string | null
+  verified2fa: boolean
 }

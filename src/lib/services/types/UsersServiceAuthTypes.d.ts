@@ -18,6 +18,7 @@ export interface AuthUserResponseData {
   isOnTrial: boolean;
   daysRemainingForTrial: number;
   packageId: string | null;
+  verified2fa: boolean;
 }
 
 export type AuthUserResponseStatus = 'SUCCESS' | 'UNKNOWN' | 'UNAUTHORIZED';

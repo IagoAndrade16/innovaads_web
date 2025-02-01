@@ -90,7 +90,7 @@
           message: 'Usuário não encontrado. Verifique o e-mail digitado e tente novamente.',
         });  
         break;  
-      case 'BAD_REQUEST':
+      case 'UNKNOWN':
         DialogService.error({
           title: 'Oopss!',
           message: 'Algo deu errado. Tente novamente mais tarde.',
@@ -136,7 +136,7 @@
           message: 'Código inválido. Verifique o código digitado e tente novamente.',
         });
         break;
-      case 'BAD_REQUEST':
+      case 'UNKNOWN':
         DialogService.error({
           title: 'Oopss!',
           message: 'Algo deu errado. Tente novamente mais tarde.',
@@ -182,7 +182,7 @@
           message: 'Usuário não encontrado. Verifique o e-mail digitado e tente novamente.',
         });  
         break;  
-      case 'BAD_REQUEST':
+      case 'UNKNOWN':
         DialogService.error({
           title: 'Oopss!',
           message: 'Algo deu errado. Tente novamente mais tarde.',
