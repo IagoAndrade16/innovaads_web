@@ -1,16 +1,21 @@
 <script lang="ts">
 	import BaseFormLayout from "$lib/components/BaseFormLayout.svelte";
-	import BillingAddress from "$lib/components/checkout/BillingAddressForm.svelte";
-	import OrderResume from "$lib/components/checkout/OrderResume.svelte";
-	import Navbar from "$lib/components/landing/Navbar.svelte";
-	import StepByStepCheckout from "$lib/components/checkout/StepByStepCheckout.svelte";
 	import BillingAddressForm from "$lib/components/checkout/BillingAddressForm.svelte";
 	import CardInfoForm from "$lib/components/checkout/CardInfoForm.svelte";
+	import OrderResume from "$lib/components/checkout/OrderResume.svelte";
 	import ReviewOrder from "$lib/components/checkout/ReviewOrder.svelte";
-	import type { JsObject } from "$lib/types/JsObject";
-  import * as yup from 'yup';
-	import YupValidation from "$lib/validation/yup";
+	import StepByStepCheckout from "$lib/components/checkout/StepByStepCheckout.svelte";
+	import Navbar from "$lib/components/landing/Navbar.svelte";
 	import Utils from "$lib/core/Utils";
+	import type { JsObject } from "$lib/types/JsObject";
+	import YupValidation from "$lib/validation/yup";
+	import * as yup from 'yup';
+	import MetaTag from "../../utils/MetaTag.svelte";
+
+  const path: string = '/home/payment';
+  const description: string = 'InnovaADS - Pagamento';
+  const title: string = 'InnovaADS - Pagamento';
+  const subtitle: string = 'Payment page';
 
   let stepForm = 0;
   let errorsBillingAddress: JsObject | null = null;
@@ -80,8 +85,10 @@
 
 <Navbar />
 
+<MetaTag {path} {description} {title} {subtitle} />
+
 <BaseFormLayout 
-  divMainClass=""
+  divMainClass="mt-48"
   siteLinkClass="hidden"
   >
   <div class="flex items-center justify-center h-full lg:h-full mt-10 lg:mt-20 bg-gray-50 dark:bg-gray-900">

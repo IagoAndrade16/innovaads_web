@@ -25,7 +25,7 @@
   <Section name="pricing">
     <PricingHead>
       <svelte:fragment slot="h2">Preços e planos</svelte:fragment>
-      <svelte:fragment slot="paragraph">Para continuar usando a plataforma depois do período grátis, é necessário fazer a assinatura mensal..</svelte:fragment>
+      <svelte:fragment slot="paragraph">Para continuar usando a plataforma depois do período grátis, é necessário fazer a assinatura mensal.</svelte:fragment>
     </PricingHead>
     <div class="space-y-8 lg:grid lg:grid-cols-1 sm:gap-6 xl:gap-10 lg:space-y-0">
       {#each packages as possiblePackage}
