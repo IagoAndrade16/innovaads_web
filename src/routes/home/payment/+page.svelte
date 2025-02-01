@@ -8,14 +8,13 @@
 	import Navbar from "$lib/components/landing/Navbar.svelte";
 	import Utils from "$lib/core/Utils";
 	import type { JsObject } from "$lib/types/JsObject";
-	import YupValidation from "$lib/validation/yup";
-	import * as yup from 'yup';
 	import MetaTag from "../../utils/MetaTag.svelte";
+  import * as yup from 'yup';
 
-  const path: string = '/home/payment';
+  const path: string = '';
   const description: string = 'InnovaADS - Pagamento';
-  const title: string = 'InnovaADS - Pagamento';
-  const subtitle: string = 'Payment page';
+  const title: string = 'InnovaADS - PaGAMENTO';
+  const subtitle: string = 'InnovaADS - Pagamento';
 
   let stepForm = 0;
   let errorsBillingAddress: JsObject | null = null;
@@ -83,6 +82,8 @@
   }
 </script>
 
+<MetaTag {path} {description} {title} {subtitle} />
+
 <Navbar />
 
 <MetaTag {path} {description} {title} {subtitle} />
@@ -91,7 +92,7 @@
   divMainClass="mt-48"
   siteLinkClass="hidden"
   >
-  <div class="flex items-center justify-center h-full lg:h-full mt-10 lg:mt-20 bg-gray-50 dark:bg-gray-900">
+  <div class="flex items-center justify-center h-full lg:h-full mt-36 lg:mt-40 bg-gray-50 dark:bg-gray-900">
     <div class="flex lg:flex-row flex-col px-4 lg:px-0 lg:mx-0 justify-center lg:gap-16 gap-10 w-full">
       <div class="space-y-7">
         <StepByStepCheckout

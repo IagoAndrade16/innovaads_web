@@ -1,8 +1,10 @@
 import { ApiService } from "./ApiService";
+import type { BaseForgotUserPasswordOutput, ResetPasswordInput, VerifyPasswordRecoveryCodeInput, VerifyPasswordRecoveryCodeOutput } from "./types/ForgotUserPassword";
 import type { AuthUserRequest, AuthUserResponse } from "./types/UsersServiceAuthTypes";
 import type { RegisterUserRequest, RegisterUserResponse } from "./types/UsersServiceRegisterTypes";
 import type { UpdateUserPasswordRequest, UpdateUserPasswordResponse } from "./types/UsersServiceUpdatePasswordTypes";
 import type { UpdateUserRequest, UpdateUserResponse } from "./types/UsersServiceUpdateTypes";
+import type { BaseResponseVerificationUserByEmail, VerifyCodeToValidateUserInput, VerifyCodeToValidateUserOutput } from "./types/VerificationUserByEmail";
 
 
 export class UsersService extends ApiService {
@@ -102,6 +104,124 @@ export class UsersService extends ApiService {
     if (response.statusCode === 400) {
       return {
         status: response.data.reason,
+      }
+    }
+
+    return {
+      status: 'UNKNOWN',
+    }
+  }
+
+  public async sendPasswordRecoveryEmail(email: string): Promise<BaseForgotUserPasswordOutput> {
+    const response = await this.post('/users/2fa/forgot-password', {
+      email,
+    });    
+
+    if (response.statusCode === 204) {
+      return {
+        status: 'SUCCESS',
+      }
+    }
+
+    if (response.statusCode === 400) {
+      return {
+        status: response.data.reason,
+      }
+    }
+
+    return {
+      status: 'UNKNOWN',
+    }
+  }
+
+  public async verifyPasswordRecoveryCode(input: VerifyPasswordRecoveryCodeInput): Promise<VerifyPasswordRecoveryCodeOutput> {
+    const response = await this.post('/users/2fa/forgot-password/verify', {
+      code: input.code,
+      email: input.email,
+    });    
+
+    if (response.statusCode === 204) {
+      return {
+        status: 'SUCCESS',
+      }
+    }
+
+    if (response.statusCode === 400) {
+      return {
+        status: response.data.reason,
+      }
+    }
+
+    return {
+      status: 'UNKNOWN',
+    }
+  }
+
+  public async resetPassword(input: ResetPasswordInput): Promise<BaseForgotUserPasswordOutput> {
+    const response = await this.post('/users/2fa/forgot-password/reset', {
+      email: input.email,
+      newPassword: input.newPassword,
+    });    
+
+    if (response.statusCode === 204) {
+      return {
+        status: 'SUCCESS',
+      }
+    }
+
+    if (response.statusCode === 400) {
+      return {
+        status: response.data.reason,
+      }
+    }
+
+    return {
+      status: 'UNKNOWN',
+    }
+  }
+
+  public async sendVerificationEmailToUser(token: string): Promise<BaseResponseVerificationUserByEmail> {
+    const response = await this.get('/users/2fa', { token });
+
+    if (response.statusCode === 204) {
+      return {
+        status: 'SUCCESS',
+      }
+    }
+
+    if (response.statusCode === 401) {
+      return {
+        status: 'UNAUTHORIZED',
+      }
+    }
+
+    return {
+      status: 'UNKNOWN',
+    }
+  }
+
+  public async verifyCodeToValidateUser(input: VerifyCodeToValidateUserInput): Promise<VerifyCodeToValidateUserOutput> {
+    const response = await this.post('/users/2fa/verify', {
+      code: input.code,
+    }, {
+      token: input.token,
+    });
+
+    if (response.statusCode === 204) {
+      return {
+        status: 'SUCCESS',
+      }
+    }
+
+    if (response.statusCode === 400) {
+      return {
+        status: response.data.reason,
+      }
+    }
+
+    if (response.statusCode === 401) {
+      return {
+        status: 'UNAUTHORIZED',
       }
     }
 

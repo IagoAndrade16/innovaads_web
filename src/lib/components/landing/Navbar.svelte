@@ -19,10 +19,13 @@
 		<NavLi href="#contact">Contato</NavLi>
 		<NavLi href="/#faq">FAQ</NavLi>
 	</NavUl>
-	<div class="py-4">
+	<div class="py-4 flex gap-4">
 		<DarkMode />
-    {#if $userStore}
+    {#if $userStore && $userStore.verified2fa}
       <Button class="gap-2 px-3" on:click={() => Engine.navigateTo('/home/dashboard')}>Dashboard</Button>
+		{/if}
+		{#if $userStore && !$userStore.verified2fa}
+			<Button class="gap-2 px-3" on:click={() => Engine.navigateTo('/login')}>Acessar conta</Button>
     {:else}
       <Button class="gap-2 px-3" on:click={() => Engine.navigateTo('/create-account')}>
 				Testar grátis

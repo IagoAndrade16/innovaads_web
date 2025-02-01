@@ -76,6 +76,7 @@
 					isOnTrial: res.data?.isOnTrial!,
 					daysRemainingForTrial: res.data?.daysRemainingForTrial!,
 					packageId: res.data?.packageId!,
+					verified2fa: res.data?.verified2fa!,
         }
         Engine.navigateTo('/home/dashboard');
         break;
@@ -83,7 +84,7 @@
         DialogService.error({
           message: 'Email ou senha incorretos.',
           title: 'Ooops!',
-        })
+        });
         break;
       default:
         DialogService.error({
