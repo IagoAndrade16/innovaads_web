@@ -3,7 +3,7 @@
 	import { userStore } from '$lib/stores/userStore';	
 
   Engine.assert([$userStore !== null], '/login');
-  Engine.assert([$userStore?.verified2fa !==  false], '/');
+  Engine.assert([$userStore?.verified2fa !==  false], '/verify-2fa');
   
 </script>
 

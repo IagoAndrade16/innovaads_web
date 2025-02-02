@@ -4,7 +4,6 @@
   export let cardInfoValues = {
     cardNumber: '',       
     cardholderName: '',   
-    cardholderLastName: '',
     expirationDate: '',  
     securityCode: '',     
   };
@@ -32,13 +31,10 @@
     </div>
     <h3 class="font-bold text-xl mt-7 text-black dark:text-white">Informações de Pagamento</h3>
     <div class="mt-2 text-black dark:text-white space-y-1">
-      <p><strong>Nome no Cartão:</strong> {cardInfoValues.cardholderName} {cardInfoValues.cardholderLastName}</p>
+      <p><strong>Nome no Cartão:</strong> {cardInfoValues.cardholderName}</p>
       <p><strong>Número do Cartão:</strong> {cardInfoValues.cardNumber}</p>
       <p><strong>Validade:</strong> {cardInfoValues.expirationDate}</p>
       <p><strong>CVV:</strong> {cardInfoValues.securityCode}</p>
-    </div>
-    <div class="mt-10 text-center">
-      <p class="text-gray-500 text-sm">* Seus dados são criptografados e nunca serão compartilhados.</p>
     </div>
   </Card>
 </div>

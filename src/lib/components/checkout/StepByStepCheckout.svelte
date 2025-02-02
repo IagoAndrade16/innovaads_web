@@ -1,10 +1,9 @@
 <script lang="ts">
 	import type { JsObject } from "$lib/types/JsObject";
-  import { Steps } from "svelte-steps";
+	import { Steps } from "svelte-steps";
 
   export let steps: JsObject[];
   export let currentStep: number;
-
 </script>
 
 <div>

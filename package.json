@@ -50,6 +50,7 @@
 		"@types/axios": "^0.14.4",
 		"@types/yup": "^0.32.0",
 		"axios": "^1.7.9",
+		"cpf-cnpj-validator": "^1.0.3",
 		"flatpickr": "^4.6.13",
 		"flowbite-svelte-blocks": "^1.1.4",
 		"flowbite-svelte-icons": "^1.6.1",

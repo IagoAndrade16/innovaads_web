@@ -1,3 +1,5 @@
+import type { Package } from "$lib/types/IPackage"
+
 export interface IUser {
   name: string
   email: string
@@ -6,4 +8,5 @@ export interface IUser {
   daysRemainingForTrial: number
   packageId: string | null
   verified2fa: boolean
+  package: Package | null
 }

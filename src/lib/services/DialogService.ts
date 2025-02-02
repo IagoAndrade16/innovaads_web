@@ -23,8 +23,8 @@ export class DialogService {
     confirmButtonColor: '#EF562F'
   }
 
-  static success(options: SuccessDialogOptions) {
-    Swal.fire({
+  static async success(options: SuccessDialogOptions) {
+    await Swal.fire({
       ...DialogService.setupOptions,
       icon: 'success',
       title: options.title,
@@ -32,8 +32,8 @@ export class DialogService {
     })
   }
 
-  static error(options: ErrorDialogOptions) {
-    Swal.fire({
+  static async error(options: ErrorDialogOptions) {
+    await Swal.fire({
       ...DialogService.setupOptions,
       icon: 'error',
       title: options.title,
@@ -41,8 +41,8 @@ export class DialogService {
     })
   }
 
-  static info(options: InfoDialogOptions) {
-    Swal.fire({
+  static async info(options: InfoDialogOptions) {
+    await Swal.fire({
       ...DialogService.setupOptions,
       icon: 'info',
       title: options.title,
@@ -50,8 +50,8 @@ export class DialogService {
     })
   }
 
-  static show(options: SweetAlertOptions) {
-    Swal.fire({
+  static async show(options: SweetAlertOptions) {
+    await Swal.fire({
       ...DialogService.setupOptions,
       ...options,
     })

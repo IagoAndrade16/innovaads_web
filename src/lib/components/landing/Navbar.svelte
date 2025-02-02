@@ -23,8 +23,7 @@
 		<DarkMode />
     {#if $userStore && $userStore.verified2fa}
       <Button class="gap-2 px-3" on:click={() => Engine.navigateTo('/home/dashboard')}>Dashboard</Button>
-		{/if}
-		{#if $userStore && !$userStore.verified2fa}
+		{:else if $userStore && !$userStore.verified2fa}
 			<Button class="gap-2 px-3" on:click={() => Engine.navigateTo('/login')}>Acessar conta</Button>
     {:else}
       <Button class="gap-2 px-3" on:click={() => Engine.navigateTo('/create-account')}>

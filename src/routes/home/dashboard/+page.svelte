@@ -30,9 +30,9 @@
     },
   ];
 
-	const path: string = '';
-  const description: string = 'Admin Dashboard - Home';
-  const title: string = 'Dashboard - Home';
+	const path: string = '/home/dashboard';
+  const description: string = 'InnovaADS - Home';
+  const title: string = 'InnovaADS - Home';
   const subtitle: string = 'Admin Dashboard';
 
   let optionsTendenciesGraph: ApexOptions = {

@@ -1,7 +1,6 @@
 <script lang="ts">
 	import type { JsObject } from "$lib/types/JsObject";
 
-
 	import Card from "../../../routes/utils/widgets/Card.svelte";
 	import BaseInput from "../BaseInput.svelte";
 
@@ -23,7 +22,7 @@
   <Card title="" class="lg:space-y-4">
     <h1 class="font-bold text-3xl text-gray-900 dark:text-white mb-8 lg:mb-2">Endereço de Cobrança</h1>
     <div class="flex flex-col lg:flex-row lg:gap-14 gap-2"> 
-      <div>
+      <div class="mt-4 lg:mt-0">
         <BaseInput 
           label="CEP"
           name="zipCode"
@@ -34,7 +33,7 @@
           error={addressErrors?.zipCode}
         />
       </div>
-      <div>
+      <div class="mt-4 lg:mt-0">
         <BaseInput 
           label="Bairro"
           name="neighborhood"
@@ -46,7 +45,7 @@
       </div>
     </div>
     <div class="flex flex-col lg:flex-row lg:gap-14 gap-2"> 
-      <div>
+      <div class="mt-4 lg:mt-0">
         <BaseInput 
           label="Rua"
           name="street"
@@ -56,7 +55,7 @@
           error={addressErrors?.street}
         />
       </div>
-      <div>
+      <div class="mt-4 lg:mt-0">
         <BaseInput 
           label="Número"
           name="number"
@@ -68,7 +67,7 @@
       </div>
     </div>
     <div class="flex flex-col lg:flex-row lg:gap-14 gap-2"> 
-      <div>
+      <div class="mt-4 lg:mt-0">
         <BaseInput 
           label="Cidade"
           name="city"
@@ -78,29 +77,26 @@
           error={addressErrors?.city}
         />
       </div>
-      <div>
+      <div class="mt-4 lg:mt-0">
         <BaseInput 
           label="Estado"
           name="state"
           placeholder="RJ"
           addiotionalInputClasses="lg:w-72 w-full"
-          maxLengthInput={2}
+          mask="aa"
           bind:value={customerAddressValues.state}
           error={addressErrors?.state}
         />
       </div>
     </div>
-    <div>
+    <div class="mt-4 lg:mt-0">
       <BaseInput 
         label="Complemento"
         name="complement"
         placeholder="Apto. 304"
-        addiotionalInputClasses="lg:w-[96%] w-full"
+        addiotionalInputClasses="w-full"
         bind:value={customerAddressValues.complement}
       />  
-    </div>
-    <div class="mt-10 text-center ">
-      <p class="text-gray-500 text-sm">* Seus dados são criptografados e nunca serão compartilhados.</p>
     </div>
   </Card>
 </div>

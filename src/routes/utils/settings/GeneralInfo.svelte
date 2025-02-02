@@ -58,6 +58,7 @@
 					isOnTrial: $userStore!.isOnTrial,
 					packageId: $userStore!.packageId,
 					daysRemainingForTrial: $userStore!.daysRemainingForTrial,
+					verified2fa: $userStore!.verified2fa,
 				};
 				ToastService.success('Perfil atualizado com sucesso.');
 				break;

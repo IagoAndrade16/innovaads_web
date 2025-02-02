@@ -24,6 +24,11 @@ export default class Engine {
 		}
 	}
 
+	static async back() {
+		if (!browser) return;
+		history.back();
+	}
+
 	static async navigateTo(page: string, replaceState?: boolean) {
 		if (!browser) return;
 
