@@ -8,9 +8,15 @@ class Store {
     return user;
   }
   static storageGet(key) {
+    if (typeof localStorage === "undefined") {
+      return null;
+    }
     return localStorage.getItem(key);
   }
   static storageSet(key, value) {
+    if (typeof localStorage === "undefined") {
+      return;
+    }
     localStorage.setItem(key, value);
   }
 }

@@ -53,7 +53,7 @@ export default class Engine {
 	}
 
 	static getTheme(): 'dark' | 'light'{
-		// if (!browser) return 'light';
+		if (!browser || !localStorage) return 'light';
 		return (localStorage.getItem('color-theme') ?? 'light') as 'dark' | 'light';
 	}
 }

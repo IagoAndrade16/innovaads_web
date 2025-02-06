@@ -2,7 +2,7 @@ import { c as create_ssr_component, a as add_attribute, d as compute_rest_props,
 import { M as MetaTag } from "../../../../chunks/MetaTag.js";
 import { B as BaseLayout } from "../../../../chunks/BaseLayout.js";
 import { C as Card_1 } from "../../../../chunks/Card.js";
-import { L as Label, C as Card, B as BaseInput } from "../../../../chunks/DialogService.js";
+import { L as Label, C as Card, B as BaseInput } from "../../../../chunks/BaseInput.js";
 import "flatpickr";
 import { Portuguese } from "flatpickr/dist/l10n/pt.js";
 import { B as Button } from "../../../../chunks/Button.js";
@@ -10,6 +10,7 @@ import * as yup from "yup";
 import "dayjs";
 import { a as userAuthStore } from "../../../../chunks/userStore.js";
 import "../../../../chunks/client.js";
+import "sweetalert2";
 const Chart = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let { options } = $$props;
   if ($$props.options === void 0 && $$bindings.options && options !== void 0) $$bindings.options(options);

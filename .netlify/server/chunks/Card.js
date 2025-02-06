@@ -1,5 +1,5 @@
 import { c as create_ssr_component, v as validate_component, e as escape } from "./ssr.js";
-import { C as Card } from "./DialogService.js";
+import { C as Card } from "./BaseInput.js";
 import { H as Heading } from "./Heading.js";
 const Card_1 = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let { title } = $$props;

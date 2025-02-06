@@ -22,7 +22,7 @@ class Engine {
     if (redirect != null) Engine.navigateTo(redirect);
   }
   static getTheme() {
-    return localStorage.getItem("color-theme") ?? "light";
+    return "light";
   }
 }
 export {

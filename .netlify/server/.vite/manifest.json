@@ -22,6 +22,16 @@
       "_ssr.js"
     ]
   },
+  "_BaseInput.js": {
+    "file": "chunks/BaseInput.js",
+    "name": "BaseInput",
+    "imports": [
+      "_ssr.js",
+      "_NavHamburger.js",
+      "_Utils.js",
+      "_Button.js"
+    ]
+  },
   "_BaseLayout.js": {
     "file": "chunks/BaseLayout.js",
     "name": "BaseLayout",
@@ -34,7 +44,7 @@
       "_userStore.js",
       "_Footer.js",
       "_NavHamburger.js",
-      "_DialogService.js",
+      "_BaseInput.js",
       "_Button.js"
     ],
     "css": [
@@ -53,19 +63,8 @@
     "name": "Card",
     "imports": [
       "_ssr.js",
-      "_DialogService.js",
+      "_BaseInput.js",
       "_Heading.js"
-    ]
-  },
-  "_DialogService.js": {
-    "file": "chunks/DialogService.js",
-    "name": "DialogService",
-    "imports": [
-      "_ssr.js",
-      "_NavHamburger.js",
-      "_Utils.js",
-      "_Button.js",
-      "_Engine.js"
     ]
   },
   "_Engine.js": {
@@ -244,7 +243,10 @@
   },
   "_yup.js": {
     "file": "chunks/yup.js",
-    "name": "yup"
+    "name": "yup",
+    "imports": [
+      "_Engine.js"
+    ]
   },
   "node_modules/@sveltejs/kit/src/runtime/server/index.js": {
     "file": "index.js",
@@ -306,7 +308,7 @@
     "isEntry": true,
     "imports": [
       "_ssr.js",
-      "_DialogService.js",
+      "_BaseInput.js",
       "_Button.js",
       "_Spinner.js",
       "_A.js",
@@ -338,7 +340,7 @@
       "_Button.js",
       "_P.js",
       "_Card.js",
-      "_DialogService.js",
+      "_BaseInput.js",
       "_Navbar.js",
       "_client.js",
       "_userStore.js",
@@ -369,7 +371,7 @@
       "_MetaTag.js",
       "_BaseLayout.js",
       "_Card.js",
-      "_DialogService.js",
+      "_BaseInput.js",
       "_Button.js",
       "_userStore.js",
       "_client.js"
@@ -387,7 +389,7 @@
       "_ssr.js",
       "_BaseFormLayout.js",
       "_Card.js",
-      "_DialogService.js",
+      "_BaseInput.js",
       "_Utils.js",
       "_choosedPackage.js",
       "_Button.js",
@@ -427,13 +429,13 @@
       "_BaseLayout.js",
       "_index2.js",
       "_MetaTag.js",
-      "_DialogService.js",
+      "_BaseInput.js",
       "_userStore.js",
       "_Button.js",
       "_Card.js",
       "_PhoneNumber.js",
-      "_Spinner.js",
-      "_client.js"
+      "_client.js",
+      "_Spinner.js"
     ],
     "css": [
       "_app/immutable/assets/toastify.Dbbx3F5k.css"
@@ -446,10 +448,10 @@
     "isEntry": true,
     "imports": [
       "_ssr.js",
-      "_DialogService.js",
+      "_BaseInput.js",
       "_Engine.js",
-      "_userStore.js",
       "_yup.js",
+      "_userStore.js",
       "_Button.js",
       "_Spinner.js",
       "_A.js",
@@ -496,7 +498,7 @@
       "_P.js",
       "_MetaTag.js",
       "_Card.js",
-      "_DialogService.js",
+      "_BaseInput.js",
       "_userStore.js",
       "_client.js"
     ]
