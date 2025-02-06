@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
-import 'node-localstorage/register';
+// import 'node-localstorage/register';
 
 export default class Store {
 	public static createStore<Type>(key: string, defaultValue: Type) {
@@ -15,10 +15,16 @@ export default class Store {
 	}
 
 	private static storageGet(key: string): string | null {
+		if (typeof localStorage === 'undefined') {
+			return null;
+		}
 		return localStorage.getItem(key);
 	}
 
 	private static storageSet(key: string, value: string): void {
+		if (typeof localStorage === 'undefined') {
+			return;
+		}
 		localStorage.setItem(key, value);
 	}
 }

@@ -1,10 +1,10 @@
-import { c as create_ssr_component, a as add_attribute, d as compute_rest_props, j as createEventDispatcher, f as spread, i as escape_object, v as validate_component, e as escape, b as subscribe } from "../../../../chunks/ssr.js";
+import { c as create_ssr_component, a as add_attribute, d as compute_rest_props, l as createEventDispatcher, f as spread, g as escape_object, v as validate_component, e as escape, b as subscribe } from "../../../../chunks/ssr.js";
 import { M as MetaTag } from "../../../../chunks/MetaTag.js";
-import { B as BaseLayout, C as Card_1 } from "../../../../chunks/Card.js";
-import { B as BaseInput } from "../../../../chunks/DialogService.js";
+import { B as BaseLayout } from "../../../../chunks/BaseLayout.js";
+import { C as Card_1 } from "../../../../chunks/Card.js";
+import { L as Label, C as Card, B as BaseInput } from "../../../../chunks/DialogService.js";
 import "flatpickr";
 import { Portuguese } from "flatpickr/dist/l10n/pt.js";
-import { L as Label, C as Card } from "../../../../chunks/Label.js";
 import { B as Button } from "../../../../chunks/Button.js";
 import * as yup from "yup";
 import "dayjs";
@@ -66,9 +66,9 @@ const BaseGraph = create_ssr_component(($$result, $$props, $$bindings, slots) =>
     }
   })}`;
 });
-const path = "";
-const description = "Admin Dashboard - Home";
-const title = "Dashboard - Home";
+const path = "/home/dashboard";
+const description = "InnovaADS - Home";
+const title = "InnovaADS - Home";
 const subtitle = "Admin Dashboard";
 const Page = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let $$unsubscribe_userAuthStore;

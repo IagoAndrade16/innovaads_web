@@ -1,5 +1,4 @@
 import { w as writable } from "./index2.js";
-import "node-localstorage/register.js";
 class Store {
   static createStore(key, defaultValue) {
     const savedValue = Store.storageGet(key);
@@ -18,6 +17,7 @@ class Store {
 const userAuthStore = Store.createStore("userAuth", null);
 const userStore = Store.createStore("user", null);
 export {
+  Store as S,
   userAuthStore as a,
   userStore as u
 };

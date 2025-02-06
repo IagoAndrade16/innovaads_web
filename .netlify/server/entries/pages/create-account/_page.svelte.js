@@ -1,14 +1,124 @@
-import { c as create_ssr_component, a as add_attribute, v as validate_component, e as escape, b as subscribe } from "../../../chunks/ssr.js";
-import { E as ErrorText, D as DialogService, B as BaseInput } from "../../../chunks/DialogService.js";
+import { c as create_ssr_component, d as compute_rest_props, i as getContext, j as each, v as validate_component, e as escape, f as spread, h as escape_attribute_value, g as escape_object, a as add_attribute, k as compute_slots, b as subscribe } from "../../../chunks/ssr.js";
+import { L as Label, C as Card, E as ErrorText, D as DialogService, B as BaseInput } from "../../../chunks/DialogService.js";
 import { B as Button } from "../../../chunks/Button.js";
-import { C as Card } from "../../../chunks/Label.js";
-import { C as Checkbox } from "../../../chunks/Checkbox.js";
-import { A, S as Spinner, Y as YupValidation } from "../../../chunks/yup.js";
+import { twMerge } from "tailwind-merge";
+import { S as Spinner } from "../../../chunks/Spinner.js";
+import { A } from "../../../chunks/A.js";
 import { M as MetaTag } from "../../../chunks/MetaTag.js";
 import * as yup from "yup";
+import { Y as YupValidation } from "../../../chunks/yup.js";
 import { P as PhoneNumber } from "../../../chunks/PhoneNumber.js";
 import { E as Engine } from "../../../chunks/Engine.js";
 import { u as userStore } from "../../../chunks/userStore.js";
+import { N as Navbar_1 } from "../../../chunks/Navbar.js";
+const colorClasses = {
+  primary: "text-primary-600 focus:ring-primary-500 dark:focus:ring-primary-600",
+  secondary: "text-secondary-600 focus:ring-secondary-500 dark:focus:ring-secondary-600",
+  red: "text-red-600 focus:ring-red-500 dark:focus:ring-red-600",
+  green: "text-green-600 focus:ring-green-500 dark:focus:ring-green-600",
+  purple: "text-purple-600 focus:ring-purple-500 dark:focus:ring-purple-600",
+  teal: "text-teal-600 focus:ring-teal-500 dark:focus:ring-teal-600",
+  yellow: "text-yellow-400 focus:ring-yellow-500 dark:focus:ring-yellow-600",
+  orange: "text-orange-500 focus:ring-orange-500 dark:focus:ring-orange-600",
+  blue: "text-blue-600 focus:ring-blue-500 dark:focus:ring-blue-600"
+};
+const labelClass = (inline, extraClass) => twMerge(inline ? "inline-flex" : "flex", "items-center", extraClass);
+const inputClass = (custom, color, rounded, tinted, spacing, extraClass) => twMerge(
+  "w-4 h-4 bg-gray-100 border-gray-300 dark:ring-offset-gray-800 focus:ring-2",
+  spacing,
+  tinted ? "dark:bg-gray-600 dark:border-gray-500" : "dark:bg-gray-700 dark:border-gray-600",
+  custom && "sr-only peer",
+  "rounded",
+  colorClasses[color],
+  extraClass
+);
+const Checkbox = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+  let $$restProps = compute_rest_props($$props, [
+    "color",
+    "custom",
+    "inline",
+    "group",
+    "choices",
+    "value",
+    "checked",
+    "spacing",
+    "groupLabelClass",
+    "groupInputClass"
+  ]);
+  let $$slots = compute_slots(slots);
+  let { color = "primary" } = $$props;
+  let { custom = false } = $$props;
+  let { inline = false } = $$props;
+  let { group = [] } = $$props;
+  let { choices = [] } = $$props;
+  let { value = "on" } = $$props;
+  let { checked = void 0 } = $$props;
+  let { spacing = $$slots.default ? "me-2" : "" } = $$props;
+  let { groupLabelClass = "" } = $$props;
+  let { groupInputClass = "" } = $$props;
+  let background = getContext("background");
+  if ($$props.color === void 0 && $$bindings.color && color !== void 0) $$bindings.color(color);
+  if ($$props.custom === void 0 && $$bindings.custom && custom !== void 0) $$bindings.custom(custom);
+  if ($$props.inline === void 0 && $$bindings.inline && inline !== void 0) $$bindings.inline(inline);
+  if ($$props.group === void 0 && $$bindings.group && group !== void 0) $$bindings.group(group);
+  if ($$props.choices === void 0 && $$bindings.choices && choices !== void 0) $$bindings.choices(choices);
+  if ($$props.value === void 0 && $$bindings.value && value !== void 0) $$bindings.value(value);
+  if ($$props.checked === void 0 && $$bindings.checked && checked !== void 0) $$bindings.checked(checked);
+  if ($$props.spacing === void 0 && $$bindings.spacing && spacing !== void 0) $$bindings.spacing(spacing);
+  if ($$props.groupLabelClass === void 0 && $$bindings.groupLabelClass && groupLabelClass !== void 0) $$bindings.groupLabelClass(groupLabelClass);
+  if ($$props.groupInputClass === void 0 && $$bindings.groupInputClass && groupInputClass !== void 0) $$bindings.groupInputClass(groupInputClass);
+  return `${choices.length > 0 ? `${each(choices, ({ value: value2, label }, i) => {
+    return `${validate_component(Label, "Label").$$render(
+      $$result,
+      {
+        class: labelClass(inline, groupLabelClass),
+        show: $$slots.default,
+        for: `checkbox-${i}`
+      },
+      {},
+      {
+        default: () => {
+          return `${escape(label)} <input${spread(
+            [
+              {
+                id: escape_attribute_value(`checkbox-${i}`)
+              },
+              { type: "checkbox" },
+              { value: escape_attribute_value(value2) },
+              escape_object($$restProps),
+              {
+                class: escape_attribute_value(inputClass(custom, color, true, background, spacing, groupInputClass))
+              }
+            ],
+            {}
+          )}${~group.indexOf(value2) ? add_attribute("checked", true, 1) : ""}> ${slots.default ? slots.default({}) : ``} `;
+        }
+      }
+    )}`;
+  })}` : `${validate_component(Label, "Label").$$render(
+    $$result,
+    {
+      class: labelClass(inline, $$props.class),
+      show: $$slots.default
+    },
+    {},
+    {
+      default: () => {
+        return `<input${spread(
+          [
+            { type: "checkbox" },
+            { value: escape_attribute_value(value) },
+            escape_object($$restProps),
+            {
+              class: escape_attribute_value(inputClass(custom, color, true, background, spacing, $$slots.default || $$props.class))
+            }
+          ],
+          {}
+        )}${add_attribute("checked", checked, 1)}> ${slots.default ? slots.default({}) : ``}`;
+      }
+    }
+  )}`} `;
+});
 const SignUp = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let { title: title2 = "Criar conta grátis" } = $$props;
   let { site = {
@@ -198,7 +308,7 @@ const Page = create_ssr_component(($$result, $$props, $$bindings, slots) => {
       },
       {},
       {}
-    )} ${validate_component(SignUp, "SignUp").$$render(
+    )} ${validate_component(Navbar_1, "Navbar").$$render($$result, {}, {}, {})} ${validate_component(SignUp, "SignUp").$$render(
       $$result,
       {
         title,

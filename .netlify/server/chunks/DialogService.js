@@ -1,8 +1,7 @@
-import { c as create_ssr_component, d as compute_rest_props, v as validate_component, a as add_attribute, e as escape, f as spread, i as escape_object, j as createEventDispatcher, g as getContext, h as escape_attribute_value, k as compute_slots } from "./ssr.js";
-import { L as Label } from "./Label.js";
-import { v4 } from "uuid";
+import { c as create_ssr_component, d as compute_rest_props, v as validate_component, a as add_attribute, f as spread, g as escape_object, h as escape_attribute_value, e as escape, l as createEventDispatcher, i as getContext, k as compute_slots } from "./ssr.js";
 import { twMerge } from "tailwind-merge";
-import { T as ToolbarButton } from "./ToolbarButton.js";
+import { T as ToolbarButton, F as Frame } from "./NavHamburger.js";
+import { U as Utils } from "./Utils.js";
 import { i as is_void } from "./Button.js";
 import { E as Engine } from "./Engine.js";
 import Swal from "sweetalert2";
@@ -16,85 +15,87 @@ const CloseButton = create_ssr_component(($$result, $$props, $$bindings, slots) 
     }
   })} `;
 });
+const Card = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+  let $$restProps = compute_rest_props($$props, ["href", "horizontal", "reverse", "img", "padding", "size", "imgClass"]);
+  let { href = void 0 } = $$props;
+  let { horizontal = false } = $$props;
+  let { reverse = false } = $$props;
+  let { img = void 0 } = $$props;
+  let { padding = "lg" } = $$props;
+  let { size = "sm" } = $$props;
+  let { imgClass = "" } = $$props;
+  const paddings = {
+    none: "",
+    xs: "p-2",
+    sm: "p-4",
+    md: "p-4 sm:p-5",
+    lg: "p-4 sm:p-6",
+    xl: "p-4 sm:p-8"
+  };
+  const sizes = {
+    none: "",
+    xs: "max-w-xs",
+    sm: "max-w-sm",
+    md: "max-w-xl",
+    lg: "max-w-2xl",
+    xl: "max-w-screen-xl"
+  };
+  let innerPadding;
+  let cardClass;
+  let imgCls;
+  if ($$props.href === void 0 && $$bindings.href && href !== void 0) $$bindings.href(href);
+  if ($$props.horizontal === void 0 && $$bindings.horizontal && horizontal !== void 0) $$bindings.horizontal(horizontal);
+  if ($$props.reverse === void 0 && $$bindings.reverse && reverse !== void 0) $$bindings.reverse(reverse);
+  if ($$props.img === void 0 && $$bindings.img && img !== void 0) $$bindings.img(img);
+  if ($$props.padding === void 0 && $$bindings.padding && padding !== void 0) $$bindings.padding(padding);
+  if ($$props.size === void 0 && $$bindings.size && size !== void 0) $$bindings.size(size);
+  if ($$props.imgClass === void 0 && $$bindings.imgClass && imgClass !== void 0) $$bindings.imgClass(imgClass);
+  innerPadding = paddings[padding];
+  cardClass = twMerge("flex w-full", sizes[size], reverse ? "flex-col-reverse" : "flex-col", horizontal && (reverse ? "md:flex-row-reverse" : "md:flex-row"), href && "hover:bg-gray-100 dark:hover:bg-gray-700", !img && innerPadding, $$props.class);
+  imgCls = twMerge(reverse ? "rounded-b-lg" : "rounded-t-lg", horizontal && "object-cover w-full h-96 md:h-auto md:w-48 md:rounded-none", horizontal && (reverse ? "md:rounded-e-lg" : "md:rounded-s-lg"), imgClass);
+  return `${validate_component(Frame, "Frame").$$render($$result, Object.assign({}, { tag: href ? "a" : "div" }, { rounded: true }, { shadow: true }, { border: true }, { href }, $$restProps, { class: cardClass }), {}, {
+    default: () => {
+      return `${img ? `<img${add_attribute("class", imgCls, 0)}${add_attribute("src", img, 0)} alt=""> <div${add_attribute("class", innerPadding, 0)}>${slots.default ? slots.default({}) : ``}</div>` : `${slots.default ? slots.default({}) : ``}`}`;
+    }
+  })} `;
+});
+const Label = create_ssr_component(($$result, $$props, $$bindings, slots) => {
+  let labelClass2;
+  let $$restProps = compute_rest_props($$props, ["color", "defaultClass", "show"]);
+  let { color = "gray" } = $$props;
+  let { defaultClass = "text-sm rtl:text-right font-medium block" } = $$props;
+  let { show = true } = $$props;
+  let node;
+  const colorClasses = {
+    gray: "text-gray-900 dark:text-gray-300",
+    green: "text-green-700 dark:text-green-500",
+    red: "text-red-700 dark:text-red-500",
+    disabled: "text-gray-400 dark:text-gray-500 grayscale contrast-50"
+  };
+  if ($$props.color === void 0 && $$bindings.color && color !== void 0) $$bindings.color(color);
+  if ($$props.defaultClass === void 0 && $$bindings.defaultClass && defaultClass !== void 0) $$bindings.defaultClass(defaultClass);
+  if ($$props.show === void 0 && $$bindings.show && show !== void 0) $$bindings.show(show);
+  {
+    {
+      color = color;
+    }
+  }
+  labelClass2 = twMerge(defaultClass, colorClasses[color], $$props.class);
+  return `${show ? ` <label${spread(
+    [
+      escape_object($$restProps),
+      {
+        class: escape_attribute_value(labelClass2)
+      }
+    ],
+    {}
+  )}${add_attribute("this", node, 0)}>${slots.default ? slots.default({}) : ``}</label>` : `${slots.default ? slots.default({}) : ``}`} `;
+});
 const ErrorText = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let { error } = $$props;
   if ($$props.error === void 0 && $$bindings.error && error !== void 0) $$bindings.error(error);
   return `<span class="text-red-500 text-xs mb-5">${escape(error !== void 0 ? error : "")}</span>`;
 });
-class Utils {
-  static clean(value) {
-    if (typeof value !== "string") return value;
-    return value.replaceAll(" ", "").replaceAll("-", "").replaceAll(".", "").replaceAll("/", "").replaceAll("\\", "").replaceAll("(", "").replaceAll(")", "");
-  }
-  static applyMask(mask, value, maxLength) {
-    const maxLengthOfValue = maxLength ?? mask.length;
-    let valueIfOverflowMaskLength = null;
-    if (value.length > maxLengthOfValue) {
-      valueIfOverflowMaskLength = value.slice(0, -1);
-    }
-    const cleanedValue = Utils.clean(valueIfOverflowMaskLength ?? value);
-    const numChar = "0";
-    const alphaChar = "a";
-    const alphaNumChars = ["[a0]", "[0a]"];
-    const allChar = "*";
-    let res = "";
-    let charCounter = 0;
-    for (let i = 0; i < mask.length; i++) {
-      if (charCounter >= cleanedValue.length) break;
-      if (mask[i] === numChar) {
-        if (Utils.isNumeric(cleanedValue[charCounter])) res += cleanedValue[charCounter];
-        charCounter++;
-      } else if (mask[i] === alphaChar) {
-        if (Utils.isAlphabetic(cleanedValue[charCounter])) res += cleanedValue[charCounter];
-        charCounter++;
-      } else if (mask[i] === "[") {
-        const endingIndex = mask.indexOf("]", i);
-        const multiChar = mask.substring(i, endingIndex + 1);
-        if (alphaNumChars.includes(multiChar)) {
-          if (Utils.isAlphaNumeric(cleanedValue[charCounter])) res += cleanedValue[charCounter];
-          charCounter++;
-          i += multiChar.length - 1;
-        }
-      } else if (mask[i] === allChar) {
-        res += cleanedValue[charCounter];
-        charCounter++;
-      } else {
-        res += mask[i];
-      }
-    }
-    return res;
-  }
-  static isNumeric(str) {
-    return /^\d+$/.test(str);
-  }
-  static isInt(value) {
-    return !Number.isNaN(value) && function(x) {
-      return (x | 0) === x;
-    }(parseFloat(value));
-  }
-  static isAlphabetic(str) {
-    return str.match("^[a-zA-Z]+$");
-  }
-  static isAlphaNumeric(str) {
-    const alphanumeric = /^[\p{L}\p{N}]*$/u;
-    return str.match(alphanumeric);
-  }
-  static genUuid(short = false) {
-    const uuid = v4();
-    return short ? uuid.substring(0, 12) : uuid;
-  }
-  static buildQueryParams(params) {
-    if (!params || Object.keys(params).length === 0) return "";
-    const objectFiltered = Object.keys(params).reduce((acc, key) => {
-      if (!params[key]) return acc;
-      return { ...acc, [key]: params[key] };
-    }, {});
-    return Object.keys(objectFiltered).map((key) => `${key}=${params[key]}`).join("&");
-  }
-  static sleep(ms) {
-    return new Promise((resolve) => setTimeout(resolve, ms ?? 1e3));
-  }
-}
 const Wrapper = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let $$restProps = compute_rest_props($$props, ["tag", "show", "use"]);
   let { tag = "div" } = $$props;
@@ -240,9 +241,11 @@ const BaseInput = create_ssr_component(($$result, $$props, $$bindings, slots) =>
   let { additionalLabelClasses = "" } = $$props;
   let { mask = null } = $$props;
   let { maxLength = null } = $$props;
+  let { maxLengthInput = null } = $$props;
   let { pattern = null } = $$props;
   let { onInput = null } = $$props;
   let { resetErrorOnInput = true } = $$props;
+  let { addiotionalInputClasses = "" } = $$props;
   let inputEl;
   const maskInput = () => {
     if (mask) value = Utils.applyMask(mask, value, maxLength ?? void 0);
@@ -258,9 +261,11 @@ const BaseInput = create_ssr_component(($$result, $$props, $$bindings, slots) =>
   if ($$props.additionalLabelClasses === void 0 && $$bindings.additionalLabelClasses && additionalLabelClasses !== void 0) $$bindings.additionalLabelClasses(additionalLabelClasses);
   if ($$props.mask === void 0 && $$bindings.mask && mask !== void 0) $$bindings.mask(mask);
   if ($$props.maxLength === void 0 && $$bindings.maxLength && maxLength !== void 0) $$bindings.maxLength(maxLength);
+  if ($$props.maxLengthInput === void 0 && $$bindings.maxLengthInput && maxLengthInput !== void 0) $$bindings.maxLengthInput(maxLengthInput);
   if ($$props.pattern === void 0 && $$bindings.pattern && pattern !== void 0) $$bindings.pattern(pattern);
   if ($$props.onInput === void 0 && $$bindings.onInput && onInput !== void 0) $$bindings.onInput(onInput);
   if ($$props.resetErrorOnInput === void 0 && $$bindings.resetErrorOnInput && resetErrorOnInput !== void 0) $$bindings.resetErrorOnInput(resetErrorOnInput);
+  if ($$props.addiotionalInputClasses === void 0 && $$bindings.addiotionalInputClasses && addiotionalInputClasses !== void 0) $$bindings.addiotionalInputClasses(addiotionalInputClasses);
   let $$settled;
   let $$rendered;
   let previous_head = $$result.head;
@@ -281,7 +286,8 @@ const BaseInput = create_ssr_component(($$result, $$props, $$bindings, slots) =>
               type: inputType,
               name: name + "}",
               placeholder,
-              class: "border outline-none dark:border-gray-600 dark:bg-gray-700",
+              class: "border outline-none dark:border-gray-600 dark:bg-gray-700 " + addiotionalInputClasses,
+              maxlength: maxLengthInput,
               value,
               inputEl,
               required
@@ -314,32 +320,32 @@ class DialogService {
     background: Engine.getTheme() === "dark" ? "#333" : "#fff",
     confirmButtonColor: "#EF562F"
   };
-  static success(options) {
-    Swal.fire({
+  static async success(options) {
+    await Swal.fire({
       ...DialogService.setupOptions,
       icon: "success",
       title: options.title,
       text: options.message
     });
   }
-  static error(options) {
-    Swal.fire({
+  static async error(options) {
+    await Swal.fire({
       ...DialogService.setupOptions,
       icon: "error",
       title: options.title,
       text: options.message
     });
   }
-  static info(options) {
-    Swal.fire({
+  static async info(options) {
+    await Swal.fire({
       ...DialogService.setupOptions,
       icon: "info",
       title: options.title,
       text: options.message
     });
   }
-  static show(options) {
-    Swal.fire({
+  static async show(options) {
+    await Swal.fire({
       ...DialogService.setupOptions,
       ...options
     });
@@ -347,8 +353,9 @@ class DialogService {
 }
 export {
   BaseInput as B,
-  CloseButton as C,
+  Card as C,
   DialogService as D,
   ErrorText as E,
-  Utils as U
+  Label as L,
+  CloseButton as a
 };

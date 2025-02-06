@@ -2,7 +2,7 @@
 
 export const index = 8;
 let component_cache;
-export const component = async () => component_cache ??= (await import('../entries/pages/home/pricing/_page.svelte.js')).default;
-export const imports = ["_app/immutable/nodes/8.Cvr9hpLs.js","_app/immutable/chunks/scheduler.CGVC39A1.js","_app/immutable/chunks/index.DsmF_11R.js","_app/immutable/chunks/Button.DjudZ92m.js","_app/immutable/chunks/NavHamburger.Bgz-0BCa.js","_app/immutable/chunks/ToolbarButton.Ky-cLSdT.js","_app/immutable/chunks/index.Byz7f60Q.js","_app/immutable/chunks/Checkbox.BWnWKq8Z.js","_app/immutable/chunks/MetaTag.DJizPY8O.js","_app/immutable/chunks/Label.B2BKZxz1.js","_app/immutable/chunks/NavUl.teRUL8oF.js","_app/immutable/chunks/ArrowLeftToBracketOutline.L37CSdoH.js","_app/immutable/chunks/Heading.DSLzwJqP.js","_app/immutable/chunks/FooterLinkGroup.CkrK_AwE.js"];
-export const stylesheets = [];
+export const component = async () => component_cache ??= (await import('../entries/pages/home/dashboard/_page.svelte.js')).default;
+export const imports = ["_app/immutable/nodes/8.CNjPuIHg.js","_app/immutable/chunks/scheduler.C0Ee3jA1.js","_app/immutable/chunks/index.CYij0xZA.js","_app/immutable/chunks/MetaTag.CpMAbvsH.js","_app/immutable/chunks/each.BXUstclq.js","_app/immutable/chunks/Button.BcDhWJu1.js","_app/immutable/chunks/BaseLayout.q4jLvBDG.js","_app/immutable/chunks/Navbar.DlLEfJs-.js","_app/immutable/chunks/NavHamburger.C7YV0hXo.js","_app/immutable/chunks/entry.D4e0zSiM.js","_app/immutable/chunks/control.CYgJF_JY.js","_app/immutable/chunks/Engine.BD87elAy.js","_app/immutable/chunks/stores.45K6K2zg.js","_app/immutable/chunks/Footer.yHFl0r_p.js","_app/immutable/chunks/index.LvG6XWK3.js","_app/immutable/chunks/yup.rYw3uumX.js","_app/immutable/chunks/ApiService.DgHcngq9.js","_app/immutable/chunks/Card.BjzKx0Mn.js","_app/immutable/chunks/Heading.BIcQzNFT.js","_app/immutable/chunks/dayjs.min.DehrOgoZ.js","_app/immutable/chunks/preload-helper.C1FmrZbK.js"];
+export const stylesheets = ["_app/immutable/assets/8.BsM4JrO0.css","_app/immutable/assets/app.BnJcPPDY.css"];
 export const fonts = [];

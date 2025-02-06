@@ -1,4 +1,5 @@
 import { c as create_ssr_component, a as add_attribute, e as escape, v as validate_component, b as subscribe, m as missing_component } from "../../chunks/ssr.js";
+/* empty css               */
 import { p as page } from "../../chunks/stores.js";
 import { B as Button } from "../../chunks/Button.js";
 import { P } from "../../chunks/P.js";

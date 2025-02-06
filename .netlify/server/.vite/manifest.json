@@ -8,11 +8,37 @@
       "_internal.js"
     ]
   },
-  "_ArrowLeftToBracketOutline.js": {
-    "file": "chunks/ArrowLeftToBracketOutline.js",
-    "name": "ArrowLeftToBracketOutline",
+  "_A.js": {
+    "file": "chunks/A.js",
+    "name": "A",
     "imports": [
       "_ssr.js"
+    ]
+  },
+  "_BaseFormLayout.js": {
+    "file": "chunks/BaseFormLayout.js",
+    "name": "BaseFormLayout",
+    "imports": [
+      "_ssr.js"
+    ]
+  },
+  "_BaseLayout.js": {
+    "file": "chunks/BaseLayout.js",
+    "name": "BaseLayout",
+    "imports": [
+      "_ssr.js",
+      "_Navbar2.js",
+      "_client.js",
+      "_stores.js",
+      "_index2.js",
+      "_userStore.js",
+      "_Footer.js",
+      "_NavHamburger.js",
+      "_DialogService.js",
+      "_Button.js"
+    ],
+    "css": [
+      "_app/immutable/assets/app.Bk7qx7dh.css"
     ]
   },
   "_Button.js": {
@@ -27,24 +53,8 @@
     "name": "Card",
     "imports": [
       "_ssr.js",
-      "_stores.js",
-      "_NavHamburger.js",
-      "_client.js",
-      "_userStore.js",
-      "_Button.js",
-      "_ToolbarButton.js",
-      "_index2.js",
       "_DialogService.js",
-      "_Label.js",
       "_Heading.js"
-    ]
-  },
-  "_Checkbox.js": {
-    "file": "chunks/Checkbox.js",
-    "name": "Checkbox",
-    "imports": [
-      "_ssr.js",
-      "_Label.js"
     ]
   },
   "_DialogService.js": {
@@ -52,8 +62,8 @@
     "name": "DialogService",
     "imports": [
       "_ssr.js",
-      "_Label.js",
-      "_ToolbarButton.js",
+      "_NavHamburger.js",
+      "_Utils.js",
       "_Button.js",
       "_Engine.js"
     ]
@@ -66,11 +76,12 @@
       "_userStore.js"
     ]
   },
-  "_FooterLinkGroup.js": {
-    "file": "chunks/FooterLinkGroup.js",
-    "name": "FooterLinkGroup",
+  "_Footer.js": {
+    "file": "chunks/Footer.js",
+    "name": "Footer",
     "imports": [
-      "_ssr.js"
+      "_ssr.js",
+      "_NavHamburger.js"
     ]
   },
   "_Heading.js": {
@@ -81,12 +92,17 @@
       "_Button.js"
     ]
   },
-  "_Label.js": {
-    "file": "chunks/Label.js",
-    "name": "Label",
+  "_ListPackages.js": {
+    "file": "chunks/ListPackages.js",
+    "name": "ListPackages",
     "imports": [
       "_ssr.js",
-      "_ToolbarButton.js"
+      "_client.js",
+      "_userStore.js",
+      "_Utils.js",
+      "_choosedPackage.js",
+      "_Button.js",
+      "_Spinner.js"
     ]
   },
   "_MetaTag.js": {
@@ -101,18 +117,8 @@
     "name": "NavHamburger",
     "imports": [
       "_ssr.js",
-      "_ToolbarButton.js",
-      "_index2.js"
-    ]
-  },
-  "_NavUl.js": {
-    "file": "chunks/NavUl.js",
-    "name": "NavUl",
-    "imports": [
-      "_ssr.js",
       "_Button.js",
-      "_index2.js",
-      "_ToolbarButton.js"
+      "_index2.js"
     ]
   },
   "_Navbar.js": {
@@ -124,8 +130,22 @@
       "_userStore.js",
       "_Button.js",
       "_NavHamburger.js",
-      "_NavUl.js",
-      "_ArrowLeftToBracketOutline.js"
+      "_index2.js"
+    ]
+  },
+  "_Navbar2.js": {
+    "file": "chunks/Navbar2.js",
+    "name": "Navbar",
+    "imports": [
+      "_ssr.js",
+      "_NavHamburger.js",
+      "_client.js",
+      "_userStore.js",
+      "_Button.js",
+      "_index2.js"
+    ],
+    "css": [
+      "_app/immutable/assets/app.Bk7qx7dh.css"
     ]
   },
   "_P.js": {
@@ -139,15 +159,29 @@
     "file": "chunks/PhoneNumber.js",
     "name": "PhoneNumber",
     "imports": [
-      "_DialogService.js"
+      "_Utils.js"
     ]
   },
-  "_ToolbarButton.js": {
-    "file": "chunks/ToolbarButton.js",
-    "name": "ToolbarButton",
+  "_Spinner.js": {
+    "file": "chunks/Spinner.js",
+    "name": "Spinner",
     "imports": [
-      "_ssr.js",
-      "_Button.js"
+      "_ssr.js"
+    ]
+  },
+  "_Utils.js": {
+    "file": "chunks/Utils.js",
+    "name": "Utils"
+  },
+  "_app.js": {
+    "file": "_app/immutable/assets/app.Bk7qx7dh.css",
+    "src": "_app.js"
+  },
+  "_choosedPackage.js": {
+    "file": "chunks/choosedPackage.js",
+    "name": "choosedPackage",
+    "imports": [
+      "_userStore.js"
     ]
   },
   "_client.js": {
@@ -195,10 +229,11 @@
     "imports": [
       "_ssr.js",
       "_client.js"
-    ],
-    "css": [
-      "_app/immutable/assets/stores.CaxLXHWF.css"
     ]
+  },
+  "_toastify.js": {
+    "file": "_app/immutable/assets/toastify.Dbbx3F5k.css",
+    "src": "_toastify.js"
   },
   "_userStore.js": {
     "file": "chunks/userStore.js",
@@ -209,10 +244,7 @@
   },
   "_yup.js": {
     "file": "chunks/yup.js",
-    "name": "yup",
-    "imports": [
-      "_ssr.js"
-    ]
+    "name": "yup"
   },
   "node_modules/@sveltejs/kit/src/runtime/server/index.js": {
     "file": "index.js",
@@ -237,6 +269,9 @@
       "_Button.js",
       "_P.js",
       "_MetaTag.js"
+    ],
+    "css": [
+      "_app/immutable/assets/app.Bk7qx7dh.css"
     ]
   },
   "src/routes/+layout.svelte": {
@@ -245,8 +280,7 @@
     "src": "src/routes/+layout.svelte",
     "isEntry": true,
     "imports": [
-      "_ssr.js",
-      "_Navbar.js"
+      "_ssr.js"
     ]
   },
   "src/routes/+page.svelte": {
@@ -256,13 +290,13 @@
     "isEntry": true,
     "imports": [
       "_ssr.js",
+      "_Navbar.js",
       "_Heading.js",
       "_P.js",
       "_client.js",
       "_userStore.js",
       "_Button.js",
-      "_ArrowLeftToBracketOutline.js",
-      "_FooterLinkGroup.js"
+      "_ListPackages.js"
     ]
   },
   "src/routes/create-account/+page.svelte": {
@@ -274,13 +308,14 @@
       "_ssr.js",
       "_DialogService.js",
       "_Button.js",
-      "_Label.js",
-      "_Checkbox.js",
-      "_yup.js",
+      "_Spinner.js",
+      "_A.js",
       "_MetaTag.js",
+      "_yup.js",
       "_PhoneNumber.js",
       "_Engine.js",
-      "_userStore.js"
+      "_userStore.js",
+      "_Navbar.js"
     ]
   },
   "src/routes/errors/[code]/+page.ts": {
@@ -290,6 +325,27 @@
     "isEntry": true,
     "imports": [
       "_index.js"
+    ]
+  },
+  "src/routes/forgot-password/+page.svelte": {
+    "file": "entries/pages/forgot-password/_page.svelte.js",
+    "name": "entries/pages/forgot-password/_page.svelte",
+    "src": "src/routes/forgot-password/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js",
+      "_BaseFormLayout.js",
+      "_Button.js",
+      "_P.js",
+      "_Card.js",
+      "_DialogService.js",
+      "_Navbar.js",
+      "_client.js",
+      "_userStore.js",
+      "_MetaTag.js"
+    ],
+    "css": [
+      "_app/immutable/assets/toastify.Dbbx3F5k.css"
     ]
   },
   "src/routes/home/+layout.svelte": {
@@ -311,15 +367,41 @@
     "imports": [
       "_ssr.js",
       "_MetaTag.js",
+      "_BaseLayout.js",
       "_Card.js",
       "_DialogService.js",
-      "_Label.js",
       "_Button.js",
       "_userStore.js",
       "_client.js"
     ],
     "css": [
       "_app/immutable/assets/_page.BsM4JrO0.css"
+    ]
+  },
+  "src/routes/home/payment/+page.svelte": {
+    "file": "entries/pages/home/payment/_page.svelte.js",
+    "name": "entries/pages/home/payment/_page.svelte",
+    "src": "src/routes/home/payment/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js",
+      "_BaseFormLayout.js",
+      "_Card.js",
+      "_DialogService.js",
+      "_Utils.js",
+      "_choosedPackage.js",
+      "_Button.js",
+      "_Spinner.js",
+      "_P.js",
+      "_index2.js",
+      "_Navbar.js",
+      "_yup.js",
+      "_MetaTag.js",
+      "_Engine.js",
+      "_userStore.js"
+    ],
+    "css": [
+      "_app/immutable/assets/_page.DPAxQkTm.css"
     ]
   },
   "src/routes/home/pricing/+page.svelte": {
@@ -329,16 +411,10 @@
     "isEntry": true,
     "imports": [
       "_ssr.js",
-      "_Button.js",
-      "_NavHamburger.js",
-      "_Checkbox.js",
-      "_NavUl.js",
-      "_ArrowLeftToBracketOutline.js",
+      "_Navbar.js",
       "_MetaTag.js",
-      "_Label.js",
-      "_index2.js",
-      "_Heading.js",
-      "_FooterLinkGroup.js"
+      "_Footer.js",
+      "_ListPackages.js"
     ]
   },
   "src/routes/home/profile/+page.svelte": {
@@ -348,15 +424,19 @@
     "isEntry": true,
     "imports": [
       "_ssr.js",
-      "_Card.js",
+      "_BaseLayout.js",
+      "_index2.js",
       "_MetaTag.js",
       "_DialogService.js",
       "_userStore.js",
       "_Button.js",
-      "_PhoneNumber.js"
+      "_Card.js",
+      "_PhoneNumber.js",
+      "_Spinner.js",
+      "_client.js"
     ],
     "css": [
-      "_app/immutable/assets/_page.Dbbx3F5k.css"
+      "_app/immutable/assets/toastify.Dbbx3F5k.css"
     ]
   },
   "src/routes/login/+page.svelte": {
@@ -371,8 +451,10 @@
       "_userStore.js",
       "_yup.js",
       "_Button.js",
-      "_Label.js",
-      "_MetaTag.js"
+      "_Spinner.js",
+      "_A.js",
+      "_MetaTag.js",
+      "_Navbar.js"
     ]
   },
   "src/routes/privacy-policy/+layout.svelte": {
@@ -399,5 +481,24 @@
     "name": "entries/endpoints/sitemap.xml/_server.ts",
     "src": "src/routes/sitemap.xml/+server.ts",
     "isEntry": true
+  },
+  "src/routes/verify-2fa/+page.svelte": {
+    "file": "entries/pages/verify-2fa/_page.svelte.js",
+    "name": "entries/pages/verify-2fa/_page.svelte",
+    "src": "src/routes/verify-2fa/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js",
+      "_BaseFormLayout.js",
+      "_Navbar2.js",
+      "_Button.js",
+      "_A.js",
+      "_P.js",
+      "_MetaTag.js",
+      "_Card.js",
+      "_DialogService.js",
+      "_userStore.js",
+      "_client.js"
+    ]
   }
 }

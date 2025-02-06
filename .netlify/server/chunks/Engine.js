@@ -7,6 +7,9 @@ class Engine {
   static async assert(props, redirect = "/") {
     return;
   }
+  static async back() {
+    return;
+  }
   static async navigateTo(page, replaceState) {
     return;
   }

@@ -1,12 +1,14 @@
-import { c as create_ssr_component, a as add_attribute, v as validate_component, e as escape, b as subscribe, o as set_store_value } from "../../../chunks/ssr.js";
-import { D as DialogService, B as BaseInput } from "../../../chunks/DialogService.js";
+import { c as create_ssr_component, a as add_attribute, v as validate_component, e as escape, b as subscribe, q as set_store_value } from "../../../chunks/ssr.js";
+import { C as Card, D as DialogService, B as BaseInput } from "../../../chunks/DialogService.js";
 import { E as Engine } from "../../../chunks/Engine.js";
 import { u as userStore, a as userAuthStore } from "../../../chunks/userStore.js";
-import { A, S as Spinner, Y as YupValidation } from "../../../chunks/yup.js";
+import { Y as YupValidation } from "../../../chunks/yup.js";
 import * as yup from "yup";
 import { B as Button } from "../../../chunks/Button.js";
-import { C as Card } from "../../../chunks/Label.js";
+import { S as Spinner } from "../../../chunks/Spinner.js";
+import { A } from "../../../chunks/A.js";
 import { M as MetaTag } from "../../../chunks/MetaTag.js";
+import { N as Navbar_1 } from "../../../chunks/Navbar.js";
 const SignIn = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let { title: title2 = "Faça login na plataforma" } = $$props;
   let { site = {
@@ -18,7 +20,7 @@ const SignIn = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let { isSubmitting = false } = $$props;
   let { lostPassword: lostPassword2 = true } = $$props;
   let { createAccount: createAccount2 = true } = $$props;
-  let { lostPasswordLink: lostPasswordLink2 = "" } = $$props;
+  let { lostPasswordLink: lostPasswordLink2 = "/forgot-password" } = $$props;
   let { loginTitle: loginTitle2 = "Entrar na sua conta" } = $$props;
   let { registerLink: registerLink2 = "" } = $$props;
   let { createAccountTitle: createAccountTitle2 = "Criar conta" } = $$props;
@@ -147,7 +149,8 @@ const Page = create_ssr_component(($$result, $$props, $$bindings, slots) => {
             phone: res.data?.phone,
             isOnTrial: res.data?.isOnTrial,
             daysRemainingForTrial: res.data?.daysRemainingForTrial,
-            packageId: res.data?.packageId
+            packageId: res.data?.packageId,
+            verified2fa: res.data?.verified2fa
           },
           $userStore
         );
@@ -173,7 +176,7 @@ const Page = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   do {
     $$settled = true;
     $$result.head = previous_head;
-    $$rendered = `${validate_component(MetaTag, "MetaTag").$$render($$result, { path, title: metaTitle, subtitle }, {}, {})} ${validate_component(SignIn, "SignIn").$$render(
+    $$rendered = `${validate_component(MetaTag, "MetaTag").$$render($$result, { path, title: metaTitle, subtitle }, {}, {})} ${validate_component(Navbar_1, "Navbar").$$render($$result, {}, {}, {})} ${validate_component(SignIn, "SignIn").$$render(
       $$result,
       {
         handleFormSubmit,

@@ -1,4 +1,5 @@
 import { ApiService } from "./ApiService";
+import type { GetSubscriptionSummaryRequest, GetSubscriptionSummaryResponse } from "./types/GetSubscriptionSummary";
 import type { CreateSubscritionRequest, CreateSubscritionResponse } from "./types/SubscriptionsServiceCreate";
 
 export class SubscriptionsService extends ApiService {
@@ -32,6 +33,38 @@ export class SubscriptionsService extends ApiService {
 
     return {
       status: 'UNKNOWN',
+    }
+  }
+
+  public async getSummary(input: GetSubscriptionSummaryRequest): Promise<GetSubscriptionSummaryResponse> {
+    const response = await this.get('/packages/subscriptions', {
+      token: input.bearerToken,
+    });
+
+    if(response.statusCode === 200) {
+      return {
+        status: 'SUCCESS',
+        data: response.data,
+      }
+    }
+
+    if(response.statusCode === 404 || response.statusCode === 400) {
+      return {
+        status: response.data.reason,
+        data: null,
+      }
+    }
+
+    if(response.statusCode === 401) {
+      return {
+        status: 'UNAUTHORIZED',
+        data: null,
+      }
+    }
+
+    return {
+      status: 'UNKNOWN',
+      data: null,
     }
   }
 }

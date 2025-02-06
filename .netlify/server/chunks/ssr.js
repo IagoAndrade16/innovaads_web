@@ -1,6 +1,13 @@
 function noop() {
 }
 const identity = (x) => x;
+function assign(tar, src) {
+  for (const k in src) tar[k] = src[k];
+  return (
+    /** @type {T & S} */
+    tar
+  );
+}
 function run(fn) {
   return fn();
 }
@@ -258,6 +265,10 @@ function add_attribute(name, value, boolean) {
 function style_object_to_string(style_object) {
   return Object.keys(style_object).filter((key) => style_object[key] != null && style_object[key] !== "").map((key) => `${key}: ${escape_attribute_value(style_object[key])};`).join(" ");
 }
+function add_styles(style_object) {
+  const styles = style_object_to_string(style_object);
+  return styles ? ` style="${styles}"` : "";
+}
 export {
   add_attribute as a,
   subscribe as b,
@@ -265,17 +276,20 @@ export {
   compute_rest_props as d,
   escape as e,
   spread as f,
-  getContext as g,
+  escape_object as g,
   escape_attribute_value as h,
-  escape_object as i,
-  createEventDispatcher as j,
+  getContext as i,
+  each as j,
   compute_slots as k,
-  each as l,
+  createEventDispatcher as l,
   missing_component as m,
-  identity as n,
-  set_store_value as o,
-  noop as p,
-  safe_not_equal as q,
+  noop as n,
+  assign as o,
+  identity as p,
+  set_store_value as q,
+  add_styles as r,
   setContext as s,
+  merge_ssr_styles as t,
+  safe_not_equal as u,
   validate_component as v
 };

@@ -19,7 +19,6 @@
 	import { SubscriptionsService } from "$lib/services/SubscriptionsService";
 	import { userAuthStore } from "$lib/stores/userAuthStore";
 	import { DialogService } from "$lib/services/DialogService";
-	import { load } from "../../errors/[code]/proxy+page";
 
   const path: string = '/home/payment';
   const description: string = 'InnovaADS - Pagamento';
