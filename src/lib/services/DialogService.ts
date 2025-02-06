@@ -56,4 +56,16 @@ export class DialogService {
       ...options,
     })
   }
+
+  static async confirm(options: SweetAlertOptions): Promise<boolean> {
+    const { isConfirmed } = await Swal.fire({
+      ...DialogService.setupOptions,
+      showCancelButton: true,
+      cancelButtonText: 'Não, voltar',
+      confirmButtonText: 'Sim, continuar',
+      ...options,
+    })
+
+    return isConfirmed
+  }
 }
