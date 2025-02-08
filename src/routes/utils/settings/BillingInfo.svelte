@@ -5,9 +5,12 @@
 	import type { GetSubscriptionSummaryResponseData } from "$lib/services/types/GetSubscriptionSummary";
 	import { userAuthStore } from "$lib/stores/userAuthStore";
 	import Engine from "$lib/core/Engine";
-	import { Button, Heading, P, Spinner } from "flowbite-svelte";
+	import { Button, Heading, Hr, P, Spinner } from "flowbite-svelte";
 	import PackageCard from "$lib/components/PackageCard.svelte";
 	import { DialogService } from "$lib/services/DialogService";
+	import { userStore } from "$lib/stores/userStore";
+	import moment from "moment";
+	import { MomentUtils } from "$lib/core/MomentUtils";
   
   let subscriptionsService: SubscriptionsService;
   let userBillingSummary: GetSubscriptionSummaryResponseData | null;
@@ -67,6 +70,10 @@
           title: 'Sucesso!',
         })
         userBillingSummary!.subscription!.status = 'canceled';
+        $userStore!.subscriptionStatus = 'canceled';
+        console.log(userBillingSummary?.subscription?.nextBillingAt);
+        $userStore!.canUsePlatformUntil = MomentUtils.toDate(userBillingSummary?.subscription?.nextBillingAt);
+
         break;
       case "UNAUTHORIZED":
         Engine.logout('/login');
@@ -96,9 +103,21 @@
   <div class="grid grid-cols-12 gap-4">
     {#if hasPlan}
       <Card title="Informações do plano atual" class="-mt-px max-w-none col-span-12 lg:col-span-6 xl:col-span-4">
-        <div class="my-5">
+        <div>
+          <Hr />
+          <P class="flex items-center space-x-2">
+            <img 
+              src="/svg/mastercard-logo.svg" 
+              alt="Mastercard logo"
+              class="w-12 h-12"
+            >
+            Cartão de crédito: {userBillingSummary?.subscription?.card?.brand} terminado em {userBillingSummary?.subscription?.card.lastFourDigits}
+          </P>
           <P>Data da próxima cobrança: {userBillingSummary?.subscription?.nextBillingAt}</P>
+
+          <Hr />
         </div>
+
         <PackageCard 
           packageData={{
             name: userBillingSummary?.package?.name ?? '',

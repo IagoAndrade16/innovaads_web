@@ -1,5 +1,6 @@
 <script lang="ts">
 	import Engine from "$lib/core/Engine";
+	import { MomentUtils } from "$lib/core/MomentUtils";
 	import { userStore } from "$lib/stores/userStore";
 
 
@@ -15,7 +16,7 @@
     </Alert>
   </div>
 {:else}
-  {#if !$userStore?.packageId}
+  {#if !$userStore?.subscriptionStatus}
     <div class="col-span-full">
       <Alert class="text-red-500 mx-5 lg:flex justify-between">
         <div class="flex mt-3">
@@ -30,6 +31,28 @@
             class="w-full md:w-1/2 lg:w-auto mt-4 lg:mt-0"
           >
             Continuar usando a plataforma
+          </Button>
+        </center>
+
+        </Alert>
+    </div>
+  {/if}
+
+  {#if $userStore?.subscriptionStatus === 'canceled'}
+    <div class="col-span-full">
+      <Alert class="text-red-500 mx-5 lg:flex justify-between">
+        <div class="flex mt-3">
+          <InfoCircleSolid slot="icon" class="w-5 h-5" /> &nbsp
+          Atenção! Sua assinatura foi cancelada. A partir do dia {MomentUtils.formattedDate($userStore.canUsePlatformUntil, 'DD/MM/YYYY')}, você não terá mais acesso à plataforma.
+        </div>
+
+        <center>
+          <Button 
+            on:click={() => Engine.navigateTo('/home/pricing')}
+            size="md"
+            class="w-full md:w-1/2 lg:w-auto mt-4 lg:mt-0"
+          >
+            Renovar minha assinatura
           </Button>
         </center>
 

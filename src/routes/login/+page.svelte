@@ -12,6 +12,7 @@
 	import SignIn from '../utils/authentication/SignIn.svelte';
 	import MetaTag from '../utils/MetaTag.svelte';
 	import Navbar from '$lib/components/landing/Navbar.svelte';
+	import type { UserSubscriptionStatus } from '$lib/stores/interfaces/IUser';
 
 	let title = 'Entrar na plataforma';
 	let site = {
@@ -77,6 +78,8 @@
 					daysRemainingForTrial: res.data?.daysRemainingForTrial!,
 					packageId: res.data?.packageId!,
 					verified2fa: res.data?.verified2fa!,
+					subscriptionStatus: res.data?.subscriptionStatus! as UserSubscriptionStatus,
+					canUsePlatformUntil: res.data?.canUsePlatformUntil!,
         }
         Engine.navigateTo('/home/dashboard');
         break;

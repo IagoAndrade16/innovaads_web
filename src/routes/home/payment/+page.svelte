@@ -132,6 +132,7 @@
           ...$userStore!,
           packageId: $choosedPackageStore?.id!,
           isOnTrial: false,
+          subscriptionStatus: 'active',
         }
         $choosedPackageStore = null;
         await DialogService.success({

@@ -11,12 +11,15 @@
 	import { TrendsService } from '$lib/services/TrendsService';
 	import { onMount } from 'svelte';
 	import { userAuthStore } from '$lib/stores/userAuthStore';
+	import { userStore } from '$lib/stores/userStore';
 	import { DialogService } from '$lib/services/DialogService';
 	import Engine from '$lib/core/Engine';
 	import BaseGraph from '$lib/components/BaseGraph.svelte';
 	import type { SearchInterestApiResponse } from '$lib/services/types/TrendsServiceSearchInterestByKeyword';
 	import type { ApexOptions } from 'apexcharts';
 	import type { BreadcrumbItemType } from '$lib/components/types/breadcrumb';
+
+  Engine.assert([Engine.canUsePlatform($userStore)], '/home/profile');
 
   let errors: JsObject | null = null;
   let trendsService: TrendsService;

@@ -61,6 +61,7 @@ export class DialogService {
     const { isConfirmed } = await Swal.fire({
       ...DialogService.setupOptions,
       showCancelButton: true,
+      icon: 'question',
       cancelButtonText: 'Não, voltar',
       confirmButtonText: 'Sim, continuar',
       ...options,
