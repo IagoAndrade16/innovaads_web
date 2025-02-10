@@ -2,9 +2,9 @@
 	import { Accordion, AccordionItem, P } from "flowbite-svelte";
 </script>
 
-<div id="faq" class="mb-20 mt-10">
+<div class="mb-20 mt-20">
   <Section name="faq">
-    <h2 class="mb-8 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white text-center">Perguntas frequentes</h2>
+    <h2 id="faq" class="mb-8 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white text-center">Perguntas frequentes</h2>
     <Accordion>
       <AccordionItem>
         <span slot="header">O que exatamente a plataforma faz?</span>

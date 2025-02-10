@@ -5,11 +5,11 @@ import CtaButton from "./CtaButton.svelte";
 <div class="grid grid-cols-2 gap-4 my-48" id="about">
   <div class="flex flex-col col-span-full lg:col-span-1 justify-center">
     <Heading tag="h1" class="mb-4" customSize="text-2xl font-bold text-start">
-      Alinhe isso com uma análise de criativos performantes no Facebook ADS de acordo com o seu público.
+      Descubra os anúncios que realmente performam
     </Heading>
 
     <P class=" dark:text-gray-400">
-      Descubra o perfil do seu público-alvo e direcione suas campanhas de marketing para as pessoas certas.
+      Saiba quais palavras-chave geram mais cliques e conversões e otimize suas campanhas de acordo com esses dados
     </P>
 
     <div class="mt-6">
@@ -30,11 +30,11 @@ import CtaButton from "./CtaButton.svelte";
   
   <div class="flex flex-col col-span-full lg:col-span-1 justify-center">
     <Heading tag="h1" class="mb-4" customSize="text-2xl font-bold text-start">
-      Alinhe isso com uma análise de criativos performantes no Facebook ADS de acordo com o seu público.
+      Encontre os criativos vencedores no Facebook e Google Ads
     </Heading>
 
     <P class=" dark:text-gray-400">
-      Descubra o perfil do seu público-alvo e direcione suas campanhas de marketing para as pessoas certas.
+      Descubra quais são os elementos que mais performam nos anúncios dos seus concorrentes e crie campanhas mais eficientes
     </P>
 
     <div class="mt-6">

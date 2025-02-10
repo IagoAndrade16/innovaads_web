@@ -6,12 +6,12 @@
 <div class="flex flex-col items-center">
   <div class="w-full md:w-3/4 lg:w-3/5">
     <Heading tag="h1" class="mb-4" customSize="text-5xl font-bold text-center">
-      A melhor maneira de direcionar suas campanhas para o público certo
+      Dados Reais, Resultados Reais: Descubra o que funciona de verdade nos melhores anúncios
     </Heading>
   </div>
 
   <P class="mb-6 mt-10 text-lg lg:text-xl sm:px-16 xl:px-48 dark:text-gray-400 text-center">
-    Obtenha insights valiosos sobre o seu público-alvo e otimize suas campanhas baseado em palavras-chave e intereses em tempo real.
+    Através de uma análise detalhada de segmentação, criamos um relatório completo com insights sobre o que realmente funciona nos melhores anúncios do mercado
   </P>
   
   <CtaButton />

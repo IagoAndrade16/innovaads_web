@@ -17,7 +17,9 @@
 </LandingPageContainer>
 <TestForSevenDays />
 
-<LandingPageContainer>
+<LandingPageContainer
+	containerMarginTop="20"
+>
 	<PlatformPricing />
 </LandingPageContainer>
 
