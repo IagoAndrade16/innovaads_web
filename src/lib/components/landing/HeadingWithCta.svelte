@@ -3,7 +3,7 @@
 	import CtaButton from "./CtaButton.svelte";
 
 </script>
-<div class="flex flex-col items-center">
+<div class="flex flex-col items-center mt-20">
   <div class="w-full md:w-3/4 lg:w-3/5">
     <Heading tag="h1" class="mb-4" customSize="text-5xl font-bold text-center">
       Dados Reais, Resultados Reais: Descubra o que funciona de verdade nos melhores anúncios
