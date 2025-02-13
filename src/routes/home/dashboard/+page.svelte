@@ -17,7 +17,12 @@
 	import type { SearchInterestApiResponse } from '$lib/services/types/TrendsServiceSearchInterestByKeyword';
 	import type { ApexOptions } from 'apexcharts';
 	import type { BreadcrumbItemType } from '$lib/components/types/breadcrumb';
+	import HeatMap from '$lib/components/HeatMap.svelte';
+	import type { CoordinatesData } from '$lib/services/types/MostInterestedRegions';
+	import { coordinatesDataStore } from '$lib/stores/coordinatesStore';
+	import RegionsInterstedRanking from '$lib/components/RegionsInterstedRanking.svelte';
 
+  let heatMap: L.Map | null = null;
   let errors: JsObject | null = null;
   let trendsService: TrendsService;
   let searchingTendencies: boolean = false;
@@ -81,11 +86,20 @@
 
     searchingTendencies = true;
 
-    const interestRes = await trendsService.searchInterest({
-      keyword: values.keyword,
-      startDate: values.fromDate,
-      endDate: values.toDate,
-    }, $userAuthStore!.token);
+    const [interestRes, interestByRegion] = await Promise.all([
+      trendsService.searchInterest({
+        keyword: values.keyword,
+        startDate: values.fromDate,
+        endDate: values.toDate,
+      }, $userAuthStore!.token),
+      trendsService.mostInterestedRegions({
+        keyword: values.keyword,
+        startDate: values.fromDate,
+        endDate: values.toDate,
+      }, $userAuthStore!.token),
+    ])
+
+    coordinatesDataStore.set(interestByRegion.result!);
 
     searchingTendencies = false;    
 
@@ -183,5 +197,20 @@
     class={'mt-8'}
     bind:options={optionsTendenciesGraph}
   />
+
+  <div class="flex flex-col lg:flex-row gap-5 mt-5">
+    <Card class="lg:w-[65%] w-full" title="">
+      <h5 class="leading-none text-xl lg:text-2xl font-bold text-gray-900 dark:text-white pb-2">Interesse por Região</h5>
+      <HeatMap
+        bind:map={heatMap}
+      />
+    </Card>
+    <Card class="lg:w-[35%] w-full" title="">
+      <h5 class="leading-none text-xl lg:text-2xl font-bold text-gray-900 dark:text-white pb-2">Cidades de maior interesse</h5>
+      <RegionsInterstedRanking 
+        bind:heatMap={heatMap}
+      />
+    </Card>
+  </div>
 </BaseLayout>
 
