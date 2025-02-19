@@ -1,8 +1,9 @@
 <script>
-	import modeobserver from './utils/modeobserver';
 	import { onMount } from 'svelte';
+	import modeobserver from './utils/modeobserver';
 
-	onMount(() => modeobserver)
+	onMount(modeobserver);
+
 </script>
 
 <slot />

@@ -1,9 +1,9 @@
 import { browser } from "$app/environment";
 import { goto } from "$app/navigation";
-import { tick } from "svelte";
+import type { IUser } from "$lib/stores/interfaces/IUser";
 import { userAuthStore } from "$lib/stores/userAuthStore";
 import { userStore } from "$lib/stores/userStore";
-import type { IUser } from "$lib/stores/interfaces/IUser";
+import { tick } from "svelte";
 import { MomentUtils } from "./MomentUtils";
 export default class Engine {
 	static scrollToTop() {
