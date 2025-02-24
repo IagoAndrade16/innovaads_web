@@ -22,7 +22,7 @@
 	<div class="py-4 flex gap-4">
 		<DarkMode />
     {#if $userStore && $userStore.verified2fa}
-      <Button class="gap-2 px-3" on:click={() => Engine.navigateTo('/home/dashboard')}>Dashboard</Button>
+      <Button class="gap-2 px-3" on:click={() => Engine.navigateTo('/home/historical-metrics')}>Dashboard</Button>
 		{:else if $userStore && !$userStore.verified2fa}
 			<Button class="gap-2 px-3" on:click={() => Engine.navigateTo('/login')}>Acessar conta</Button>
     {:else}

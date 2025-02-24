@@ -140,7 +140,7 @@
           title: 'Sucesso!',
         });
 
-        Engine.navigateTo('/home/dashboard');
+        Engine.navigateTo('/home/historical-metrics');
         break;
       
       case 'INVALID_CARD':

@@ -103,7 +103,7 @@
     switch (response.status) {
       case 'SUCCESS':
         $userStore!.verified2fa = true;
-        Engine.navigateTo('/home/dashboard');
+        Engine.navigateTo('/home/historical-metrics');
         break;
       case 'INVALID_CODE': 
         DialogService.error({

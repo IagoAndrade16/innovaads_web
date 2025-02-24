@@ -1,14 +1,11 @@
 <script lang="ts">
+	import Navbar from '$lib/components/Navbar.svelte';
+	import Sidebar from '$lib/components/Sidebar.svelte';
 	import '../../app.pcss';
-  import Navbar from '$lib/components/Navbar.svelte';
-  import Sidebar from '$lib/components/Sidebar.svelte';
-	import { userStore } from '$lib/stores/userStore';
-	import { Alert } from 'flowbite-svelte';
-	import { InfoCircleSolid } from 'flowbite-svelte-icons';
-	import Footer from './Footer.svelte';
 	import BreadcrumbsComponent from './BreadcrumbsComponent.svelte';
-	import type { BreadcrumbItemType } from './types/breadcrumb';
+	import Footer from './Footer.svelte';
 	import TrialPeriodWarning from './TrialPeriodWarning.svelte';
+	import type { BreadcrumbItemType } from './types/breadcrumb';
 
 	let drawerHidden = false;
 

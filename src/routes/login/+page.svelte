@@ -81,7 +81,7 @@
 					subscriptionStatus: res.data?.subscriptionStatus! as UserSubscriptionStatus,
 					canUsePlatformUntil: res.data?.canUsePlatformUntil!,
         }
-        Engine.navigateTo('/home/dashboard');
+        Engine.navigateTo('/home/historical-metrics');
         break;
       case 'UNAUTHORIZED':
         DialogService.error({

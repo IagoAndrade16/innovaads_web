@@ -28,15 +28,15 @@
   let valuesSearched: number[] = [];
   const pageBreadcrumbs: BreadcrumbItemType[] = [
     {
-      name: 'Dashboard',
-      href: '/dashboard'
+      name: 'Métricas históricas',
+      href: '/keywords'
     },
   ];
 
-	const path: string = '/home/dashboard';
-  const description: string = 'InnovaADS - Home';
-  const title: string = 'InnovaADS - Home';
-  const subtitle: string = 'Admin Dashboard';
+	const path: string = '/home/historical-metrics';
+  const description: string = 'Tendências de palavras-chave';
+  const title: string = 'Tendências de palavras-chave';
+  const subtitle: string = 'Busque por tendências de palavras-chave';
 
   let optionsTendenciesGraph: ApexOptions = {
     chart: {
@@ -150,7 +150,7 @@
 <BaseLayout
   breadcrums={pageBreadcrumbs}
   >
-  <Card title="Busque por Tendências" class="max-w-full">
+  <Card title="Métricas históricas" class="max-w-full">
     <div class="mt-5 flex lg:flex-row flex-col gap-3">
       <BaseInput
         inputType="text"

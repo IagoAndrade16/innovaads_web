@@ -69,4 +69,12 @@ export class DialogService {
 
     return isConfirmed
   }
+
+  static async loading() {
+    Swal.showLoading(null);
+  }
+
+  static async close() {
+    Swal.close();
+  }
 }
