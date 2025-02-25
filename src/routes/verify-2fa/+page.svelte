@@ -26,6 +26,7 @@
   let timeFormated: string = '';
   let intervalTimer: any = null;
   let disabled: boolean = false;
+  let isTimeFormatedReady: boolean = true;
 
   let codeValues = {
     code: '',
@@ -43,12 +44,16 @@
 
     disabled = true;
     const response = await usersService!.sendVerificationEmailToUser($userAuthStore!.token);
-    disabled = false;
-
+    
     if (response.status === 'SUCCESS') {
       saveRecoveryTimer();
       startRecoveryTimer();
+      disabled = false;
+      return;
     } 
+
+    disabled = false;
+    isTimeFormatedReady = false;
   }
 
   const startRecoveryTimer = () => {
@@ -64,6 +69,7 @@
     if (diff < 0) {
       timeFormated = '';
       clearInterval(intervalTimer);
+      isTimeFormatedReady = false;
       return;
     }
 
@@ -71,6 +77,7 @@
     const seconds = diff % 60;
     
     timeFormated = `${minutes < 1 ? '00': minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
+    isTimeFormatedReady = true;
   }
 
   const saveRecoveryTimer = () => {
@@ -131,6 +138,7 @@
     handleSendCodeByEmail();
   });
 
+
 </script>
 
 
@@ -155,7 +163,7 @@
         error={errorFormCode?.code}
       />
     </div>
-    {#if !timeFormated}
+    {#if !isTimeFormatedReady}
       <A 
         class="mt-2 {disabled ? 'opacity-60 pointer-events-none' : ''}" 
         on:click={!disabled ? handleSendCodeByEmail : () => {}}
