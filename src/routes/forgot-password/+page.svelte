@@ -257,7 +257,7 @@
     <div>
       {#if steps[currentStep].step !== 'first'}
         <Button 
-          class="mt-8 w-32 text-base bg-gray-500 hover:bg-gray-700"
+          class="mt-8 w-32 text-base dark:bg-gray-500 bg-gray-500 hover:bg-gray-700"
           on:click={() => currentStep -= 1}
         >
           Voltar
