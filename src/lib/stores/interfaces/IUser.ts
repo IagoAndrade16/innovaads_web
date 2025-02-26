@@ -10,4 +10,7 @@ export interface IUser {
   verified2fa: boolean
   subscriptionStatus: UserSubscriptionStatus | null
   canUsePlatformUntil: Date | null
+  facebookAccount: {
+    userIdOnFacebook: string;
+  } | null;
 }

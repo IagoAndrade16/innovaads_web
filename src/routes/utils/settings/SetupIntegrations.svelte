@@ -8,20 +8,34 @@
 	import Card from "../widgets/Card.svelte";
 	import { DialogService } from "$lib/services/DialogService";
 	import { ToastService } from "$lib/services/ToastService";
+	import { UsersService } from "$lib/services/UsersService";
+	import { userAuthStore } from "$lib/stores/userAuthStore";
+	import Engine from "$lib/core/Engine";
+
+  type SaveFacebookAccountInput = {
+    accessToken: string;
+    userIdOnFacebook: string;
+    expiresIn: number;
+  }
 
   let facebookIsConnected = false;
   let googleIsConnected = false;
   let facebook: FacebookSdk;
+  let usersService: UsersService;
 
   const handleConnectWithFacebook = async () => {
     await facebook.login(() => {});
 
     const loginStatus = await facebook.getLoginStatus();
-    
+
     switch (loginStatus.status) {
       case "connected":
-        ToastService.success('Facebook conectado com sucesso!');
-        facebookIsConnected = true;
+        await saveFacebookAccount({
+          accessToken: loginStatus.authResponse.accessToken,
+          userIdOnFacebook: loginStatus.authResponse.userID,
+          expiresIn: loginStatus.authResponse.expiresIn
+        });
+        
         break;
       case "not_authorized":
         DialogService.error({
@@ -39,6 +53,34 @@
         break;
     }
   };
+
+  const saveFacebookAccount = async (params: SaveFacebookAccountInput) => {
+    const res = await usersService.connectWithFacebook({
+      accessToken: params.accessToken,
+      userIdOnFacebook: params.userIdOnFacebook,
+      expiresIn: params.expiresIn,
+      bearerToken: $userAuthStore!.token,
+    });
+
+    switch (res.status) {
+      case 'SUCCESS':
+        ToastService.success('Facebook conectado com sucesso!');
+        facebookIsConnected = true;
+        break;
+
+      case 'UNAUTHORIZED':
+        await facebook.logout();
+        facebookIsConnected = false;
+        Engine.logout();
+        break;
+
+      default:
+        ToastService.error('Houve um erro inesperado ao conectar com o facebook.');
+        facebookIsConnected = false;
+        await facebook.logout();
+        break;
+    }
+  }
 
   const handleLogoutFromFacebook = async () => {
     DialogService.loading();
@@ -76,6 +118,7 @@
 
   onMount(async() => {
     facebook = await FacebookSdk.getInstance();
+    usersService = new UsersService();
 
     const status = await facebook.getLoginStatus();
 

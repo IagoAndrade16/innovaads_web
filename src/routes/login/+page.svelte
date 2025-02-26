@@ -80,6 +80,7 @@
 					verified2fa: res.data?.verified2fa!,
 					subscriptionStatus: res.data?.subscriptionStatus! as UserSubscriptionStatus,
 					canUsePlatformUntil: res.data?.canUsePlatformUntil!,
+					facebookAccount: res.data?.facebookAccount!,
         }
         Engine.navigateTo('/home/historical-metrics');
         break;

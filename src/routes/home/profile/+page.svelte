@@ -9,8 +9,6 @@
 	import PasswordInfo from '../../utils/settings/PasswordInfo.svelte';
 	import SetupIntegrations from '../../utils/settings/SetupIntegrations.svelte';
 
-
-
 	const path: string = '/home/profile';
   const description: string = 'InnovaADS - Perfil';
   const title: string = 'InnovaADS - Perfil';
