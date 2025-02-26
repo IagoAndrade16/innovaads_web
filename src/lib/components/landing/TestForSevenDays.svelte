@@ -9,7 +9,7 @@
   </Heading>
 
   <P class=" dark:text-gray-400 text-center">
-    Teste a plataforma por 7 dias. Não precisa de cartão de crédito.
+    Teste a plataforma gratuitamente por 7 dias. <b>Não</b> é necessário cartão de crédito.
   </P>
 
   <div class="place-self-center mt-6">

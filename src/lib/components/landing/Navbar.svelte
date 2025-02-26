@@ -13,7 +13,7 @@
     <img src="/images/logo-only-rocket.png" class="me-3 h-10 sm:h-12" alt="InnovaADS Logo" />
     <span class="self-center whitespace-nowrap text-xl font-normal dark:text-white font-days">Innova ADS</span>
 	</NavBrand>
-	<NavUl class="me-auto ms-8">
+	<NavUl class="me-auto lg:ms-8 ms-0">
 		<NavLi href="/">Home</NavLi>
 		<NavLi href="#pricing">Preços</NavLi>
 		<NavLi href="#contact">Contato</NavLi>
