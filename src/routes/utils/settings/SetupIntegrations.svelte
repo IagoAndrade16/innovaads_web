@@ -10,6 +10,7 @@
 	import { ToastService } from "$lib/services/ToastService";
 	import { UsersService } from "$lib/services/UsersService";
 	import { userAuthStore } from "$lib/stores/userAuthStore";
+	import { userStore } from "$lib/stores/userStore";
 	import Engine from "$lib/core/Engine";
 
   type SaveFacebookAccountInput = {
@@ -66,6 +67,15 @@
       case 'SUCCESS':
         ToastService.success('Facebook conectado com sucesso!');
         facebookIsConnected = true;
+
+        if($userStore) {
+          $userStore = {
+            ...$userStore,
+            facebookAccount: {
+              userIdOnFacebook: res.data!.userIdOnFacebook,
+            }
+          }
+        }
         break;
 
       case 'UNAUTHORIZED':
@@ -81,15 +91,49 @@
         break;
     }
   }
-
-  const handleLogoutFromFacebook = async () => {
-    DialogService.loading();
-    await facebook.logout();
+  const disconnectFacebookAccountOnSystem = async () => {
+    const res = await usersService.disconnectWithFacebook({
+      bearerToken: $userAuthStore!.token,
+    });
 
     DialogService.close();
 
-    const loginStatus = await facebook.getLoginStatus();
+    switch (res.status) {
+      case 'SUCCESS':
+        ToastService.success('Facebook desconectado com sucesso!');
+        facebookIsConnected = false;
 
+        if($userStore) {
+          $userStore = {
+            ...$userStore,
+            facebookAccount: null
+          }
+        }
+        break;
+
+      case 'UNAUTHORIZED':
+        Engine.logout();
+        break;
+
+      default:
+        ToastService.error('Houve um erro inesperado ao desconectar com o facebook.');
+        facebookIsConnected = false;
+        if($userStore) {
+          $userStore = {
+            ...$userStore,
+            facebookAccount: null
+          }
+        }
+        break;
+    }
+  }
+
+  const handleLogoutFromFacebook = async () => {
+    DialogService.loading();
+
+    await facebook.logout();
+    const loginStatus = await facebook.getLoginStatus();
+    
     switch (loginStatus.status) {
       case "connected":
         DialogService.error({
@@ -99,12 +143,8 @@
         facebookIsConnected = true;
         break;
       case "not_authorized":
-        ToastService.success('Facebook desconectado com sucesso!');
-        facebookIsConnected = false;
-        break;
       case "unknown":
-        ToastService.success('Facebook desconectado com sucesso!');
-        facebookIsConnected = false;
+        await disconnectFacebookAccountOnSystem();
         break;
       default:
         DialogService.error({
@@ -120,9 +160,7 @@
     facebook = await FacebookSdk.getInstance();
     usersService = new UsersService();
 
-    const status = await facebook.getLoginStatus();
-
-    if(status.status === "connected") {
+    if($userStore?.facebookAccount) {
       facebookIsConnected = true;
     }
   });
@@ -136,9 +174,8 @@
       <div class="flex flex-row justify-between items-center mt-5">
         <div class="flex space-x-2 text-center items-center">
           <FacebookSolid class="w-8 h-8" />
-          <P class="text-md">
-            Conectar com facebook
-          </P>
+
+          <P class="text-md">Conectar com Facebook</P> 
         </div>
         {#if facebookIsConnected}
           <SecondaryButton text="Desconectar" onClick={handleLogoutFromFacebook}/>
