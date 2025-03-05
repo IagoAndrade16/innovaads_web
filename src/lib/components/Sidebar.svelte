@@ -14,6 +14,7 @@
 		AngleDownOutline,
 		AngleRightOutline,
 		AngleUpOutline,
+		ChartMixedOutline,
 		TableColumnSolid,
 		UserSettingsSolid
 	} from 'flowbite-svelte-icons';
@@ -50,6 +51,12 @@
 				'Métricas históricas': '/home/historical-metrics',
 			},
 			isOpen: $page.url.pathname.startsWith('/home/historical-metrics'), // FIX: 
+		},
+		{ 
+			name: 'Biblioteca de anúncios', 
+			icon: ChartMixedOutline, 
+			href: '/home/ads-library',
+			paths: ['/home/ads-library'],
 		},
 		{ 
 			name: 'Configurações da conta', 
