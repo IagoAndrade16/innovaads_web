@@ -8,7 +8,7 @@
 	import { Patterns, type PatternType } from "$lib/core/Pattern";
 	import Input from "../../template/Input.svelte";
 
-  export let label: string;
+  export let label: string = '';
   export let value = '';
   export let inputType: HtmlInputTypes = 'text';
   export let name: string;
@@ -61,5 +61,6 @@
       class="border outline-none dark:border-gray-600 dark:bg-gray-700 {addiotionalInputClasses}"
       maxlength={maxLengthInput}
     />
+
+    <ErrorText error={String(error ?? '')}/>
   </Label>
-  <ErrorText error={String(error ?? '')}/>

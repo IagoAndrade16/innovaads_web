@@ -29,7 +29,7 @@
   const pageBreadcrumbs: BreadcrumbItemType[] = [
     {
       name: 'Métricas históricas',
-      href: '/keywords'
+      href: '/home/historical-metrics',
     },
   ];
 
