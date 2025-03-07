@@ -7,10 +7,10 @@ function __memo(fn) {
 return {
 	appDir: "_app",
 	appPath: "_app",
-	assets: new Set(["favicon.png","images/logo-only-rocket.png","images/main-logo.png","images/user-logo.png","svg/online-ad.svg","svg/online-posts.svg","svg/segment-analysis.svg"]),
+	assets: new Set(["favicon.png","images/logo-only-rocket.png","images/main-logo.png","images/user-logo.png","svg/facebook-logo.svg","svg/mastercard-logo.svg","svg/online-ad.svg","svg/online-posts.svg","svg/segment-analysis.svg"]),
 	mimeTypes: {".png":"image/png",".svg":"image/svg+xml"},
 	_: {
-		client: {"start":"_app/immutable/entry/start.Dm7OZsUU.js","app":"_app/immutable/entry/app.Bl0e9xUp.js","imports":["_app/immutable/entry/start.Dm7OZsUU.js","_app/immutable/chunks/entry.DdAHSCfj.js","_app/immutable/chunks/scheduler.C0Ee3jA1.js","_app/immutable/chunks/control.CYgJF_JY.js","_app/immutable/entry/app.Bl0e9xUp.js","_app/immutable/chunks/preload-helper.C1FmrZbK.js","_app/immutable/chunks/scheduler.C0Ee3jA1.js","_app/immutable/chunks/index.CYij0xZA.js"],"stylesheets":[],"fonts":[],"uses_env_dynamic_public":false},
+		client: {"start":"_app/immutable/entry/start.DHTwjYS7.js","app":"_app/immutable/entry/app.BL3qwyxg.js","imports":["_app/immutable/entry/start.DHTwjYS7.js","_app/immutable/chunks/entry.C8FPotix.js","_app/immutable/chunks/scheduler.BS7HDBm-.js","_app/immutable/chunks/control.CYgJF_JY.js","_app/immutable/entry/app.BL3qwyxg.js","_app/immutable/chunks/preload-helper.C1FmrZbK.js","_app/immutable/chunks/scheduler.BS7HDBm-.js","_app/immutable/chunks/index.BkPZof_F.js"],"stylesheets":[],"fonts":[],"uses_env_dynamic_public":false},
 		nodes: [
 			__memo(() => import('./nodes/0.js')),
 			__memo(() => import('./nodes/1.js')),
@@ -26,7 +26,8 @@ return {
 			__memo(() => import('./nodes/11.js')),
 			__memo(() => import('./nodes/12.js')),
 			__memo(() => import('./nodes/13.js')),
-			__memo(() => import('./nodes/14.js'))
+			__memo(() => import('./nodes/14.js')),
+			__memo(() => import('./nodes/15.js'))
 		],
 		routes: [
 			{
@@ -58,45 +59,52 @@ return {
 				endpoint: null
 			},
 			{
-				id: "/home/dashboard",
-				pattern: /^\/home\/dashboard\/?$/,
+				id: "/home/ads-library",
+				pattern: /^\/home\/ads-library\/?$/,
 				params: [],
 				page: { layouts: [0,2,], errors: [1,,], leaf: 8 },
+				endpoint: null
+			},
+			{
+				id: "/home/historical-metrics",
+				pattern: /^\/home\/historical-metrics\/?$/,
+				params: [],
+				page: { layouts: [0,2,], errors: [1,,], leaf: 9 },
 				endpoint: null
 			},
 			{
 				id: "/home/payment",
 				pattern: /^\/home\/payment\/?$/,
 				params: [],
-				page: { layouts: [0,2,], errors: [1,,], leaf: 9 },
+				page: { layouts: [0,2,], errors: [1,,], leaf: 10 },
 				endpoint: null
 			},
 			{
 				id: "/home/pricing",
 				pattern: /^\/home\/pricing\/?$/,
 				params: [],
-				page: { layouts: [0,2,], errors: [1,,], leaf: 10 },
+				page: { layouts: [0,2,], errors: [1,,], leaf: 11 },
 				endpoint: null
 			},
 			{
 				id: "/home/profile",
 				pattern: /^\/home\/profile\/?$/,
 				params: [],
-				page: { layouts: [0,2,], errors: [1,,], leaf: 11 },
+				page: { layouts: [0,2,], errors: [1,,], leaf: 12 },
 				endpoint: null
 			},
 			{
 				id: "/login",
 				pattern: /^\/login\/?$/,
 				params: [],
-				page: { layouts: [0,], errors: [1,], leaf: 12 },
+				page: { layouts: [0,], errors: [1,], leaf: 13 },
 				endpoint: null
 			},
 			{
 				id: "/privacy-policy",
 				pattern: /^\/privacy-policy\/?$/,
 				params: [],
-				page: { layouts: [0,3,], errors: [1,,], leaf: 13 },
+				page: { layouts: [0,3,], errors: [1,,], leaf: 14 },
 				endpoint: null
 			},
 			{
@@ -110,7 +118,7 @@ return {
 				id: "/verify-2fa",
 				pattern: /^\/verify-2fa\/?$/,
 				params: [],
-				page: { layouts: [0,], errors: [1,], leaf: 14 },
+				page: { layouts: [0,], errors: [1,], leaf: 15 },
 				endpoint: null
 			}
 		],

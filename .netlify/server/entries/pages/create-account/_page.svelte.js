@@ -1,4 +1,4 @@
-import { c as create_ssr_component, d as compute_rest_props, i as getContext, j as each, v as validate_component, e as escape, f as spread, h as escape_attribute_value, g as escape_object, a as add_attribute, k as compute_slots, b as subscribe } from "../../../chunks/ssr.js";
+import { c as create_ssr_component, d as compute_rest_props, g as getContext, j as each, v as validate_component, e as escape, f as spread, i as escape_attribute_value, h as escape_object, a as add_attribute, k as compute_slots, b as subscribe } from "../../../chunks/ssr.js";
 import { L as Label, C as Card, E as ErrorText, B as BaseInput } from "../../../chunks/BaseInput.js";
 import { B as Button } from "../../../chunks/Button.js";
 import { twMerge } from "tailwind-merge";
@@ -6,7 +6,8 @@ import { S as Spinner } from "../../../chunks/Spinner.js";
 import { A } from "../../../chunks/A.js";
 import { M as MetaTag } from "../../../chunks/MetaTag.js";
 import * as yup from "yup";
-import { Y as YupValidation, D as DialogService } from "../../../chunks/yup.js";
+import { D as DialogService } from "../../../chunks/DialogService.js";
+import { Y as YupValidation } from "../../../chunks/yup.js";
 import { P as PhoneNumber } from "../../../chunks/PhoneNumber.js";
 import { E as Engine } from "../../../chunks/Engine.js";
 import { u as userStore } from "../../../chunks/userStore.js";
@@ -238,7 +239,7 @@ const Page = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let errors = null;
   let submittingForm = false;
   let usersService;
-  Engine.assert([$userStore === null], "/home/dashboard");
+  Engine.assert([$userStore === null], "/home/historical-metrics");
   const values = {
     email: "",
     name: "",

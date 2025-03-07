@@ -42,13 +42,15 @@
       "_stores.js",
       "_index2.js",
       "_userStore.js",
-      "_Footer.js",
       "_NavHamburger.js",
       "_BaseInput.js",
-      "_Button.js"
+      "_Button.js",
+      "_Spinner.js",
+      "_Footer.js",
+      "_Engine.js"
     ],
     "css": [
-      "_app/immutable/assets/app.Bk7qx7dh.css"
+      "_app/immutable/assets/app.CxJYkQJg.css"
     ]
   },
   "_Button.js": {
@@ -65,6 +67,13 @@
       "_ssr.js",
       "_BaseInput.js",
       "_Heading.js"
+    ]
+  },
+  "_DialogService.js": {
+    "file": "chunks/DialogService.js",
+    "name": "DialogService",
+    "imports": [
+      "_Engine.js"
     ]
   },
   "_Engine.js": {
@@ -144,7 +153,7 @@
       "_index2.js"
     ],
     "css": [
-      "_app/immutable/assets/app.Bk7qx7dh.css"
+      "_app/immutable/assets/app.CxJYkQJg.css"
     ]
   },
   "_P.js": {
@@ -173,7 +182,7 @@
     "name": "Utils"
   },
   "_app.js": {
-    "file": "_app/immutable/assets/app.Bk7qx7dh.css",
+    "file": "_app/immutable/assets/app.CxJYkQJg.css",
     "src": "_app.js"
   },
   "_choosedPackage.js": {
@@ -243,10 +252,7 @@
   },
   "_yup.js": {
     "file": "chunks/yup.js",
-    "name": "yup",
-    "imports": [
-      "_Engine.js"
-    ]
+    "name": "yup"
   },
   "node_modules/@sveltejs/kit/src/runtime/server/index.js": {
     "file": "index.js",
@@ -273,7 +279,7 @@
       "_MetaTag.js"
     ],
     "css": [
-      "_app/immutable/assets/app.Bk7qx7dh.css"
+      "_app/immutable/assets/app.CxJYkQJg.css"
     ]
   },
   "src/routes/+layout.svelte": {
@@ -298,7 +304,9 @@
       "_client.js",
       "_userStore.js",
       "_Button.js",
-      "_ListPackages.js"
+      "_ListPackages.js",
+      "_index2.js",
+      "_NavHamburger.js"
     ]
   },
   "src/routes/create-account/+page.svelte": {
@@ -313,6 +321,7 @@
       "_Spinner.js",
       "_A.js",
       "_MetaTag.js",
+      "_DialogService.js",
       "_yup.js",
       "_PhoneNumber.js",
       "_Engine.js",
@@ -361,20 +370,35 @@
       "_userStore.js"
     ]
   },
-  "src/routes/home/dashboard/+page.svelte": {
-    "file": "entries/pages/home/dashboard/_page.svelte.js",
-    "name": "entries/pages/home/dashboard/_page.svelte",
-    "src": "src/routes/home/dashboard/+page.svelte",
+  "src/routes/home/ads-library/+page.svelte": {
+    "file": "entries/pages/home/ads-library/_page.svelte.js",
+    "name": "entries/pages/home/ads-library/_page.svelte",
+    "src": "src/routes/home/ads-library/+page.svelte",
     "isEntry": true,
     "imports": [
       "_ssr.js",
-      "_MetaTag.js",
+      "_BaseInput.js",
       "_BaseLayout.js",
       "_Card.js",
-      "_BaseInput.js",
-      "_Button.js",
+      "_yup.js",
       "_userStore.js",
-      "_client.js"
+      "_Engine.js"
+    ]
+  },
+  "src/routes/home/historical-metrics/+page.svelte": {
+    "file": "entries/pages/home/historical-metrics/_page.svelte.js",
+    "name": "entries/pages/home/historical-metrics/_page.svelte",
+    "src": "src/routes/home/historical-metrics/+page.svelte",
+    "isEntry": true,
+    "imports": [
+      "_ssr.js",
+      "_BaseInput.js",
+      "_BaseLayout.js",
+      "_Engine.js",
+      "_userStore.js",
+      "_Button.js",
+      "_MetaTag.js",
+      "_Card.js"
     ],
     "css": [
       "_app/immutable/assets/_page.BsM4JrO0.css"
@@ -400,7 +424,8 @@
       "_yup.js",
       "_MetaTag.js",
       "_Engine.js",
-      "_userStore.js"
+      "_userStore.js",
+      "_DialogService.js"
     ],
     "css": [
       "_app/immutable/assets/_page.DPAxQkTm.css"
@@ -429,13 +454,17 @@
       "_BaseLayout.js",
       "_index2.js",
       "_MetaTag.js",
-      "_BaseInput.js",
+      "_Spinner.js",
       "_userStore.js",
+      "_client.js",
+      "_BaseInput.js",
       "_Button.js",
       "_Card.js",
       "_PhoneNumber.js",
-      "_client.js",
-      "_Spinner.js"
+      "_P.js",
+      "_Footer.js",
+      "_DialogService.js",
+      "_Engine.js"
     ],
     "css": [
       "_app/immutable/assets/toastify.Dbbx3F5k.css"
@@ -449,14 +478,15 @@
     "imports": [
       "_ssr.js",
       "_BaseInput.js",
+      "_Navbar.js",
       "_Engine.js",
-      "_yup.js",
+      "_DialogService.js",
       "_userStore.js",
+      "_yup.js",
       "_Button.js",
       "_Spinner.js",
       "_A.js",
-      "_MetaTag.js",
-      "_Navbar.js"
+      "_MetaTag.js"
     ]
   },
   "src/routes/privacy-policy/+layout.svelte": {
@@ -494,7 +524,6 @@
       "_BaseFormLayout.js",
       "_Navbar2.js",
       "_Button.js",
-      "_A.js",
       "_P.js",
       "_MetaTag.js",
       "_Card.js",

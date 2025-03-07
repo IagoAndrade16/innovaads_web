@@ -13,7 +13,7 @@
     <img src="/images/logo-only-rocket.png" class="me-3 h-10 sm:h-12" alt="InnovaADS Logo" />
     <span class="self-center whitespace-nowrap text-xl font-normal dark:text-white font-days">Innova ADS</span>
 	</NavBrand>
-	<NavUl class="me-auto ms-8">
+	<NavUl class="me-auto lg:ms-8 ms-0">
 		<NavLi href="/">Home</NavLi>
 		<NavLi href="#pricing">Preços</NavLi>
 		<NavLi href="#contact">Contato</NavLi>
@@ -22,9 +22,9 @@
 	<div class="py-4 flex gap-4">
 		<DarkMode />
     {#if $userStore && $userStore.verified2fa}
-      <Button class="gap-2 px-3" on:click={() => Engine.navigateTo('/home/dashboard')}>Dashboard</Button>
-    {:else if $userStore && !$userStore.verified2fa}
-      <Button class="gap-2 px-3" on:click={() => Engine.navigateTo('/login')}>Acessar conta</Button>
+      <Button class="gap-2 px-3" on:click={() => Engine.navigateTo('/home/historical-metrics')}>Dashboard</Button>
+		{:else if $userStore && !$userStore.verified2fa}
+			<Button class="gap-2 px-3" on:click={() => Engine.navigateTo('/login')}>Acessar conta</Button>
     {:else}
       <Button class="gap-2 px-3" on:click={() => Engine.navigateTo('/create-account')}>
         Testar grátis

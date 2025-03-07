@@ -1,4 +1,6 @@
 import { ApiService } from "./ApiService";
+import type { ConnectWithFacebookRequest, ConnectWithFacebookResponse } from "./types/ConnectWithFacebookTypes";
+import type { DisconnectWithFacebookRequest, DisconnectWithFacebookResponse } from "./types/DisconnectWithFacebookTypes";
 import type { BaseForgotUserPasswordOutput, ResetPasswordInput, VerifyPasswordRecoveryCodeInput, VerifyPasswordRecoveryCodeOutput } from "./types/ForgotUserPassword";
 import type { AuthUserRequest, AuthUserResponse } from "./types/UsersServiceAuthTypes";
 import type { RegisterUserRequest, RegisterUserResponse } from "./types/UsersServiceRegisterTypes";
@@ -227,6 +229,61 @@ export class UsersService extends ApiService {
 
     return {
       status: 'UNKNOWN',
+    }
+  }
+
+  public async connectWithFacebook(params: ConnectWithFacebookRequest): Promise<ConnectWithFacebookResponse> {
+    const response = await this.post('/users/facebook-account/connect', {
+      accessToken: params.accessToken,
+      userIdOnFacebook: params.userIdOnFacebook,
+      expiresIn: params.expiresIn
+    }, {
+      token: params.bearerToken,
+    });
+
+    if(response.statusCode === 401) {
+      return {
+        status: 'UNAUTHORIZED',
+        data: null
+      }
+    }
+
+    if(response.statusCode === 200) {
+      return {
+        status: 'SUCCESS',
+        data: {
+          ...response.data
+        }
+      }
+    }
+
+    return {
+      status: 'UNKNOWN',
+      data: null
+    }
+  }
+  public async disconnectWithFacebook(params: DisconnectWithFacebookRequest): Promise<DisconnectWithFacebookResponse> {
+    const response = await this.delete('/users/facebook-account/disconnect', {}, {
+      token: params.bearerToken,
+    });
+
+    if(response.statusCode === 401) {
+      return {
+        status: 'UNAUTHORIZED',
+        data: null
+      }
+    }
+
+    if(response.statusCode === 204) {
+      return {
+        status: 'SUCCESS',
+        data: null,
+      }
+    }
+
+    return {
+      status: 'UNKNOWN',
+      data: null
     }
   }
 }

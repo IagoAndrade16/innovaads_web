@@ -1,4 +1,4 @@
-import { c as create_ssr_component, d as compute_rest_props, s as setContext, l as createEventDispatcher, f as spread, h as escape_attribute_value, g as escape_object, a as add_attribute, i as getContext, e as escape, b as subscribe, v as validate_component } from "./ssr.js";
+import { c as create_ssr_component, d as compute_rest_props, s as setContext, l as createEventDispatcher, f as spread, i as escape_attribute_value, h as escape_object, a as add_attribute, g as getContext, e as escape, b as subscribe, v as validate_component } from "./ssr.js";
 import { twMerge } from "tailwind-merge";
 import { i as is_void } from "./Button.js";
 import { w as writable } from "./index2.js";

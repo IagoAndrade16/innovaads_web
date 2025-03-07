@@ -1,5 +1,5 @@
-import type { Package } from "$lib/types/IPackage"
 
+export type UserSubscriptionStatus = 'active' | 'failed' | 'canceled';
 export interface IUser {
   name: string
   email: string
@@ -8,5 +8,9 @@ export interface IUser {
   daysRemainingForTrial: number
   packageId: string | null
   verified2fa: boolean
-  package: Package | null
+  subscriptionStatus: UserSubscriptionStatus | null
+  canUsePlatformUntil: Date | null
+  facebookAccount: {
+    userIdOnFacebook: string;
+  } | null;
 }

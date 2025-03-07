@@ -1,4 +1,5 @@
 import { ApiService } from "./ApiService";
+import type { CancelSubscriptionRequest, CancelSubscriptionResponse } from "./types/CancelSubscriptionTypes";
 import type { GetSubscriptionSummaryRequest, GetSubscriptionSummaryResponse } from "./types/GetSubscriptionSummary";
 import type { CreateSubscritionRequest, CreateSubscritionResponse } from "./types/SubscriptionsServiceCreate";
 
@@ -65,6 +66,34 @@ export class SubscriptionsService extends ApiService {
     return {
       status: 'UNKNOWN',
       data: null,
+    }
+  }
+
+  public async cancelSubscription(input: CancelSubscriptionRequest): Promise<CancelSubscriptionResponse> {
+    const response = await this.delete('/packages/subscriptions', {}, {
+      token: input.bearerToken,
+    });
+
+    if(response.statusCode === 204) {
+      return {
+        status: 'SUCCESS',
+      }
+    }
+
+    if(response.statusCode === 404 || response.statusCode === 400) {
+      return {
+        status: response.data.reason,
+      }
+    }
+
+    if(response.statusCode === 401) {
+      return {
+        status: 'UNAUTHORIZED',
+      }
+    }
+
+    return {
+      status: 'UNKNOWN',
     }
   }
 }

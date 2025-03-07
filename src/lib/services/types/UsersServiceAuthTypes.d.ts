@@ -19,6 +19,11 @@ export interface AuthUserResponseData {
   daysRemainingForTrial: number;
   packageId: string | null;
   verified2fa: boolean;
+  subscriptionStatus: string | null;
+  canUsePlatformUntil: Date | null;
+  facebookAccount: {
+    userIdOnFacebook: string;
+  } | null;
 }
 
 export type AuthUserResponseStatus = 'SUCCESS' | 'UNKNOWN' | 'UNAUTHORIZED';

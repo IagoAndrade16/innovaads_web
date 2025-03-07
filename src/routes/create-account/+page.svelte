@@ -20,7 +20,7 @@
   let submittingForm: boolean = false;
   let usersService: UsersService;
 
-	Engine.assert([$userStore === null], '/home/dashboard');
+	Engine.assert([$userStore === null], '/home/historical-metrics');
 
   const values = {
     email: "",

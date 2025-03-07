@@ -1,11 +1,10 @@
 import { browser } from "$app/environment";
 import { goto } from "$app/navigation";
-import { tick } from "svelte";
+import type { IUser } from "$lib/stores/interfaces/IUser";
 import { userAuthStore } from "$lib/stores/userAuthStore";
 import { userStore } from "$lib/stores/userStore";
-
-export type PageType = 'CD' | 'SAMSUNG';
-
+import { tick } from "svelte";
+import { MomentUtils } from "./MomentUtils";
 export default class Engine {
 	static scrollToTop() {
 		if (!browser) return;
@@ -22,6 +21,27 @@ export default class Engine {
 				Engine.navigateTo(redirect);
 			}
 		}
+	}
+
+	static canUsePlatform(user: IUser | null): boolean {
+		if(!user) return false;
+
+		if(user.subscriptionStatus === 'active') return true;
+
+		if(user.subscriptionStatus === 'canceled') {
+			const nowFormatted = MomentUtils.formattedDate(new Date(), 'YYYY-MM-DD');
+			const canUsePlatformUntilFormatted = MomentUtils.formattedDate(user.canUsePlatformUntil!, 'YYYY-MM-DD');
+			if(canUsePlatformUntilFormatted && nowFormatted) return true;
+			return false;
+		}
+
+
+		if(!user.subscriptionStatus) {
+			if(user.daysRemainingForTrial > 0) return true;
+			return false;
+		}
+
+		return false;
 	}
 
 	static async back() {

@@ -17,6 +17,7 @@ export type GetSubscriptionSummaryResponseData = {
   } | null,
   subscription: {
     nextBillingAt: string;
+    status: 'active' | 'failed' | 'canceled'
     card: {
       brand: string;
       lastFourDigits: string;

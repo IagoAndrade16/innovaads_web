@@ -1,14 +1,15 @@
 import { c as create_ssr_component, a as add_attribute, v as validate_component, e as escape, b as subscribe, q as set_store_value } from "../../../chunks/ssr.js";
 import { C as Card, B as BaseInput } from "../../../chunks/BaseInput.js";
+import { N as Navbar_1 } from "../../../chunks/Navbar.js";
 import { E as Engine } from "../../../chunks/Engine.js";
-import { Y as YupValidation, D as DialogService } from "../../../chunks/yup.js";
+import { D as DialogService } from "../../../chunks/DialogService.js";
 import { u as userStore, a as userAuthStore } from "../../../chunks/userStore.js";
+import { Y as YupValidation } from "../../../chunks/yup.js";
 import * as yup from "yup";
 import { B as Button } from "../../../chunks/Button.js";
 import { S as Spinner } from "../../../chunks/Spinner.js";
 import { A } from "../../../chunks/A.js";
 import { M as MetaTag } from "../../../chunks/MetaTag.js";
-import { N as Navbar_1 } from "../../../chunks/Navbar.js";
 const SignIn = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   let { title: title2 = "Faça login na plataforma" } = $$props;
   let { site = {
@@ -150,11 +151,14 @@ const Page = create_ssr_component(($$result, $$props, $$bindings, slots) => {
             isOnTrial: res.data?.isOnTrial,
             daysRemainingForTrial: res.data?.daysRemainingForTrial,
             packageId: res.data?.packageId,
-            verified2fa: res.data?.verified2fa
+            verified2fa: res.data?.verified2fa,
+            subscriptionStatus: res.data?.subscriptionStatus,
+            canUsePlatformUntil: res.data?.canUsePlatformUntil,
+            facebookAccount: res.data?.facebookAccount
           },
           $userStore
         );
-        Engine.navigateTo("/home/dashboard");
+        Engine.navigateTo("/home/historical-metrics");
         break;
       case "UNAUTHORIZED":
         DialogService.error({

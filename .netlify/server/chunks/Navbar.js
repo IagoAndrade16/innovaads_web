@@ -1,6 +1,7 @@
-import { c as create_ssr_component, d as compute_rest_props, i as getContext, f as spread, h as escape_attribute_value, g as escape_object, s as setContext, b as subscribe, v as validate_component, a as add_attribute, e as escape } from "./ssr.js";
+import { c as create_ssr_component, d as compute_rest_props, g as getContext, f as spread, i as escape_attribute_value, h as escape_object, s as setContext, b as subscribe, v as validate_component, a as add_attribute, e as escape } from "./ssr.js";
 import "./client.js";
 import { u as userStore } from "./userStore.js";
+import "moment";
 import { i as is_void, B as Button } from "./Button.js";
 import { F as Frame, N as Navbar, a as NavBrand, D as DarkMode, b as NavHamburger } from "./NavHamburger.js";
 import { twMerge } from "tailwind-merge";
@@ -224,7 +225,7 @@ const Navbar_1 = create_ssr_component(($$result, $$props, $$bindings, slots) => 
           default: () => {
             return `<img src="/images/logo-only-rocket.png" class="me-3 h-10 sm:h-12" alt="InnovaADS Logo"> <span class="self-center whitespace-nowrap text-xl font-normal dark:text-white font-days" data-svelte-h="svelte-3o8v4u">Innova ADS</span>`;
           }
-        })} ${validate_component(NavUl, "NavUl").$$render($$result, { class: "me-auto ms-8" }, {}, {
+        })} ${validate_component(NavUl, "NavUl").$$render($$result, { class: "me-auto lg:ms-8 ms-0" }, {}, {
           default: () => {
             return `${validate_component(NavLi, "NavLi").$$render($$result, { href: "/" }, {}, {
               default: () => {
@@ -255,7 +256,7 @@ const Navbar_1 = create_ssr_component(($$result, $$props, $$bindings, slots) => 
         })}` : `${validate_component(Button, "Button").$$render($$result, { class: "gap-2 px-3" }, {}, {
           default: () => {
             return `Testar grátis
-				${validate_component(ArrowLeftToBracketOutline, "ArrowLeftToBracketOutline").$$render($$result, {}, {}, {})}`;
+        ${validate_component(ArrowLeftToBracketOutline, "ArrowLeftToBracketOutline").$$render($$result, {}, {}, {})}`;
           }
         })}`}`} ${validate_component(NavHamburger, "NavHamburger").$$render($$result, {}, {}, {})}</div>`;
       }

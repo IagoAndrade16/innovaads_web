@@ -132,6 +132,7 @@
           ...$userStore!,
           packageId: $choosedPackageStore?.id!,
           isOnTrial: false,
+          subscriptionStatus: 'active',
         }
         $choosedPackageStore = null;
         await DialogService.success({
@@ -139,7 +140,7 @@
           title: 'Sucesso!',
         });
 
-        Engine.navigateTo('/home/dashboard');
+        Engine.navigateTo('/home/historical-metrics');
         break;
       
       case 'INVALID_CARD':

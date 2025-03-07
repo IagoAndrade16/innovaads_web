@@ -1,14 +1,12 @@
 <script lang="ts">
+	import Navbar from '$lib/components/Navbar.svelte';
+	import Sidebar from '$lib/components/Sidebar.svelte';
 	import '../../app.pcss';
-  import Navbar from '$lib/components/Navbar.svelte';
-  import Sidebar from '$lib/components/Sidebar.svelte';
-	import { userStore } from '$lib/stores/userStore';
-	import { Alert } from 'flowbite-svelte';
-	import { InfoCircleSolid } from 'flowbite-svelte-icons';
-	import Footer from './Footer.svelte';
 	import BreadcrumbsComponent from './BreadcrumbsComponent.svelte';
-	import type { BreadcrumbItemType } from './types/breadcrumb';
+	import FacebookNotConnectedWarning from './FacebookNotConnectedWarning.svelte';
+	import Footer from './Footer.svelte';
 	import TrialPeriodWarning from './TrialPeriodWarning.svelte';
+	import type { BreadcrumbItemType } from './types/breadcrumb';
 
 	let drawerHidden = false;
 
@@ -24,6 +22,7 @@
 	<Sidebar bind:drawerHidden />
 	<div class="relative h-full overflow-y-auto lg:ml-64 pt-[70px]">
 		
+		<FacebookNotConnectedWarning />
 		<TrialPeriodWarning />
 
 		<main class="p-4">

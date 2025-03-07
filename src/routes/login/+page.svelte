@@ -1,8 +1,10 @@
 <script lang="ts">
 	import BaseInput from '$lib/components/BaseInput.svelte';
+	import Navbar from '$lib/components/landing/Navbar.svelte';
 	import Engine from '$lib/core/Engine';
 	import { DialogService } from '$lib/services/DialogService';
 	import { UsersService } from '$lib/services/UsersService';
+	import type { UserSubscriptionStatus } from '$lib/stores/interfaces/IUser';
 	import { userAuthStore } from '$lib/stores/userAuthStore';
 	import { userStore } from '$lib/stores/userStore';
 	import type { JsObject } from '$lib/types/JsObject';
@@ -11,7 +13,6 @@
 	import * as yup from 'yup';
 	import SignIn from '../utils/authentication/SignIn.svelte';
 	import MetaTag from '../utils/MetaTag.svelte';
-	import Navbar from '$lib/components/landing/Navbar.svelte';
 
 	let title = 'Entrar na plataforma';
 	let site = {
@@ -77,8 +78,11 @@
 					daysRemainingForTrial: res.data?.daysRemainingForTrial!,
 					packageId: res.data?.packageId!,
 					verified2fa: res.data?.verified2fa!,
+					subscriptionStatus: res.data?.subscriptionStatus! as UserSubscriptionStatus,
+					canUsePlatformUntil: res.data?.canUsePlatformUntil!,
+					facebookAccount: res.data?.facebookAccount!,
         }
-        Engine.navigateTo('/home/dashboard');
+        Engine.navigateTo('/home/historical-metrics');
         break;
       case 'UNAUTHORIZED':
         DialogService.error({

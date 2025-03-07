@@ -1,4 +1,4 @@
-import { c as create_ssr_component, d as compute_rest_props, f as spread, g as escape_object, h as escape_attribute_value } from "./ssr.js";
+import { c as create_ssr_component, d as compute_rest_props, f as spread, h as escape_object, i as escape_attribute_value } from "./ssr.js";
 import { i as is_void } from "./Button.js";
 import { twMerge } from "tailwind-merge";
 const Heading = create_ssr_component(($$result, $$props, $$bindings, slots) => {

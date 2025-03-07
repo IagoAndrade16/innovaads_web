@@ -1,28 +1,27 @@
 <script lang="ts">
-	import MetaTag from '../../utils/MetaTag.svelte';
-	import BaseLayout from '$lib/components/BaseLayout.svelte';
-	import Card from '../../utils/widgets/Card.svelte';
-	import BaseInput from '$lib/components/BaseInput.svelte';
 	import BaseDateRangeInput from '$lib/components/BaseDateRangeInput.svelte';
-	import { Button } from 'flowbite-svelte';
-  import * as yup from 'yup';
-	import YupValidation from '$lib/validation/yup';
-	import type { JsObject } from '$lib/types/JsObject';
-	import { TrendsService } from '$lib/services/TrendsService';
-	import { onMount } from 'svelte';
-	import { userAuthStore } from '$lib/stores/userAuthStore';
-	import { DialogService } from '$lib/services/DialogService';
-	import Engine from '$lib/core/Engine';
 	import BaseGraph from '$lib/components/BaseGraph.svelte';
-	import type { SearchInterestApiResponse } from '$lib/services/types/TrendsServiceSearchInterestByKeyword';
-	import type { ApexOptions } from 'apexcharts';
+	import BaseInput from '$lib/components/BaseInput.svelte';
+	import BaseLayout from '$lib/components/BaseLayout.svelte';
 	import type { BreadcrumbItemType } from '$lib/components/types/breadcrumb';
-	import HeatMap from '$lib/components/HeatMap.svelte';
-	import type { CoordinatesData } from '$lib/services/types/MostInterestedRegions';
+	import Engine from '$lib/core/Engine';
+	import { DialogService } from '$lib/services/DialogService';
+	import { TrendsService } from '$lib/services/TrendsService';
+	import type { SearchInterestApiResponse } from '$lib/services/types/TrendsServiceSearchInterestByKeyword';
 	import { coordinatesDataStore } from '$lib/stores/coordinatesStore';
-	import RegionsInterstedRanking from '$lib/components/RegionsInterstedRanking.svelte';
+	import { userAuthStore } from '$lib/stores/userAuthStore';
+	import { userStore } from '$lib/stores/userStore';
+	import type { JsObject } from '$lib/types/JsObject';
+	import YupValidation from '$lib/validation/yup';
+	import type { ApexOptions } from 'apexcharts';
+	import { Button } from 'flowbite-svelte';
+	import { onMount } from 'svelte';
+	import * as yup from 'yup';
+	import MetaTag from '../../utils/MetaTag.svelte';
+	import Card from '../../utils/widgets/Card.svelte';
 
-  let heatMap: L.Map | null = null;
+  Engine.assert([Engine.canUsePlatform($userStore)], '/home/profile');
+
   let errors: JsObject | null = null;
   let trendsService: TrendsService;
   let searchingTendencies: boolean = false;
@@ -30,15 +29,15 @@
   let valuesSearched: number[] = [];
   const pageBreadcrumbs: BreadcrumbItemType[] = [
     {
-      name: 'Dashboard',
-      href: '/dashboard'
+      name: 'Métricas históricas',
+      href: '/home/historical-metrics',
     },
   ];
 
-	const path: string = '/home/dashboard';
-  const description: string = 'InnovaADS - Home';
-  const title: string = 'InnovaADS - Home';
-  const subtitle: string = 'Admin Dashboard';
+	const path: string = '/home/historical-metrics';
+  const description: string = 'Tendências de palavras-chave';
+  const title: string = 'Tendências de palavras-chave';
+  const subtitle: string = 'Busque por tendências de palavras-chave';
 
   let optionsTendenciesGraph: ApexOptions = {
     chart: {
@@ -161,7 +160,7 @@
 <BaseLayout
   breadcrums={pageBreadcrumbs}
   >
-  <Card title="Busque por Tendências" class="max-w-full">
+  <Card title="Métricas históricas" class="max-w-full">
     <div class="mt-5 flex lg:flex-row flex-col gap-3">
       <BaseInput
         inputType="text"
@@ -197,20 +196,5 @@
     class={'mt-8'}
     bind:options={optionsTendenciesGraph}
   />
-
-  <div class="flex flex-col lg:flex-row gap-5 mt-5">
-    <Card class="lg:w-[65%] w-full" title="">
-      <h5 class="leading-none text-xl lg:text-2xl font-bold text-gray-900 dark:text-white pb-2">Interesse por Região</h5>
-      <HeatMap
-        bind:map={heatMap}
-      />
-    </Card>
-    <Card class="lg:w-[35%] w-full" title="">
-      <h5 class="leading-none text-xl lg:text-2xl font-bold text-gray-900 dark:text-white pb-2">Cidades de maior interesse</h5>
-      <RegionsInterstedRanking 
-        bind:heatMap={heatMap}
-      />
-    </Card>
-  </div>
 </BaseLayout>
 

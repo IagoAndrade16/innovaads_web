@@ -2,4 +2,6 @@
 	import ListPackages from "../ListPackages.svelte";
 
 </script>
-<ListPackages />
+<div id="pricing">
+	<ListPackages />
+</div>

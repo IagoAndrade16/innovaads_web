@@ -1,7 +1,6 @@
 <script>
 	import Engine from "$lib/core/Engine";
 
-
 	import { Button } from "flowbite-svelte";
 	import { ArrowLeftToBracketOutline } from "flowbite-svelte-icons";
 
