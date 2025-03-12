@@ -12,6 +12,7 @@
 	import { userAuthStore } from "$lib/stores/userAuthStore";
 	import { userStore } from "$lib/stores/userStore";
 	import Engine from "$lib/core/Engine";
+	import { GoogleOAuthSetup } from "$lib/providers/google/GoogleOAuthSetup";
 
   type SaveFacebookAccountInput = {
     accessToken: string;
@@ -20,7 +21,7 @@
   }
 
   let facebookIsConnected = false;
-  let googleIsConnected = false;
+  let googleIsConnected = $userStore!.googleAccount !== null;
   let facebook: FacebookSdk;
   let usersService: UsersService;
 
@@ -156,12 +157,95 @@
     }
   };
 
+  const handleConnectWithGoogle = async () => {
+    const googleOAuthSetup = GoogleOAuthSetup.getInstance();
+    const googleCode = await googleOAuthSetup.loginOnGoogle();    
+
+    if (!googleCode) {
+      DialogService.error({
+        message: "Houve um erro inesperado ao conectar com o Google.",
+        title: "Ooops!"
+      })
+      googleIsConnected = false;
+      return;      
+    }
+
+    const connectWithGoogleResponse = await usersService.connectWithGoogle({
+      code: googleCode,
+    }, $userAuthStore!.token);
+    
+    switch (connectWithGoogleResponse.status) {
+      case 'SUCCESS':
+        ToastService.success('Google conectado com sucesso!');
+        googleIsConnected = true;
+
+        if ($userStore) {
+          $userStore = {
+            ...$userStore,
+            googleAccount: {
+              expiresIn: connectWithGoogleResponse.data!.expiresIn,
+              expiresRefreshIn: connectWithGoogleResponse.data!.expiresRefreshIn,
+            }
+          }
+        }
+        break;
+       
+      case 'FAILED_TO_CONNECT_ACCOUNT': 
+        DialogService.error({
+          message: "Houve um erro inesperado ao conectar com o Google.",
+          title: "Ooops!"
+        });
+        googleIsConnected = false;
+        break;  
+
+      case 'UNAUTHORIZED':
+        Engine.logout();
+        break;
+
+      default:
+        ToastService.error('Houve um erro inesperado ao conectar com o Google.');
+        googleIsConnected = false;
+        break;
+    }
+  }
+
+  const handleDisconnectWithGoogle = async () => {
+    const disconnectWithGoogleResponse = await usersService.disconnectWithGoogle($userAuthStore!.token);
+
+    switch (disconnectWithGoogleResponse.status) {
+      case 'SUCCESS':
+        ToastService.success('Google desconectado com sucesso!');
+        googleIsConnected = false;
+
+        if ($userStore) {
+          $userStore = {
+            ...$userStore,
+            googleAccount: null
+          }
+        }
+        break;
+
+      case 'UNAUTHORIZED':
+        Engine.logout();
+        break;
+
+      default:
+        ToastService.error('Houve um erro inesperado ao desconectar com o Google.');
+        googleIsConnected = false;
+        break;
+    }
+  }
+
   onMount(async() => {
     facebook = await FacebookSdk.getInstance();
     usersService = new UsersService();
 
-    if($userStore?.facebookAccount) {
+    if ($userStore?.facebookAccount) {
       facebookIsConnected = true;
+    }
+
+    if ($userStore?.googleAccount) {
+      googleIsConnected = true;
     }
   });
 
@@ -180,7 +264,7 @@
         {#if facebookIsConnected}
           <SecondaryButton text="Desconectar" onClick={handleLogoutFromFacebook}/>
         {:else}
-          <PrimaryButton text="Conectar +" onClick={handleConnectWithFacebook}/>
+          <PrimaryButton classes="w-32" text="Conectar +" onClick={handleConnectWithFacebook}/>
         {/if}
       </div>
 
@@ -192,9 +276,9 @@
           <P class="text-md">Conectar com Google</P>
         </div>
         {#if googleIsConnected}
-          <SecondaryButton text="Desconectar" />
+          <SecondaryButton text="Desconectar" onClick={handleDisconnectWithGoogle}/>
         {:else}
-          <PrimaryButton text="Conectar +" />
+          <PrimaryButton classes="w-32" text="Conectar +" onClick={handleConnectWithGoogle}/>
         {/if}
       </div>
     </Card>

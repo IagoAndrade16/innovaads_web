@@ -150,7 +150,7 @@
   <Card title="" class="lg:w-[35%] w-full">
     <h1 class="text-2xl font-bold text-gray-900 dark:text-white">Verificar Usuário</h1>
     <P class="mt-5 text-lg">
-      Enviamos um código para o email <b> {$userStore?.email} </b>. Por favor, digite-o abaixo para concluir a verificação.
+      Enviamos um código para o email <b> {$userStore?.email}. </b> Por favor, digite-o abaixo para concluir a verificação.
     </P>
     <div class="mt-10">
       <BaseInput 

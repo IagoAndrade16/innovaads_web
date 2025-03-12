@@ -1,6 +1,9 @@
+import Utils from "$lib/core/Utils";
 import { ApiService } from "./ApiService";
 import type { ConnectWithFacebookRequest, ConnectWithFacebookResponse } from "./types/ConnectWithFacebookTypes";
+import type { ConnectWithGoogleReponse, ConnectWithGoogleRequest } from "./types/ConnectWithGoogleTypes";
 import type { DisconnectWithFacebookRequest, DisconnectWithFacebookResponse } from "./types/DisconnectWithFacebookTypes";
+import type { DisconnectWithGoogleResponse } from "./types/DisconnectWithGoogleTypes";
 import type { BaseForgotUserPasswordOutput, ResetPasswordInput, VerifyPasswordRecoveryCodeInput, VerifyPasswordRecoveryCodeOutput } from "./types/ForgotUserPassword";
 import type { AuthUserRequest, AuthUserResponse } from "./types/UsersServiceAuthTypes";
 import type { RegisterUserRequest, RegisterUserResponse } from "./types/UsersServiceRegisterTypes";
@@ -284,6 +287,71 @@ export class UsersService extends ApiService {
     return {
       status: 'UNKNOWN',
       data: null
+    }
+  }
+
+  public async connectWithGoogle(params: ConnectWithGoogleRequest, token: string): Promise<ConnectWithGoogleReponse> {
+    const query = Utils.buildQueryParams({
+      code: params.code,
+    });
+    const response = await this.post(`/users/google-account/connect?${query}`, { }, {
+      token,
+    });
+
+    if (response.statusCode === 401) {
+      return {
+        status: 'UNAUTHORIZED',
+        data: null
+      }
+    }
+
+    if (response.statusCode === 400) {
+      return {
+        status: response.data.reason,
+        data: null
+      }
+    }
+
+    if (response.statusCode === 200) {
+      return {
+        status: 'SUCCESS',
+        data: {
+          ...response.data
+        }
+      }
+    }
+
+    return {
+      status: 'UNKNOWN',
+      data: null
+    }
+  }
+
+  public async disconnectWithGoogle(token: string): Promise<DisconnectWithGoogleResponse> {
+    const response = await this.delete('/users/google-account/disconnect', {}, {
+      token,
+    });
+
+    if (response.statusCode === 401) {
+      return {
+        status: 'UNAUTHORIZED',
+      }
+    }
+
+    if (response.statusCode === 204) {
+      return {
+        status: 'SUCCESS',
+      }
+    }
+
+    if (response.statusCode === 400) {
+      return {
+        status: response.data.reason,
+      }
+    }
+
+    return {
+      status: 'UNKNOWN',
     }
   }
 }

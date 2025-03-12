@@ -13,4 +13,8 @@ export interface IUser {
   facebookAccount: {
     userIdOnFacebook: string;
   } | null;
+  googleAccount: {
+    expiresRefreshIn: Date;
+    expiresIn: Date;
+  } | null;
 }
