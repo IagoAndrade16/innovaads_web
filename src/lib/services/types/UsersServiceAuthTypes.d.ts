@@ -24,6 +24,10 @@ export interface AuthUserResponseData {
   facebookAccount: {
     userIdOnFacebook: string;
   } | null;
+  googleAccount: {
+    expiresRefreshIn: Date;
+    expiresIn: Date;
+  } | null;
 }
 
 export type AuthUserResponseStatus = 'SUCCESS' | 'UNKNOWN' | 'UNAUTHORIZED';

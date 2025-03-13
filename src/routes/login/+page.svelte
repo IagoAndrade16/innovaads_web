@@ -81,6 +81,7 @@
 					subscriptionStatus: res.data?.subscriptionStatus! as UserSubscriptionStatus,
 					canUsePlatformUntil: res.data?.canUsePlatformUntil!,
 					facebookAccount: res.data?.facebookAccount!,
+					googleAccount: res.data?.googleAccount!,
         }
         Engine.navigateTo('/home/historical-metrics');
         break;
